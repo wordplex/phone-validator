@@ -5,13 +5,18 @@
   <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
   <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="index.css"/> 
 </head>
 <body>
-  <input id = "input" type = "tel" placeholder = "phone number">
+  <input class="form-style"  id = "input" type = "tel" placeholder = "phone number">
   <select id = 'select'>
     <option value = "select country">select country</option>
   </select>
-  <button class = "button" id = "button">Run</button>
+  <button class = "btn" id = "button">Run</button>
+  <label class="switch" id="switcher">
+    <input type="checkbox" checked>
+    <span class="slider round"></span>
+  </label>
   <script type = "module" src="./index.js" defer></script>
 </body>
 </html>
