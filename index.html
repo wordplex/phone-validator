@@ -7,16 +7,52 @@
   <title>Document</title>
   <link rel="stylesheet" type="text/css" href="index.css"/> 
 </head>
-<body>
-  <input class="form-style"  id = "input" type = "tel" placeholder = "phone number">
-  <select id = 'select'>
-    <option value = "select country">select country</option>
-  </select>
-  <button class = "btn" id = "button">Run</button>
-  <label class="switch" id="switcher">
-    <input type="checkbox" checked>
-    <span class="slider round"></span>
-  </label>
-  <script type = "module" src="./index.js" defer></script>
+
+<body >
+  <div class = "container">
+    <div class = "head">
+      <h1 style = "color: white;">Phone validation</h1>
+  </div>
+     
+
+  <div class="input-container">
+      <div class="input-group">
+        <span class="input-label">Phone number: </span>
+       <input class="input"  id = "input" type = "tel" placeholder = "phone number" >
+      </div>
+
+        <div class="input-group">
+          <span class="input-label">enable country selection: </span>
+          <span class="switcherpostion">
+            <label class="switch" id="switcher">
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+            </label>
+          </span>
+      </div>
+
+    <div class="input-group">
+      <span class="input-label">country: </span>
+      <select id = 'select' class="input">
+        <option value = "select country" >select country</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <div class="btnclass">
+        <button class = "btn" id = "button" onclick="document.getElementById('id01').style.display='block'" >validate</button>
+      </div>
+      <div id="result-before"></div>
+      <div id="result-after"></div>
+    </div>
+
+    <div id="id01" class="modal">
+          <div class="splitContainer" id="container"></div>
+    </div>
+      <script type = "module" src="./index.js" defer></script>
+    
+    
+  
+</div>
 </body>
 </html>

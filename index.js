@@ -2,9 +2,11 @@ import { countries } from './countries.js';
 
 const input = document.getElementById("input");
 const selector = document.getElementById("select");
-const button = document.getElementById("button");
+const button = document.getElementById("button")
 const countryCodeSwitcher = document.getElementById("switcher");
-
+const displayresultBefore = document.getElementById("container")
+const displayresultAfter = document.getElementById("container")
+const modal = document.getElementById('id01');
 
 function inputData() {
   const phoneNumber = parseInt(input.value, 10);
@@ -16,13 +18,20 @@ function inputData() {
   }
 }
 
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 async function displayData() {
   const phoneNumbers = inputData();
   const countryNumber = selector.value;
-  fetch(`http://geo.wordplex.io/v4/phone?phone=${phoneNumbers}&codes=${countryNumber}`)
+  fetch(`http://geo.wordplex.io/v4/phone?phone=${phoneNumbers}&country=${countryNumber}`)
     .then((res) => res.json())
     .then((data) => {
-    console.log (data);
+      displayresultBefore.innerHTML = JSON.stringify(data);
+      displayresultAfter.innerHTML = "<pre>"+JSON.stringify(data,undefined, 2) +"</pre>"
     })
     .catch((err) => {
       console.log (err);
