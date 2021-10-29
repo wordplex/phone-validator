@@ -2,11 +2,25 @@ import { countries } from './countries.js';
 
 const input = document.getElementById("input");
 const selector = document.getElementById("select");
-const button = document.getElementById("button")
-const countryCodeSwitcher = document.getElementById("switcher");
-const displayresultBefore = document.getElementById("container")
-const displayresultAfter = document.getElementById("container")
-const modal = document.getElementById('id01');
+const button = document.getElementById("button");
+const validateInput = document.getElementById("valid");
+const lineType = document.getElementById("lineType");
+const countryCode = document.getElementById("countryCode");
+const network = document.getElementById("network");
+const location = document.getElementById("location");
+const jsonbtn = document.getElementById("json");
+const formbtn = document.getElementById("form-btn");
+const jsonresults = document.getElementById("json-results");
+const formattedresults = document.getElementById("formatted-results");
+const number = document.getElementById("number");
+const validnumber = document.getElementById("valid-number");
+const localformat = document.getElementById("local-format");
+const inteformat = document.getElementById("inte-format");
+const linetype = document.getElementById("line-type");
+const reglocation = document.getElementById("reg-location");
+const jsonnetwork = document.getElementById("net-work");
+
+
 
 function inputData() {
   const phoneNumber = parseInt(input.value, 10);
@@ -18,11 +32,16 @@ function inputData() {
   }
 }
 
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+function jsonhandler() {
+  jsonresults.style = "display";
+  formattedresults.style = "display : none";
 }
+
+function formbtnhandler() {
+  formattedresults.style ="display";
+  jsonresults.style = "display : none";
+}
+    
 
 async function displayData() {
   const phoneNumbers = inputData();
@@ -30,8 +49,27 @@ async function displayData() {
   fetch(`http://geo.wordplex.io/v4/phone?phone=${phoneNumbers}&country=${countryNumber}`)
     .then((res) => res.json())
     .then((data) => {
-      displayresultBefore.innerHTML = JSON.stringify(data);
-      displayresultAfter.innerHTML = "<pre>"+JSON.stringify(data,undefined, 2) +"</pre>"
+        if (!!data.is_number_valid) {
+          console.log(data)
+          number.innerHTML = `"number": "${data.number_parts.nat}"`
+          validnumber.innerHTML = ` "is_valid_number": "${data.is_number_possible}"`
+          localformat.innerHTML = `"local_format": "${data.number_parts.nat}"`
+          inteformat.innerHTML = `international_format": "${data.number_parts.nat.intl}"`
+          linetype.innerHTML = `"line_type": "${data.type}"`
+          reglocation.innerHTML = `"registered_location": "${data.location.name}"`
+          jsonnetwork.innerHTML = `"network": "${data.location.iso2}"`
+          validateInput.value = "true"
+          lineType.value = `${data.type}`
+          countryCode.value = `+ ${data.number_parts.country_code}`
+          network.value = `${data.carrier.name}`
+          location.value = `${data.location.name}`
+        }else {
+          validateInput.value = "false"
+          lineType.value = "unknown"
+          countryCode.value = "unknown"
+          network.value = "unknown"
+          location.value = "unknown"
+        }
     })
     .catch((err) => {
       console.log (err);
@@ -56,4 +94,5 @@ function countrySwitcherHandler(event) {
 
 input.addEventListener('change', inputData);
 button.addEventListener('click', displayData);
-countryCodeSwitcher.addEventListener('change', countrySwitcherHandler);
+jsonbtn.addEventListener('click', jsonhandler);
+formbtn.addEventListener('click', formbtnhandler);
