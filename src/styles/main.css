@@ -4,60 +4,72 @@
   box-sizing: border-box;
 }
 
-header {
-  color: white;
+body {
+  overflow-x: hidden;
 }
 
-a {
-  text-decoration: none;
-  color: white;
-}
-
-body { 
-  background: url(./project-img/69a8c6bc99e1588e96e96ea93f6c0b5f.jfif) 
-  no-repeat center center fixed; 
+.index-page {
+  background: url(../assets/img.jfif) no-repeat center center fixed;
   background-size: cover;
+  padding-bottom: 60px;
   height: 100vh;
 }
 
-.header {
+header {
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 40px 50px;
 }
 
-.navbar a {
-  margin-left:50px;
+header a {
+  text-decoration: none;
+  color: white;
+  margin-left: 50px;
 }
 
-.body-section {
+main.body-section {
   display: flex;
   align-items: center;
-  height: calc(100vh - 100px);
-  width: 100%;
   justify-content: space-between;
   padding: 0 178px;
+  margin-top: 100px;
 }
 
 .left-column {
   display: flex;
-  width: 503px;
-  height:100vh ;
-  margin: 965px 94px 228px 194px ;
+  width: 40%;
 }
 
-.documentations {
-font-weight: 500;
-font-size: 50px;
-line-height: 59px;
-color: #FFFFFF;
-width: 100%;
+.right-column {
+  width: 50%;
+  z-index: 99;
+}
+
+.left-column-documentation1 {
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 59px;
+  color: #ffffff;
+  width: 100%;
+}
+
+.left-column-documentation2 {
+  font-size: 24px;
+  line-height: 36px;
+  color: #deedff;
+  margin-top: 20px;
 }
 
 .input-group-with-submit {
   display: flex;
   align-items: center;
+  width: 100%;
+}
+
+.input-group-with-submit input {
+  width: 75%;
 }
 
 .validate-input {
@@ -65,9 +77,8 @@ width: 100%;
   flex-direction: row;
   align-items: center;
   padding: 0 20px;
-  width: 447px;
   height: 50px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 15px rgba(2, 79, 255, 0.3);
   border-radius: 4px 0 0px 4px;
   margin: 12px 0px;
@@ -75,18 +86,18 @@ width: 100%;
 }
 
 select.validate-input {
-  width: 571px;
   border-radius: 4px;
+  width: 100%;
 }
 
 .submit-btn {
-  width: 125px;
+  width: 25%;
   height: 50px;
-  background: #82BE18;
+  background: #82be18;
   cursor: pointer;
   border-radius: 0px 4px 4px 0px;
   border: 0;
-  color: #FFF;
+  color: #fff;
   font-weight: 500;
 }
 
@@ -99,47 +110,90 @@ select.validate-input {
   width: 574px;
   height: 163px;
   top: 36px;
-  background: #00152F;
+  background: #00152f;
   box-shadow: 0px 4px 15px rgba(2, 79, 255, 0.3);
   flex: none;
   order: 1;
   flex-grow: 0;
-  margin-top:0px;
+  margin-top: 0px;
   flex-wrap: wrap;
   align-content: space-between;
 }
-
 
 .head-validation-box {
   display: flex;
   margin-top: 27px;
 }
 
-.btn1 {
+.formatted-btn {
   padding: 0px 20px;
   color: white;
+  width: 100%;
   text-align: left;
   position: relative;
-  width: 287px;
   height: 36px;
-  background: #00152F;
+  background: #00152f;
   border: 0;
   cursor: pointer;
 }
 
+.json-btn {
+  width: 100%;
+  padding: 0px 20px;
+  color: white;
+  text-align: left;
+  position: relative;
+  height: 36px;
+  background-color: rgb(0, 44, 96);
+  border: 0;
+  cursor: pointer;
+}
+
+span.check-mark {
+  position: relative;
+  right: 12px;
+  width: 17px;
+  height: 17px;
+  background: #82be18;
+  border-radius: 20px;
+}
+
+.false-mark {
+  position: relative;
+  right: 12px;
+  width: 15px;
+  height: 15px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background: #ff5722;
+  border-radius: 50%;
+}
+
+.fa,
+.fas {
+  font-weight: 900;
+  color: white;
+  font-size: 8px;
+}
+
+.styled-item {
+  color: #ff5722;
+}
 
 .main-validation-button {
-    background: #00152F;
-    border-radius: 4px 0px;
+  width: 50%;
+  background: #00152f;
+  border-radius: 4px 0px;
 }
 
 .valid-input1 {
-  width: 110px;
+  width: 20%;
   height: 25px;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: #9BAFC6;
+  color: #9bafc6;
 }
 
 .formatted-results {
@@ -147,22 +201,33 @@ select.validate-input {
   flex-direction: column;
   flex-wrap: wrap;
   max-height: 200px;
-  background-color: #00152F;
+  background-color: #00152f;
   padding: 28px 20px;
   padding-bottom: 0;
 }
 
+.json-results {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 219px;
+  background-color: #00152f;
+  padding: 28px 20px;
+  color: white;
+  height: 220px;
+}
 
 .valid-display {
-  width: 136px;
+  position: relative;
+  max-width: 40%;
   height: 17px;
   font-size: 16px;
   line-height: 17px;
-  color: #9BAFC6;
+  color: #9bafc6;
   background-color: unset;
   border: 0;
-  border-bottom: 1px solid #002C5F;
-  margin-right: 34px;
+  border-bottom: 1px solid #002c5f;
 }
 
 .validation-text {
@@ -171,18 +236,23 @@ select.validate-input {
 }
 
 .phone-shape {
+  z-index: 1;
   position: absolute;
   width: 302.39px;
-  height: 585px;
+  height: 545px;
   right: 46.6px;
-  top: 233px;
-  z-index: -1;
-  background: linear-gradient(194.87deg, rgba(0, 103, 255, 0.4) 0%, rgba(24, 160, 251, 0.16) 95.85%);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 15px rgba(0, 0, 0, 0.25);
+  top: 147px;
+  background: linear-gradient(
+    194.87deg,
+    rgba(0, 103, 255, 0.4) 0%,
+    rgba(24, 160, 251, 0.16) 95.85%
+  );
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 15px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
 }
 
-.rectangle {
+.phone-shape-rectangle {
   position: absolute;
   width: 72.11px;
   height: 12.79px;
@@ -194,7 +264,7 @@ select.validate-input {
   border-radius: 12px;
 }
 
-.eclipse1 {
+.phone-shape-eclipse1 {
   position: absolute;
   width: 12.79px;
   height: 12.79px;
@@ -206,36 +276,13 @@ select.validate-input {
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.eclipse2 {
+.phone-shape-eclipse2 {
   position: absolute;
   width: 48.85px;
   height: 48.85px;
   left: 137px;
-  top: 525.85px;
+  top: 480px;
   border-radius: 50%;
   background: #002046;
   opacity: 0.9;
 }
-
-.documentation2 {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 36px;
-  color: #DEEDFF;
-  margin-top: 20px;
-}
-
-.json-results {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    flex-wrap: wrap;
-    max-height: 219px;
-    background-color: #00152F;
-    padding: 28px 20px;
-    width: 574px;
-    color: white;
-    height: 220px;
-}
-

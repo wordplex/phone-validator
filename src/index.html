@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Wordplex</title>
+  </head>
+
+  <body>
+    <section class="index-page">
+      <header class="header">
+        <div>
+          <p>wordplex.io</p>
+        </div>
+        <nav class="navbar">
+          <a href="#documentation-page">Documentation</a>
+          <a href="/index.html"> Phone validation</a>
+          <a href="/index.html"> Country flags</a>
+        </nav>
+      </header>
+      <main class="body-section">
+        <section class="left-column">
+          <div class="left-column-documentation1">
+            <p>Free Phone Number Validation API</p>
+            <p class="left-column-documentation2">This API is provided by wordplex.io to make the web more international, and the like
+              of developers easies.</p>
+          </div>
+        </section>
+        <section class="right-column">
+              <select id='select' class="validate-input">
+                <option value="select country">Any country</option>
+              </select>
+            <div class="input-group-with-submit">
+              <input class="validate-input" id="input" type="tel" placeholder="phone number" >
+              <button class="submit-btn" id="button">validate</button>
+            </div>
+          <div class="results">
+            <div class="head-validation-box">
+              <div class="main-validation-button"><button class="formatted-btn" id="form-btn">FORMATTED</button></div>
+              <div class="main-validation-button"><button class="json-btn" id="json">JSON</button></div>
+            </div>
+            <div class="formatted-results" id="formatted-results">
+              <div class="validation-text">
+                <div class="valid-input1">valid</div>
+                <input class="valid-display" id="valid" disabled  readonly value="---">
+                <span class="false-mark" id="check-mark" style="display: none;"><i class="fas fa-check"></i></span>
+                <span class="false-mark" id="false-mark" style="display: none;"><i class="fas fa-times"></i></i></span>
+              </div>
+              <div class="validation-text">
+                <div class="valid-input1">Line type</div>
+                <input class="valid-display" id="lineType" disabled readonly value="---">
+              </div>
+    
+              <div class="validation-text">
+                <div class="valid-input1">Country code</div>
+                <input class="valid-display" id="countryCode" disabled readonly value="---">
+              </div>
+    
+              <div class="validation-text">
+                <div class="valid-input1">Network</div>
+                <input class="valid-display" id="network" disabled readonly value="---">
+              </div>
+    
+              <div class="validation-text">
+                <div class="valid-input1">Location</div>
+                <input class="valid-display" id="location" disabled readonly value="---">
+              </div>
+            </div>
+          </div>
+          <div class="json-results" id="json-results" style="display: none;">
+            <p id="number"></p>
+            <p id="valid-number"></p>
+            <p id="local-format"></p>
+            <p id="inte-format"></p>
+            <p id="line-type"></p>
+            <p id="reg-location"></p>
+            <p id="network"></p>
+          </div>
+          </div>
+        </section>
+        <div class="phone-shape">
+          <div class="phone-shape-rectangle"></div>
+          <div class="phone-shape-eclipse1"></div>
+          <div class="phone-shape-eclipse2"></div>
+        </div>
+      </main>
+    </section>
+    <div id="documentation-section"></div>
+    <script src="https://kit.fontawesome.com/db29237632.js" crossorigin="anonymous"></script>
+  </body>
+</html>
