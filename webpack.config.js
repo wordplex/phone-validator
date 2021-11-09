@@ -5,7 +5,12 @@ const webpack = require('webpack')
 
 module.exports = {
   entry: {
-    index: path.resolve(__dirname, './src/scripts/index.js'),
+    index: [
+      path.resolve(__dirname, './src/scripts/index.js'),
+      path.resolve(__dirname, './src/styles/main.css'),
+      path.resolve(__dirname, './src/styles/documentation.css')
+  ],
+    
   },
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -32,7 +37,7 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },

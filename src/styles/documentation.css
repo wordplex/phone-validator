@@ -2,61 +2,71 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
 }
 
-.benfits {
+.properties {
   padding: 82px 185px;
+  font-family:'Rubik' ;
 }
 
-.benfits h3 {
-  font-family: 'Raleway', sans-serif;
+.properties h3 {
+  font-family: 'Rubik';
   font-size: 50px;
   color: #062E5D;
   font-weight: 500;
   margin-bottom: 44px;
 }
 
-.benfits-items {
+.properties-items {
   display: flex;
 }
 
-.benfits-item {
+.properties-item {
   display: flex;
   min-height: 151px;
 }
 
-.benfits-item .benfit-icon {
-  width: 78px;
+.properties-item .properties-icon {
+  width: 11%;
   background-color: #DFEEFF;
-  height: 100%;
+  height: 57%;
+  margin-top: 29px;
   padding: 23px 19px;
+  background: #FFFFFF;
+  box-shadow: 4px 4px 4px rgba(2, 79, 255, 0.15);
+  border-radius: 2px;
 }
 
-.benfit-icon i {
-  font-size: 40px;
-  color: #062E5D;
+.properties-icon-left-img{
+  Width: 42.57px;
+  Height:45px;
 }
 
-.benfit-text {
-  margin-left: 10px;
+.properties-icon-right-img {
+  Width: 36.57px;
+  Height: 45px;
 }
 
-.benfit-text h3 {
-  font-family: 'Rubik', sans-serif;
+.properties-text {
+  margin-left: 20px;
+}
+
+.properties-text h3 {
+  font-family: 'Rubik';
   font-size: 24px;
   font-weight: 500;
   margin: 0;
-  padding: 23px 19px;
+  padding: 23px 19px 14px 19px;
   padding-left: 0;
 }
 
-.benfit-text p {
-  font-family: 'Rubik', sans-serif;
+.properties-text p {
+  font-family: 'Rubik';
   font-size: 14px;
   color:#5D6D7E;
   font-weight: 400;
   line-height: 18px;
+  margin-right: 10px;
 }
 
 .documentation-wrapper {
@@ -70,7 +80,7 @@
 }
 
 .documentation h1 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Rubik';
   font-size: 50px;
   font-weight: 500;
   margin-bottom: 34px;
@@ -80,33 +90,37 @@
   font-size: 28px;
   font-weight: 400;
   margin-bottom: 18px;
+  font-family: 'Rubik';
 }
 
 .documentation-header p {
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
+  font-family: 'Rubik'; 
 }
 
 .documentation-item {
   margin: 18px 0;
+  font-family: 'Rubik';
 }
 
 .documentation-item h4 {
+  font-family: 'Rubik'; 
   font-size: 28px;
   margin-bottom: 20px;
   font-weight: 400;
 }
 
 .documentation-item p {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Rubik';
   margin-bottom: 20px;
   font-weight: 400;
 }
 
 .documentation-item .code-block {
-  font-family: 'Roboto', sans-serif;
-  width: 579px;
+  font-family: 'Rubik';
+  width: 99%;
   background-color: #00152F;
   padding: 10px 27px;
   font-weight: 500;
@@ -115,10 +129,15 @@
   border-radius: 4px;
 }
 
+.params{
+  font-family: 'Rubik';
+}
+
 .params .param-title {
   font-size: 28px;
   margin-bottom: 38px;
   margin-top: 87px;
+  font-family: 'Rubik';
 }
 
 .params .param-row {
@@ -130,10 +149,12 @@
 
 .params .param-name {
   width: 25%;
+  font-family: 'Rubik';
 }
 
 .params .param-type {
-  width: 8%;
+  width: 13%;
+  font-family: 'Rubik';
 }
 
 .params .param-desc {
@@ -141,6 +162,7 @@
 }
 
 .status-params .param-title {
+  font-family: 'Rubik';
   font-size: 28px;
   margin-bottom: 38px;
   margin-top: 87px;
@@ -172,10 +194,13 @@
 
 .status-params .param-type {
   width: 8%;
+  font-family: 'Rubik';
 }
 
 .status-params .param-desc {
   width: 70%;
+  font-family: 'Rubik';
+  margin-left: 46px;
 }
 
 .footer {
@@ -185,6 +210,7 @@
   background-color: #002046;
   color: #FFF;
   padding: 39px 58px;
+  font-family: 'Rubik';
 }
 
 .footer-right-side {
@@ -203,4 +229,103 @@
 
 .footer-right-side .footer-copywrite {
   text-align: right;
+}
+
+
+@media (max-width:700px) {
+  .properties {
+    padding: 82px 20px !important
+  } 
+
+  .documentation-wrapper {
+    padding: 82px 15px !important;
+    font-size: 15px;
+  }
+
+  .properties-item .properties-icon {
+    width: 13%;
+    padding: 23px 0px !important;
+    font-size: 15px;
+  }
+
+  .properties-icon i {
+    font-size: 0 !important;
+  }
+
+  .params .param-name {
+    width: 37% !important;
+    font-size: 15px;
+  }
+
+  .params .param-desc {
+    margin-left: 11px;
+    font-size: 15px;
+  }
+
+  p.param-type {
+    margin-left: 13px;
+  }
+
+  .footer {
+    padding: 39px 15px !important;
+    justify-content: flex-start;
+  }
+
+  .footer-logo {
+    max-height: 20px !important;
+  }
+
+  .footer-right-side{
+    margin-top: 7px;
+  }
+
+  .footer-right-side .links-wrapper {
+    margin-left: 30px;
+    font-size: 7px !important;
+  }
+
+  .footer-right-side .footer-copywrite {
+    font-size: 10px !important;
+    text-align: right;
+  }
+}
+
+@media (max-width:1220px) {
+  .documentation-wrapper {
+    padding: 75px 50px ;
+  }
+
+  .properties {
+    padding: 82px 50px ;
+ 
+  } 
+
+  .properties-item .properties-icon {
+    width: 11%;
+    height: 53%;
+  }
+
+  img.properties-icon-img {
+    Width: 33.57px;
+    Height: 38px;
+  }
+
+  .params .param-row {
+    font-size: 14px;
+  }
+
+  section.status-params {
+    font-size: 14px;
+  }
+
+  .footer-right-side .links-wrapper {
+    margin-left: 40px;
+    font-size: 11px;
+  }
+
+   .footer-right-side .footer-copywrite {
+    font-size: 12px;
+    text-align: right;
+  }
+
 }
