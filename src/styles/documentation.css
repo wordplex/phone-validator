@@ -27,24 +27,26 @@
 }
 
 .properties-item .properties-icon {
-  width: 11%;
+  width: 13%;
+  height: 52%;
   background-color: #DFEEFF;
-  height: 57%;
-  margin-top: 29px;
-  padding: 23px 19px;
+  margin: auto;
   background: #FFFFFF;
   box-shadow: 4px 4px 4px rgba(2, 79, 255, 0.15);
   border-radius: 2px;
+
 }
 
 .properties-icon-left-img{
-  Width: 42.57px;
-  Height:45px;
+  display: flex;
+  margin: auto;
+  padding: 17px 18px;
 }
 
 .properties-icon-right-img {
-  Width: 36.57px;
-  Height: 45px;
+  display: flex;
+  margin: auto;
+  padding: 17px 18px;
 }
 
 .properties-text {
@@ -56,7 +58,7 @@
   font-size: 24px;
   font-weight: 500;
   margin: 0;
-  padding: 23px 19px 14px 19px;
+  padding: 33px 19px 14px 19px;
   padding-left: 0;
 }
 
@@ -242,14 +244,17 @@
     font-size: 15px;
   }
 
-  .properties-item .properties-icon {
-    width: 13%;
-    padding: 23px 0px !important;
-    font-size: 15px;
+  .properties-icon-left-img {
+    display: none;
   }
 
-  .properties-icon i {
-    font-size: 0 !important;
+  .properties-icon-right-img {
+   display: none;
+  }
+
+  .properties-item .properties-icon {
+    width: 8%;
+    height: 72%;
   }
 
   .params .param-name {
@@ -300,16 +305,16 @@
  
   } 
 
-  .properties-item .properties-icon {
-    width: 11%;
-    height: 53%;
+  .properties-icon-left-img {
+    width: 61px;
+    padding: 25px 18px;
   }
 
-  img.properties-icon-img {
-    Width: 33.57px;
-    Height: 38px;
+  .properties-icon-right-img {
+    width: 61px;
+    padding: 25px 18px;
   }
-
+  
   .params .param-row {
     font-size: 14px;
   }
