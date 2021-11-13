@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  font-family:'Rubik';
 }
 
 body {
@@ -14,7 +15,7 @@ body {
   background: url(../assets/img.jfif) no-repeat center center fixed;
   background-size: cover;
   padding-bottom: 60px;
-  height: auto;
+  height: 750px;
 }
 
 .header {
@@ -22,7 +23,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 19px;
+  padding: 34px 52px;
 }
 
 .header a {
@@ -31,7 +32,13 @@ body {
   margin-left: 50px;
 }
 
-.index-page .header .backdrop {
+header .navbar {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+}
+
+.header .backdrop {
   position: absolute;
   display: none;
   height: 100vh;
@@ -41,7 +48,7 @@ body {
   z-index: 999;
 }
 
-.index-page .header .burger-btn {
+.header .burger-btn {
   display: none;
   position: relative;
   color: #FFF;
@@ -51,13 +58,13 @@ body {
   cursor: pointer;
 }
 
-.index-page .header .burger-btn .fa-bars:before {
+.header .burger-btn .fa-bars:before {
   content: "\f0c9";
   font-size: 21px;
   width: 16px;
 }
 
-.index-page .header .mobile-navbar {
+.header .mobile-navbar {
   display: none;
   flex-direction: column;
   position: absolute;
@@ -72,8 +79,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 178px;
-  margin-top: 100px;
+  padding: 0 194px;
+  margin-top: 92px;
 }
 
 .phone-shape {
@@ -82,7 +89,7 @@ body {
   width: 302.39px;
   height: 545px;
   right: 46.6px;
-  top: 88px;
+  top: 106px;
   background: linear-gradient(194.87deg, rgba(0, 103, 255, 0.38) 0%, rgba(24, 160, 251, 0.152) 95.85%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(15px);
@@ -104,6 +111,9 @@ body {
 pre.prettyprint {
   padding: 2px;
   border:none !important;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 36px;
 }
 
 .phone-shape-eclipse {
@@ -120,20 +130,22 @@ pre.prettyprint {
 
 .body-section .left-column {
   display: flex;
-  width: 40%;
+  width: 47%;
+  margin-bottom: 34px;
 }
 
 .body-section .left-column .main-left-column-documentation {
   font-weight: 500;
-  font-size: 47px;
+  font-size: 50px;
   line-height: 59px;
   color: #ffffff;
   width: 100%;
 }
 
 .body-section .left-column .main-left-column-documentation .left-column-documentation {
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
   color: #deedff;
   margin-top: 20px;
 }
@@ -155,6 +167,8 @@ pre.prettyprint {
 
 .body-section .right-column .validate-input {
   display: flex;
+  font-size: 18px;
+  line-height: 36px;
   flex-direction: row;
   align-items: center;
   padding: 0 20px;
@@ -168,9 +182,13 @@ pre.prettyprint {
 
 .body-section .right-column select.validate-input {
   border-radius: 4px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 36px;    
+  border: 2px solid #82BE18;
   width: 100%;
   background-image:url(../assets/ic-arrow-tick.png);
-  background-position: calc(100% - 20px) calc(0.9em + 6px), 100% 0;
+  background-position: calc(100% - 20px) calc(0.9em + 5px), 100% 0;
   background-size: 10px;
   background-repeat: no-repeat;
   -webkit-appearance: none;
@@ -180,12 +198,14 @@ pre.prettyprint {
 .body-section .right-column .submit-btn {
   width: 25%;
   height: 50px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 36px;
   background: #82BE18;
   cursor: pointer;
   border-radius: 0px 4px 4px 0px;
   border: 0;
   color: #fff;
-  font-weight: 500;
 }
 
 .body-section .right-column .submit-btn:hover {
@@ -201,17 +221,21 @@ pre.prettyprint {
   padding: 0px 20px;
   color: white;
   width: 100%;
+  font-size: 14px;
+  line-height: 36px;
   text-align: left;
   position: relative;
   height: 36px;
   background: #00152f;
   border: 0;
   cursor: pointer;
-  font-family: Raleway;
 }
 
 .body-section .right-column .results .head-validation-box .json-btn {
   width: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 36px;
   padding: 0px 20px;
   color: white;
   text-align: left;
@@ -220,7 +244,6 @@ pre.prettyprint {
   background-color: rgb(0, 44, 96);
   border: 0;
   cursor: pointer;
-  font-family: Raleway;
 }
 
 .body-section .right-column .results .formatted-results {
@@ -234,12 +257,19 @@ pre.prettyprint {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  margin-right: 77px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .formatted-result-right-column {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .body-section .right-column .results .formatted-results span.check-mark {
@@ -276,7 +306,7 @@ pre.prettyprint {
 }
 
 .body-section .right-column .results .formatted-results .formatted-output {
-  width: 30%;
+  width: 33%;
   height: 25px;
   margin-right: 20px;
   font-weight: 500;
@@ -288,13 +318,14 @@ pre.prettyprint {
 .body-section .right-column .results .formatted-results .valid-display {
   position: relative;
   max-width: 40%;
-  height: 17px;
+  height: 18px;
+  padding-bottom: 3px;
   font-size: 16px;
   line-height: 17px;
   color: #9bafc6;
   background-color: unset;
   border: 0;
-  border-bottom: 1px solid #002c5f;
+  border-bottom: 1px solid #002C60;
 }
 
 .body-section .right-column .results .formatted-results .validation-text {
@@ -342,16 +373,12 @@ pre.prettyprint {
 } 
 
 @media (max-width : 892px) {
-  .index-page .header {
+  .header {
     padding: 40px 25px;
     font-size: 13px;
   }
 
-  .index-page .header .logo {
-    width: 150px;
-  }
-
-  .index-page .body-section {
+  .body-section {
     padding: 0 25px;
     display: flex;
     flex-direction: column;
@@ -361,22 +388,22 @@ pre.prettyprint {
     padding-bottom: 100px;
   }
 
-  .index-page .body-section .left-column {
+  .body-section .left-column {
     display: flex;
     z-index : 99;
     width: unset;
   }
 
-  .index-page .body-section .right-column {
+  .body-section .right-column {
     width: unset;
   }
 
-  .index-page .body-section .main-left-column-documentation {
+  .body-section .main-left-column-documentation {
     font-size: 33px !important;
     line-height: 37px;
   }
 
-  .index-page .body-section .main-left-column-documentation .left-column-documentation {
+  .body-section .main-left-column-documentation .left-column-documentation {
     font-size: 17px;
     line-height: 37px;
     align-items: flex-start;
@@ -390,17 +417,17 @@ pre.prettyprint {
     font-size: 14px;
   }
 
-  .index-page .body-section .right-column .results .formatted-results {
+  .body-section .right-column .results .formatted-results {
     padding: 20px;
     flex-direction: column;
-    max-height: 250px;
+    max-height: 262px;
   }
 
-  .index-page .body-section .right-column .results .formatted-result-left-column {
+  .body-section .right-column .results .formatted-result-left-column {
     overflow: unset;
   }
 
-  .index-page .body-section .right-column .json-results {
+  .body-section .right-column .json-results {
     font-size: 13px;
     display: flex;
     flex-wrap: nowrap;
@@ -414,47 +441,51 @@ pre.prettyprint {
 }
 
 @media (max-width: 1488px) {
-  .index-page .body-section {
+  .body-section {
     padding: 0px 50px;
   }  
+
+  .formatted-result-right-column {
+    margin-right: 77px;
+  }
 }
 
 @media (max-width: 700px) {
-  .index-page .header {
+  .header {
     padding: 40px 25px;
   }
 
-  .index-page .header a {
+  .header a {
     margin: 0;
     padding: 20px;
     transition: all 0.1s ease-in-out;
   }
 
-  .index-page .header a:first-child {
+  .header a:first-child {
     border-radius: 7px 7px 0 0;
   }
 
-  .index-page .header a:last-child {
+  .header a:last-child {
     border-radius: 0 0 7px 7px;
   }
 
-  .index-page .header a:hover {
+  .header a:hover {
     background-color: #002c5f;
   }
 
-  .index-page .header .logo {
-    width: 150px;
-  }
-
-  .index-page .header .burger-btn {
+  .header .burger-btn {
     display: block !important
   }
 
-  .index-page .header .navbar {
+  .header .navbar {
   display: none !important
   }
 
-  .index-page .body-section {
+  .index-page {
+    height: auto;
+  }
+
+  .body-section {
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -464,23 +495,28 @@ pre.prettyprint {
     align-items: unset;
   }
 
-  .index-page .body-section .left-column .main-left-column-documentation {
+  .formatted-result-right-column {
+    margin-right: 77px;
+  
+  }
+
+  .body-section .left-column .main-left-column-documentation {
     font-size: 17px;
     line-height: 37px;
     align-items: flex-start;    
   }
 
-  .index-page .body-section .right-column .results .head-validation-box .formatted-btn {
+  .body-section .right-column .results .head-validation-box .formatted-btn {
     font-size: 14px;
   }
 
-  .index-page .body-section .right-column .results .formatted-results {
-    padding: 10px 15px;
+  .body-section .right-column .results .formatted-results {
+    padding: 12px 15px;
     flex-direction: column;
-    max-height: 250px;
+    max-height: 259px;
   }
 
-  .index-page .body-section .right-column .results .json-results {
+  .body-section .right-column .results .json-results {
     font-size: 13px;
     display: flex;
     flex-wrap: nowrap;
@@ -488,18 +524,23 @@ pre.prettyprint {
     height: 287px;
   }
 
-  .index-page .body-section .right-column .results .head-validation-box .json-btn {
+  .body-section .right-column .results .head-validation-box .json-btn {
     font-size: 14px;
   }
 
-  .index-page .body-section .left-column {
+  .body-section .right-column .results .formatted-results .valid-display {
+    padding-bottom: 4px;
+
+  }
+
+  .body-section .left-column {
     display: flex;
     z-index : 9;
     width: unset;
     padding: 20px;
   }
 
-  .index-page .body-section .right-column {
+  .body-section .right-column {
     width: unset;
     padding: 20px;
   }

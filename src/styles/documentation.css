@@ -2,73 +2,74 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family:'Rubik';
 }
 
-.properties {
+
+.documentation-section {
+  height: 354px;
+}
+
+.documentation-section .properties {
   padding: 82px 185px;
-  font-family:'Rubik' ;
 }
 
-.properties h3 {
-  font-family: 'Rubik';
-  font-size: 50px;
-  color: #062E5D;
+.documentation-section .properties h3 {
   font-weight: 500;
-  margin-bottom: 44px;
+  font-size: 50px;
+  line-height: 59px;
+  color: #062E5D;
+  margin-bottom: 42px;
 }
 
-.properties-items {
+.documentation-section .properties .properties-items {
   display: flex;
 }
 
-.properties-item {
+.documentation-section .properties .properties-items .properties-item {
   display: flex;
-  min-height: 151px;
+  min-height: 79px;
 }
 
-.properties-item .properties-icon {
-  width: 13%;
-  height: 52%;
+.documentation-section .properties .properties-items .properties-item .properties-icon {
   background-color: #DFEEFF;
   margin: auto;
   background: #FFFFFF;
   box-shadow: 4px 4px 4px rgba(2, 79, 255, 0.15);
   border-radius: 2px;
-
 }
 
-.properties-icon-left-img{
+.documentation-section .properties .properties-items .properties-item .properties-icon .properties-icon-left-img{
   display: flex;
   margin: auto;
   padding: 17px 18px;
 }
 
-.properties-icon-right-img {
+.documentation-section .properties .properties-items .properties-item .properties-icon .properties-icon-right-img {
   display: flex;
   margin: auto;
   padding: 17px 18px;
 }
 
-.properties-text {
+.documentation-section .properties .properties-items .properties-item .properties-text {
   margin-left: 20px;
 }
 
-.properties-text h3 {
-  font-family: 'Rubik';
-  font-size: 24px;
+.documentation-section .properties .properties-items .properties-item .properties-text h3 {
   font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
   margin: 0;
-  padding: 33px 19px 14px 19px;
   padding-left: 0;
 }
 
-.properties-text p {
-  font-family: 'Rubik';
+.documentation-section .properties .properties-items .properties-item .properties-text p {
   font-size: 14px;
-  color:#5D6D7E;
-  font-weight: 400;
   line-height: 18px;
+  font-weight: 400;
+  color:#5D6D7E;
   margin-right: 10px;
+  margin-top: 8px;
 }
 
 .documentation-wrapper {
@@ -77,221 +78,252 @@
   color: #FFF;
 }
 
-.colored-code {
-  color: #7EB818;
-}
-
-.documentation h1 {
-  font-family: 'Rubik';
-  font-size: 50px;
+.documentation-wrapper .documentation h1 {
   font-weight: 500;
-  margin-bottom: 34px;
+  font-size: 50px;
+  line-height: 59px;
+  margin-bottom: 64px;
 }
 
-.documentation-header h5 {
+.documentation-wrapper .documentation .documentation-header {
+  margin-bottom: 60px;
+}
+
+.documentation-wrapper .documentation .documentation-header h5 {
+  font-weight: 500;
   font-size: 28px;
-  font-weight: 400;
+  line-height: 33px;
   margin-bottom: 18px;
-  font-family: 'Rubik';
 }
 
-.documentation-header p {
+.documentation-wrapper .documentation .documentation-header p {
   font-size: 18px;
-  font-weight: 400;
   line-height: 24px;
-  font-family: 'Rubik'; 
 }
 
-.documentation-item {
-  margin: 18px 0;
-  font-family: 'Rubik';
+.documentation-wrapper .documentation .documentation-item {
+  margin-bottom: 59px;
 }
 
-.documentation-item h4 {
+.documentation-wrapper .documentation .documentation-item h4 {
   font-family: 'Rubik'; 
+  font-weight: 500;
   font-size: 28px;
+  line-height: 33px;
   margin-bottom: 20px;
-  font-weight: 400;
 }
 
-.documentation-item p {
+.documentation-wrapper .documentation .documentation-item p {
   font-family: 'Rubik';
   margin-bottom: 20px;
-  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  margin-top: 31px;
 }
 
-.documentation-item .code-block {
-  font-family: 'Rubik';
-  width: 99%;
+.documentation-wrapper .documentation .documentation-item .code-block {
+  font-family: 'Roboto';
+  width: 37%;
   background-color: #00152F;
   padding: 10px 27px;
   font-weight: 500;
+  font-size: 18px;
   line-height: 36px;
-  margin-bottom: 44px;
   border-radius: 4px;
+  margin-bottom: 60px;
 }
 
-.params{
-  font-family: 'Rubik';
-}
-
-.params .param-title {
+.documentation-wrapper .params .param-title {
+  font-weight: 500;
   font-size: 28px;
-  margin-bottom: 38px;
-  margin-top: 87px;
-  font-family: 'Rubik';
+  line-height: 33px;
+  margin-bottom: 22px;
 }
 
-.params .param-row {
+.documentation-wrapper .params .param-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 24px 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 36px;
 }
 
-.params .param-name {
+.documentation-wrapper .params .param-row .param-name {
   width: 25%;
-  font-family: 'Rubik';
+  font-family: 'Roboto';
 }
 
-.params .param-type {
+ .colored-code {
+  color: #7EB818;
+}
+
+.documentation-wrapper .params .param-row .param-type {
   width: 13%;
-  font-family: 'Rubik';
+  font-family: 'Roboto';
 }
 
-.params .param-desc {
+.documentation-wrapper .params .param-row .param-desc {
   width: 70%;
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: 400;
 }
 
-.status-params .param-title {
-  font-family: 'Rubik';
+.documentation-wrapper .params .param-title-json {
+  font-weight: 500;
   font-size: 28px;
-  margin-bottom: 38px;
-  margin-top: 87px;
+  line-height: 33px;
+  margin-top: 77px;
+  margin-bottom: 35px;
 }
 
-.status-params .param-sub-title {
-  margin-bottom: 30px;
+.documentation-wrapper .status-params .param-title {
+  font-family:'Roboto';
+  font-weight: 500;
+  font-size: 28px;
+  margin-bottom: 34px;
+  margin-top: 70px;
 }
 
-.status-params .param-row {
+.documentation-wrapper .status-params .param-sub-title {
+  margin-bottom: 34px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.documentation-wrapper .status-params .param-row {
   display: flex;
   align-items: center;
-  margin: 17px 0;
+  margin: 18px 0;
 }
 
-.status-params .param-name {
+.documentation-wrapper .status-params .param-name {
   padding: 4px 8px;
   margin-right: 50px;
   border-radius: 4px;
 }
 
-.status-params .success {
-  background-color: #11B1A8;
+ .status-params .success {
+  background-color:  #82BE18;
+  font-family: 'Roboto';
+
 }
 
 .status-params .failed {
   background-color: #F48032;
+  font-family: 'Roboto';
+
 }
 
-.status-params .param-type {
+.documentation-wrapper .status-params .param-row .param-type {
   width: 8%;
-  font-family: 'Rubik';
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 36px;
 }
 
-.status-params .param-desc {
+ .documentation-wrapper .status-params .param-row .param-desc {
   width: 70%;
-  font-family: 'Rubik';
+  font-family: 'Roboto';
   margin-left: 46px;
+  font-size: 18px;
+  line-height: 21px;
 }
 
 .footer {
-  height: 142px;
   display: flex;
   justify-content: space-between;
   background-color: #002046;
   color: #FFF;
-  padding: 39px 58px;
+  padding: 56px 74px;
   font-family: 'Rubik';
 }
 
-.footer-right-side {
+.footer .footer-right-side {
   display: flex;
   flex-direction: column;
 }
 
-.footer-right-side .links-wrapper {
+.footer .footer-right-side .links-wrapper {
   margin-bottom: 31px;
 }
 
-.footer-right-side .links-wrapper .footer-link:not(.footer-link:last-of-type) {
+.footer .footer-right-side .links-wrapper .footer-link:not(.footer-link:last-of-type) {
   margin-right: 10px;
   cursor: pointer;
 }
 
-.footer-right-side .footer-copywrite {
+.footer .footer-right-side .footer-copywrite {
   text-align: right;
 }
 
 
 @media (max-width:700px) {
-  .properties {
-    padding: 82px 20px !important
-  } 
-
+  
   .documentation-wrapper {
     padding: 82px 15px !important;
     font-size: 15px;
   }
 
-  .properties-icon-left-img {
-    display: none;
+  .documentation-section .properties {
+    padding: 48px 20px !important
+  } 
+
+  .documentation-section .properties .properties-items {
+    display: flex;
+    flex-direction: column;
   }
 
-  .properties-icon-right-img {
-   display: none;
-  }
-
-  .properties-item .properties-icon {
-    width: 8%;
-    height: 72%;
-  }
-
-  .params .param-name {
+  .documentation-wrapper .params .param-row .param-name {
     width: 37% !important;
     font-size: 15px;
   }
 
-  .params .param-desc {
+  .documentation-wrapper .documentation .documentation-item .code-block {
+    width: 92%;
+  }
+
+  .documentation-wrapper .params .param-row .param-desc {
     margin-left: 11px;
     font-size: 15px;
   }
 
-  p.param-type {
+  .documentation-wrapper .status-params .param-row .param-desc {
+    margin: 11px;
+  }
+
+   p.param-type {
     margin-left: 13px;
+  }
+
+  .documentation-wrapper .status-params .param-row .param-type {
+    width: 39%;
   }
 
   .footer {
     padding: 39px 15px !important;
     justify-content: flex-start;
+    height: auto;
+    display: flex;
+    flex-direction: column;
   }
 
-  .footer-logo {
-    max-height: 20px !important;
-  }
-
-  .footer-right-side{
+  .footer .footer-right-side{
     margin-top: 7px;
   }
 
-  .footer-right-side .links-wrapper {
-    margin-left: 30px;
-    font-size: 7px !important;
+  .footer .footer-right-side .links-wrapper {
+    margin: 0 !important;
   }
 
-  .footer-right-side .footer-copywrite {
-    font-size: 10px !important;
-    text-align: right;
+  .footer .footer-right-side .footer-copywrite {
+    text-align: left !important;
+    margin-top: 30px;
+    margin-left: 0 !important;
   }
 }
 
@@ -300,22 +332,26 @@
     padding: 75px 50px ;
   }
 
-  .properties {
+  .documentation-section .properties {
     padding: 82px 50px ;
  
   } 
 
-  .properties-icon-left-img {
+  .documentation-section .properties .properties-items .properties-item .properties-icon .properties-icon-left-img {
     width: 61px;
     padding: 25px 18px;
   }
 
-  .properties-icon-right-img {
+  .documentation-section .properties .properties-items .properties-item .properties-icon .properties-icon-right-img {
     width: 61px;
     padding: 25px 18px;
   }
+
+  .documentation-wrapper .documentation .documentation-item .code-block {
+    width: 92%;
+  }
   
-  .params .param-row {
+  .documentation-wrapper .params .param-row {
     font-size: 14px;
   }
 
@@ -323,13 +359,13 @@
     font-size: 14px;
   }
 
-  .footer-right-side .links-wrapper {
-    margin-left: 40px;
-    font-size: 11px;
+  .footer {
+    height: auto;
   }
 
-   .footer-right-side .footer-copywrite {
-    font-size: 12px;
+  .footer .footer-right-side .footer-copywrite {
+    margin-left: 40px;
+    margin-bottom: 26px;
     text-align: right;
   }
 

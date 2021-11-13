@@ -36,8 +36,9 @@
         <section class="left-column">
           <div class="main-left-column-documentation">
             <p>Free Phone Number Validation API</p>
-            <p class="left-column-documentation">This API is provided by wordplex.io to make the web more international, and the like
-              of developers easies.</p>
+            <p class="left-column-documentation">
+              Wordplex.io is providing this API to empower your international ambitions: Focus on your developments while we take care of the complexity for multilanguage websites & apps.
+            </p>
           </div>
         </section>
         <section class="right-column">
@@ -56,8 +57,8 @@
             <div class="formatted-results" id="formatted-results">
               <div class="formatted-result-left-column">
               <div class="validation-text">
-                <div class="formatted-output">valid</div>
-                <input class="valid-display" id="valid" disabled  readonly value="---">
+                <div class="formatted-output">Valid</div>
+                <input class="valid-display" id="valid" disabled  readonly value="---"></input>
                 <span class="false-mark" id="check-mark" style="display: none;"><i class="fas fa-check"></i></span>
                 <span class="false-mark" id="false-mark" style="display: none;"><i class="fas fa-times"></i></i></span>
               </div>
@@ -96,8 +97,8 @@
         </div>
       </main>
     </section>
-    <div id="documentation-section">
-      
+
+    <div id="documentation-section" class="documentation-section">
     <section class="properties">
       <h3>Simple & efficient</h3>
       <div class="properties-items">
@@ -127,7 +128,10 @@
         <h1>Documentation Wordplex.io</h1>
         <div class="documentation-header">
           <h5>Your API Key</h5>
-          <p>Your API key is your unique authentication key to be used to access Abstract's Phone Number Validation and Verification API. Note that each of Abstract's API has a unique API key, so you will need different keys to access the Phone Number Validation and Verification and Email Validation APIs, for example. To authenticate your requests, you will need to append your API key to the base URL.</p>
+          <p>
+            Your API key is your unique authentication mean to be used when accessing Wordplex’s Phone Number Validation and Verification API.
+            To authenticate your requests, you will need to append your API key to the base URL as shown below.
+          </p>
         </div>
         <div class="documentation-item">
           <h4>Base URL</h4>
@@ -143,7 +147,8 @@
               ? <span class="colored-code">api_key = YOUR_UNIQUE_API_KEY<br>&nbsp;</span>
               & number = 14154582468
           </div>
-          <p>This was a successful request, so the valid phone number and details associated with it are returned below:
+          <p>
+            This was a successful request, so the valid phone number and details associated with it are returned below:
           </p>
           <div class="code-block">
             {<br>
@@ -163,7 +168,7 @@
         <div class="param-row">
           <p class="param-name">api_key <span class="colored-code">REQUIRED</span></p>
           <p class="param-type">String</p>
-          <p class="param-desc">Your unique API key. Note that each user has unique API keys for each of Abstract's APIs, so your Phone Validation API key will not work for as your IP Geolocation API key, for example.</p>
+          <p class="param-desc"> Note that every Wordplex API has a unique API key, so you will need different keys to access the Phone Number Validation and Verification, or the Email Validation APIs, for example. </p>
         </div>
         <div class="param-row">
           <p class="param-name">phone <span class="colored-code">REQUIRED</span></p>
@@ -172,7 +177,7 @@
         </div>
       </section>
       <section class="params">
-        <h4 class="param-title">Response (json)</h4>
+        <h4 class="param-title-json">Response (json)</h4>
         <div class="param-row">
           <p class="param-name">number</p>
           <p class="param-type">String</p>
@@ -225,7 +230,7 @@
           <p class="param-desc">The server could not understand the request due to invalid syntax. Maybe you forgot a mandatory parameter?</p>
         </div>
         <div class="param-row">
-          <p class="param-name failed">403</p>
+          <p class="param-name failed" style="background-color: #FF5722;">403</p>
           <p class="param-type">Forbidden</p>
           <p class="param-desc">The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Can happen if you exeeded a reasonable request quota.</p>
         </div>

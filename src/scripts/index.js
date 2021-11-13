@@ -97,10 +97,12 @@ function appendData(data) {
     falseColor: 'red',
     numberColor: '#82BE18'
   };
-  
   const coloredJsonData = formatHighlight(data, highlightOptions);
-
   prettyData.innerHTML = coloredJsonData;
+}
+
+function dataHandler(data) {
+  validateInput.value = data.is_number_valid;
 }
 
 async function displayData() {
@@ -114,17 +116,19 @@ if (countryNumber === "Any country") {Url = `http://geo.wordplex.io/v4/phone?pho
     .then((data) => {
       if (!!data.is_number_valid) {
         appendData(data)
-        checkMark.style = 'display'
-        checkMark.style.background = '#82BE18'
-        falseMark.style = "display: none;"
-        validateInput.value = "true";
-        lineType.value = `${data.type}`;
+        dataHandler(data)
+        checkMark.style = 'display';
+        checkMark.style.background = '#82BE18';
+        falseMark.style = "display: none;";
+        validateInput.style.color = '#82BE18';
+        lineType.value = data.type;
         countryCode.value = `+ ${data.number_parts.country_code}`;
-        netWork.value = `${data.carrier.name}`;
-        location.value = `${data.location.name}`;
+        netWork.value = data.carrier.name;
+        location.value = data.location.name;
       } else {
         appendData(data)
-        validateInput.value = "false";
+        dataHandler(data)
+        validateInput.style.color = "#FF5722";
         falseMark.style = "display"
         checkMark.style = 'display: none;'
         lineType.value = "unknown";
