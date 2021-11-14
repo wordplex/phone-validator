@@ -10,7 +10,7 @@ body {
   overflow-x: hidden;
 }
 
-.index-page {
+.main {
   font-family: 'Rubik';
   background: url(../assets/img.jfif) no-repeat center center fixed;
   background-size: cover;
@@ -184,7 +184,7 @@ pre.prettyprint {
   border-radius: 4px;
   font-size: 18px;
   font-weight: 400;
-  line-height: 36px;    
+  line-height: 36px;
   border: 2px solid #82BE18;
   width: 100%;
   background-image:url(../assets/ic-arrow-tick.png);
@@ -357,7 +357,7 @@ pre.prettyprint {
 }
 
 .body-section .right-column .json-results::-webkit-scrollbar-thumb {
-  background:#043459; 
+  background:#043459;
   border-radius: 10px;
 }
 
@@ -365,12 +365,12 @@ pre.prettyprint {
   .body-section {
     padding: 0;
   }
-  
+
   .header {
     padding: 40px 25px;
     font-size: 15px;
   }
-} 
+}
 
 @media (max-width : 892px) {
   .header {
@@ -434,7 +434,7 @@ pre.prettyprint {
     padding: 8px 5px;
     height: 287px;
   }
-  
+
   .benfits .benfits-items .benfits-item .benfit-icon i {
     font-size: 27px !important
   }
@@ -443,7 +443,7 @@ pre.prettyprint {
 @media (max-width: 1488px) {
   .body-section {
     padding: 0px 50px;
-  }  
+  }
 
   .formatted-result-right-column {
     margin-right: 77px;
@@ -481,7 +481,7 @@ pre.prettyprint {
   display: none !important
   }
 
-  .index-page {
+  .main {
     height: auto;
   }
 
@@ -497,13 +497,13 @@ pre.prettyprint {
 
   .formatted-result-right-column {
     margin-right: 77px;
-  
+
   }
 
   .body-section .left-column .main-left-column-documentation {
     font-size: 17px;
     line-height: 37px;
-    align-items: flex-start;    
+    align-items: flex-start;
   }
 
   .body-section .right-column .results .head-validation-box .formatted-btn {
