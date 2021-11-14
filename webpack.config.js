@@ -8,7 +8,6 @@ module.exports = {
     index: [
       path.resolve(__dirname, './src/scripts/index.js'),
       path.resolve(__dirname, './src/styles/main.css'),
-      path.resolve(__dirname, './src/styles/documentation.css')
   ],
     
   },
