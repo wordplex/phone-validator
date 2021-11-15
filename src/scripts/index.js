@@ -26,6 +26,7 @@ const falseMark = document.getElementById("false-mark");
 const burgerBtn = document.getElementById("burger-btn");
 const mobileNavbar = document.getElementById("mobile-navbar");
 const backDrop = document.getElementById("backdrop");
+const onLoad = document.getElementById("input").focus();
 
 function inputData() {
   const phoneNumber = parseInt(input.value, 10);
