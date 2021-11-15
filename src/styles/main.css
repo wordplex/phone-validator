@@ -8,6 +8,10 @@ body {
   font-family:'Rubik';
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .main-wrapper {
   background: url(../assets/img.jfif) no-repeat center center fixed;
   background-size: cover;
@@ -124,6 +128,13 @@ pre.prettyprint {
   border-radius: 50%;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+.main-wrapper .main .content h1 {
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 60px;
+}
+
 
 .main-wrapper .main .content {
   width: 47%;
@@ -517,6 +528,7 @@ pre.prettyprint {
   line-height: 24px;
   font-size: 18px;
   font-weight: 400;
+  font-family: 'Roboto';
 }
 
 .documentation-wrapper .params .param-title-json {
@@ -595,6 +607,9 @@ pre.prettyprint {
 .footer .footer-right-side {
   display: flex;
   flex-direction: column;
+  font-size: 14px;
+  line-height: 16px;
+  font-family: 'Roboto';
 }
 
 .footer .footer-right-side .links-wrapper {
