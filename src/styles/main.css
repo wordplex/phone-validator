@@ -253,9 +253,9 @@ html {
 
 .main-wrapper .formatted-result-left-column {
   display: flex;
-  margin-right: 72px;
   flex-direction: column;
   overflow: hidden;
+  margin-right: 71px;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
@@ -264,6 +264,7 @@ html {
 .main-wrapper .formatted-result-right-column {
   display: flex;
   flex-direction: column;
+  margin-right: 64px;
   overflow: hidden;
   font-weight: 500;
   font-size: 14px;
@@ -633,8 +634,8 @@ html {
     padding: 0px 50px;
   }
 
-  .main-wrapper .formatted-result-left-column {
-    margin-right: 19px;
+  .main-wrapper .right-column .formatted-output {
+    width: 45%;
   }
 
   .documentation-wrapper .documentation-item .code-block {
