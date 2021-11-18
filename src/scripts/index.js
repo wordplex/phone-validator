@@ -1,5 +1,4 @@
-
-import formatHighlight from 'json-format-highlight';
+import formatHighlight from "json-format-highlight";
 
 const input = document.getElementById("input");
 const selector = document.getElementById("select");
@@ -31,10 +30,10 @@ const onLoad = document.getElementById("input").focus();
 function inputData() {
   const phoneNumber = parseInt(input.value, 10);
 
-  if (typeof phoneNumber === 'number') {
-    return phoneNumber
+  if (typeof phoneNumber === "number") {
+    return phoneNumber;
   } else {
-    console.log('please enter valid number');
+    console.log("please enter valid number");
   }
 }
 
@@ -58,9 +57,9 @@ function keyDown(event) {
 
     burgerBtn.blur();
 
-    button.click()
+    button.click();
 
-    mobileNavbar.style.display = 'none';
+    mobileNavbar.style.display = "none";
   }
 }
 
@@ -68,35 +67,35 @@ function keyUp(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     button.click();
-  };
+  }
 }
 
 function toggleMobileNavbar() {
   if (!mobileNavbar.offsetWidth) {
-    mobileNavbar.style.display = 'flex';
-    backDrop.style.display = 'flex';
+    mobileNavbar.style.display = "flex";
+    backDrop.style.display = "flex";
   } else {
-    mobileNavbar.style.display = 'none';
-    backDrop.style.display = 'none';
+    mobileNavbar.style.display = "none";
+    backDrop.style.display = "none";
   }
 }
 
 function closeMobileNavbar() {
-  mobileNavbar.style.display = 'none';
-  backDrop.style.display = 'none';
+  mobileNavbar.style.display = "none";
+  backDrop.style.display = "none";
 }
 
 function getResponseFalseColor(response) {
-  return `"${response.fontcolor('red')}"`;
+  return `"${response.fontcolor("red")}"`;
 }
 
 function appendData(data) {
-  const highlightOptions = { 
-    keyColor: '#DFEEFF',
-    stringColor: '#82BE18',
-    trueColor: '#82BE18',
-    falseColor: 'red',
-    numberColor: '#82BE18'
+  const highlightOptions = {
+    keyColor: "#DFEEFF",
+    stringColor: "#82BE18",
+    trueColor: "#82BE18",
+    falseColor: "red",
+    numberColor: "#82BE18",
   };
   const coloredJsonData = formatHighlight(data, highlightOptions);
   prettyData.innerHTML = coloredJsonData;
@@ -109,29 +108,31 @@ function dataHandler(data) {
 async function displayData() {
   const phoneNumbers = inputData();
   const countryNumber = selector.value;
-  let Url = `http://geo.wordplex.io/v4/phone?phone=${phoneNumbers}&country=${countryNumber}`
-  
-if (countryNumber === "Any country") {Url = `http://geo.wordplex.io/v4/phone?phone=${phoneNumbers}`} 
+  let Url = `http://geo.wordplex.io/v4/phone?phone=${phoneNumbers}&country=${countryNumber}`;
+
+  if (countryNumber === "Any country") {
+    Url = `http://geo.wordplex.io/v4/phone?phone=${phoneNumbers}`;
+  }
   fetch(Url)
     .then((res) => res.json())
     .then((data) => {
       if (!!data.is_number_valid) {
-        appendData(data)
-        dataHandler(data)
-        checkMark.style = 'display';
-        checkMark.style.background = '#82BE18';
+        appendData(data);
+        dataHandler(data);
+        checkMark.style = "display";
+        checkMark.style.background = "#82BE18";
         falseMark.style = "display: none;";
-        validateInput.style.color = '#82BE18';
+        validateInput.style.color = "#82BE18";
         lineType.value = data.type;
         countryCode.value = `+ ${data.number_parts.country_code}`;
         netWork.value = data.carrier.name;
         location.value = data.location.name;
       } else {
-        appendData(data)
-        dataHandler(data)
+        appendData(data);
+        dataHandler(data);
         validateInput.style.color = "#FF5722";
-        falseMark.style = "display"
-        checkMark.style = 'display: none;'
+        falseMark.style = "display";
+        checkMark.style = "display: none;";
         lineType.value = "unknown";
         countryCode.value = "unknown";
         netWork.value = "unknown";
@@ -140,32 +141,32 @@ if (countryNumber === "Any country") {Url = `http://geo.wordplex.io/v4/phone?pho
     })
     .catch((err) => {
       console.log(err);
-    })
+    });
 }
 
 (function countrySelector() {
   fetch(`http://geo.wordplex.io/v4/countries`)
     .then((res) => res.json())
     .then(({ items }) => {
-      items.forEach(item => {
-        const option = document.createElement('option')
-        option.innerHTML = item.name
-        option.value = item.alpha2Code
-        selector.appendChild(option)
-      })
-    })
-})()
+      items.forEach((item) => {
+        const option = document.createElement("option");
+        option.innerHTML = item.name;
+        option.value = item.alpha2Code;
+        selector.appendChild(option);
+      });
+    });
+})();
 
 function countrySwitcherHandler(event) {
-  selector.disabled = !(!!event.target.checked);
+  selector.disabled = !!!event.target.checked;
 }
 
-window.addEventListener('keydown', keyDown);
-input.addEventListener('change', inputData);
-input.addEventListener('keyup', keyUp);
-button.addEventListener('click', displayData);
-jsonBtn.addEventListener('click', jsonHandler);
-formBtn.addEventListener('click', formBtnHandler);
-burgerBtn.addEventListener('click', toggleMobileNavbar);
-backDrop.addEventListener('click', closeMobileNavbar);
-mobileNavbar.addEventListener('click', closeMobileNavbar);
+window.addEventListener("keydown", keyDown);
+input.addEventListener("change", inputData);
+input.addEventListener("keyup", keyUp);
+button.addEventListener("click", displayData);
+jsonBtn.addEventListener("click", jsonHandler);
+formBtn.addEventListener("click", formBtnHandler);
+burgerBtn.addEventListener("click", toggleMobileNavbar);
+backDrop.addEventListener("click", closeMobileNavbar);
+mobileNavbar.addEventListener("click", closeMobileNavbar);
