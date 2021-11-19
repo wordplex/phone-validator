@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Rubik:wght@400;500;600&display=swap"
-      rel="stylesheet">
-    <link rel="stylesheet" href="./styles/main.css"/>
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/main.css" />
     <title>Wordplex</title>
   </head>
+
   <body>
     <section class="main-wrapper">
       <header class="header">
         <div id="backdrop" class="backdrop"></div>
-        <img class="logo" src="./assets/logo.png" alt="wordplex logo">
+        <img class="logo" src="./assets/logo.png" alt="wordplex logo" />
         <button class="burger-btn" id="burger-btn">
-        <i class="fa fa-bars"></i>
+          <i class="fa fa-bars"></i>
         </button>
         <div class="mobile-navbar" id="mobile-navbar">
-          <a href="#documentation-page">Documentation</a>
-          <a href="#"> Phone validation</a>
-          <a href="#"> Country flags</a>
+          <a class="nav-link" href="#documentation-page">Documentation</a>
+          <a class="nav-link" href="#"> Phone validation</a>
+          <a class="nav-link" href="#"> Country flags</a>
         </div>
         <nav class="navbar">
-          <a href="#documentation-page">Documentation</a>
-          <a href="#"> Phone validation</a>
-          <a href="#"> Country flags</a>
+          <a class="nav-link" href="#documentation-page">Documentation</a>
+          <a class="nav-link" href="#"> Phone validation</a>
+          <a class="nav-link" href="#"> Country flags</a>
         </nav>
       </header>
+
       <main class="main">
         <section class="content">
           <h1>Free Phone Number Validation API</h1>
-          <p class="left-column-documentation">
-            Wordplex.io is providing this API to empower your international ambitions: Focus on your developments while we
-            take care of the complexity for multilanguage websites & apps.
+          <p>
+            Wordplex.io is providing this API to empower your international
+            ambitions: Focus on your developments while we take care of the
+            complexity for multilanguage websites & apps.
           </p>
         </section>
-        <section class="right-column">
-          <select id='select' class="validate-input">
+
+        <section class="validation-wrapper">
+          <select id="select" class="validation-input">
             <option value="Any country">Any country</option>
           </select>
           <div class="input-group-with-submit">
-            <input class="validate-input" id="input" type="tel" placeholder="phone number">
+            <input
+              class="validation-input"
+              id="input"
+              type="tel"
+              placeholder="phone number"
+            />
             <button class="submit-btn" id="button">validate</button>
           </div>
           <div class="results">
@@ -58,35 +71,69 @@
               </div>
             </div>
             <div class="formatted-results" id="formatted-results">
-              <div class="formatted-result-left-column">
+              <div class="formatted-result">
                 <div class="validation-text">
                   <div class="formatted-output">Valid</div>
-                  <input class="valid-display" id="valid" disabled readonly value="---"></input>
-                  <span class="false-mark" id="check-mark" style="display: none;"><i class="fas fa-check"></i></span>
-                  <span class="false-mark" id="false-mark" style="display: none;"><i class="fas fa-times"></i></span>
+                  <input
+                    class="valid-display"
+                    id="valid"
+                    disabled
+                    readonly
+                    value="---"
+                  />
+                  <span class="false-mark" id="check-mark">
+                    <i class="fas fa-check"></i>
+                  </span>
+                  <span class="false-mark" id="false-mark">
+                    <i class="fas fa-times"></i>
+                  </span>
                 </div>
                 <div class="validation-text">
                   <div class="formatted-output">Line type</div>
-                  <input class="valid-display" id="line-type" disabled readonly value="---">
+                  <input
+                    class="valid-display"
+                    id="line-type"
+                    disabled
+                    readonly
+                    value="---"
+                  />
                 </div>
                 <div class="validation-text">
                   <div class="formatted-output">Country code</div>
-                  <input class="valid-display" id="country-code" disabled readonly value="---">
+                  <input
+                    class="valid-display"
+                    id="country-code"
+                    disabled
+                    readonly
+                    value="---"
+                  />
                 </div>
               </div>
-              <div class="formatted-result-right-column">
+              <div class="formatted-result">
                 <div class="validation-text">
                   <div class="formatted-output">Network</div>
-                  <input class="valid-display" id="network" disabled readonly value="---">
+                  <input
+                    class="valid-display"
+                    id="network"
+                    disabled
+                    readonly
+                    value="---"
+                  />
                 </div>
                 <div class="validation-text">
                   <div class="formatted-output">Location</div>
-                  <input class="valid-display" id="location" disabled readonly value="---">
+                  <input
+                    class="valid-display"
+                    id="location"
+                    disabled
+                    readonly
+                    value="---"
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div class="json-results" id="json-results" style="display: none;">
+          <div class="json-results" id="json-results">
             <pre id="pretty-data" class="prettyprint"></pre>
           </div>
         </section>
@@ -96,89 +143,118 @@
         </div>
       </main>
     </section>
-    <div id="documentation-section" class="documentation-section">
+
+    <div class="properties-section">
       <section class="properties">
         <h3>Simple & efficient</h3>
         <div class="properties-items">
           <div class="properties-item">
             <div class="properties-icon">
-              <img class="properties-icon-left-img" src="./assets/iconValidation (1).png">
+              <img
+                class="properties-icon-img"
+                src="./assets/iconValidation (1).png"
+                alt="properties-icon"
+              />
             </div>
             <div class="properties-text">
               <h3>Validation & Lookup</h3>
-              <p>Know if the format is valid, if the line is attributed and through which service provider: One stop shop
-                for your needs.
+              <p>
+                Know if the format is valid, if the line is attributed and
+                through which service provider: One stop shop for your needs.
               </p>
             </div>
           </div>
           <div class="properties-item">
             <div class="properties-icon">
-              <img class="properties-icon-right-img" src="./assets/iconInstant.png">
+              <img
+                class="properties-icon-img"
+                src="./assets/iconInstant.png"
+                alt="properties-icon"
+              />
             </div>
             <div class="properties-text">
               <h3>Instant Response API</h3>
-              <p>Rocket fast API, non cached results and always up-to-date DataBase allows for using Wordplex as Single
-                Source of Truth. 
+              <p>
+                Rocket fast API, non cached results and always up-to-date
+                DataBase allows for using Wordplex as Single Source of Truth.
               </p>
             </div>
           </div>
         </div>
       </section>
-      <section class="documentation-wrapper"  id="documentation-page">
+
+      <section class="documentation-wrapper" id="documentation-page">
         <section class="documentation">
           <h1>Documentation Wordplex.io</h1>
           <div class="documentation-header">
             <h5>Your API Key</h5>
             <p>
-              Your API key is your unique authentication mean to be used when accessing Wordplex’s Phone Number Validation
-              and
-              Verification API.
-              To authenticate your requests, you will need to append your API key to the base URL as shown below.
+              Your API key is your unique authentication mean to be used when
+              accessing Wordplex’s Phone Number Validation and Verification API.
+              To authenticate your requests, you will need to append your API
+              key to the base URL as shown below.
             </p>
           </div>
           <div class="documentation-item">
             <h4>Base URL</h4>
             <div class="code-block">
-              https://phonevalidation.abstractapi.com/v1/
+              <p>https://phonevalidation.abstractapi.com/v1/</p>
             </div>
           </div>
           <div class="documentation-item">
-            <h4>Overview of the Phone Number Validation and Verification API</h4>
-            <p>Abstract's Phone Number Validation and Verification API simply requires your unique API key and the phone
-              number you'd like to check:
+            <h4>
+              Overview of the Phone Number Validation and Verification API
+            </h4>
+            <p>
+              Abstract's Phone Number Validation and Verification API simply
+              requires your unique API key and the phone number you'd like to
+              check:
             </p>
             <div class="code-block">
-              https://phonevalidation.abstractapi.com/v1/<br>&nbsp;
-              ? <span class="colored-code">api_key = YOUR_UNIQUE_API_KEY<br>&nbsp;</span>
+              https://phonevalidation.abstractapi.com/v1/<br />&nbsp; ?
+              <span class="colored-code">
+                api_key = YOUR_UNIQUE_API_KEY<br />&nbsp;
+              </span>
               & number = 14154582468
             </div>
             <p>
-              This was a successful request, so the valid phone number and details associated with it are returned below:
+              This was a successful request, so the valid phone number and
+              details associated with it are returned below:
             </p>
             <div class="code-block">
-              {<br>
-              "number": <span class="colored-code">"14154582468",</span><br>
-              "is_valid_number": <span class="colored-code">true,</span><br>
-              "local_format": <span class="colored-code">"4154582468",</span><br>
-              "international_format": <span class="colored-code">"+14154582468",</span><br>
-              "line_type": <span class="colored-code">"mobile”,</span><br>
-              "registered_location": <span class="colored-code">"Belorus",</span><br>
-              "network": <span class="colored-code">"M1",</span><br>
+              {<br />
+              "number": <span class="colored-code">"14154582468",</span><br />
+              "is_valid_number": <span class="colored-code">true,</span><br />
+              "local_format": <span class="colored-code">"4154582468",</span
+              ><br />
+              "international_format":
+              <span class="colored-code">"+14154582468",</span><br />
+              "line_type": <span class="colored-code">"mobile”,</span><br />
+              "registered_location": <span class="colored-code">"Belorus",</span
+              ><br />
+              "network": <span class="colored-code">"M1",</span><br />
               }
             </div>
           </div>
         </section>
+
         <section class="params">
           <h4>Request Parameters</h4>
           <div class="param-row">
-            <p class="param-name">api_key <span class="colored-code">REQUIRED</span></p>
+            <p class="param-name">
+              api_key <span class="colored-code">REQUIRED</span>
+            </p>
             <p class="param-type">String</p>
-            <p class="param-desc"> Note that every Wordplex API has a unique API key, so you will need different keys to
-              access the Phone Number Validation and Verification, or the Email Validation APIs, for example. 
+            <p class="param-desc">
+              Note that every Wordplex API has a unique API key, so you will
+              need different keys to access the Phone Number Validation and
+              Verification, or the Email Validation APIs, for example.
             </p>
           </div>
           <div class="param-row">
-            <p class="param-name">phone <span class="colored-code">REQUIRED</span></p>
+            <p class="param-name">
+              phone <span class="colored-code">REQUIRED</span>
+            </p>
             <p class="param-type">String</p>
             <p class="param-desc">The phone number to validate and verify.</p>
           </div>
@@ -188,7 +264,9 @@
           <div class="param-row">
             <p class="param-name">number</p>
             <p class="param-type">String</p>
-            <p class="param-desc">The phone number submitted for verification and validation.</p>
+            <p class="param-desc">
+              The phone number submitted for verification and validation.
+            </p>
           </div>
           <div class="param-row">
             <p class="param-name">is_valid_number</p>
@@ -198,75 +276,103 @@
           <div class="param-row">
             <p class="param-name">local_format</p>
             <p class="param-type">Integer</p>
-            <p class="param-desc">The number verified in its local, human readable, version.</p>
+            <p class="param-desc">
+              The number verified in its local, human readable, version.
+            </p>
           </div>
           <div class="param-row">
             <p class="param-name">international_format</p>
             <p class="param-type">String</p>
-            <p class="param-desc">The number verified in its international, digital dialing ready, version.</p>
+            <p class="param-desc">
+              The number verified in its international, digital dialing ready,
+              version.
+            </p>
           </div>
           <div class="param-row">
             <p class="param-name">line_type</p>
             <p class="param-type">String</p>
-            <p class="param-desc">The type of line associated with the number, that will allow to know the type of service
-              that can be used. Note: does not check redirections.
+            <p class="param-desc">
+              The type of line associated with the number, that will allow to
+              know the type of service that can be used. Note: does not check
+              redirections.
             </p>
           </div>
           <div class="param-row">
             <p class="param-name">registered_location</p>
             <p class="param-type">Boolean</p>
-            <p class="param-desc">Country of origin and registration of the verified phone number</p>
+            <p class="param-desc">
+              Country of origin and registration of the verified phone number
+            </p>
           </div>
           <div class="param-row">
             <p class="param-name">network</p>
             <p class="param-type">String</p>
-            <p class="param-desc">Name of the carrier or provider for the verified phone number</p>
+            <p class="param-desc">
+              Name of the carrier or provider for the verified phone number
+            </p>
           </div>
         </section>
+
         <section class="status-params">
           <h4 class="param-title">Response and Error Codes</h4>
           <p class="param-sub-title">
-            Whenever you make a request that fails for some reason, an error message is returned also in the JSON format.
-            The
-            message includes an error code and a description, which you can find in detail below.
+            Whenever you make a request that fails for some reason, an error
+            message is returned also in the JSON format. The message includes an
+            error code and a description, which you can find in detail below.
           </p>
           <div class="param-row">
             <p class="param-name success">200</p>
             <p class="param-type">OK</p>
-            <p class="param-desc">Everything worked as expected and the phone number verification status is returned.</p>
-          </div>
-          <div class="param-row">
-            <p class="param-name failed">400</p>
-            <p class="param-type">Bad request</p>
-            <p class="param-desc">The server could not understand the request due to invalid syntax. Maybe you forgot a
-              mandatory parameter?
+            <p class="param-desc">
+              Everything worked as expected and the phone number verification
+              status is returned.
             </p>
           </div>
           <div class="param-row">
-            <p class="param-name failed" style="background-color: #FF5722;">403</p>
+            <p class="param-name warning">400</p>
+            <p class="param-type">Bad request</p>
+            <p class="param-desc">
+              The server could not understand the request due to invalid syntax.
+              Maybe you forgot a mandatory parameter?
+            </p>
+          </div>
+          <div class="param-row">
+            <p class="param-name fail">403</p>
             <p class="param-type">Forbidden</p>
-            <p class="param-desc">The client does not have access rights to the content; that is, it is unauthorized, so the
-              server is refusing to give the requested resource. Can happen if you exceeded a reasonable request quota.
+            <p class="param-desc">
+              The client does not have access rights to the content; that is, it
+              is unauthorized, so the server is refusing to give the requested
+              resource. Can happen if you exceeded a reasonable request quota.
             </p>
           </div>
         </section>
       </section>
+
       <section class="footer">
         <div class="logo">
-          <img class="footer-logo" src="./assets/logo.png" alt="wordplex logo">
+          <img
+            class="footer-logo"
+            src="./assets/logo.png"
+            alt="wordplex logo"
+          />
         </div>
-        <div class="footer-right-side">
+        <div class="footer-links-wrapper">
           <div class="links-wrapper">
             <a class="footer-link">Privacy</a>
             <a class="footer-link">Products & Services Privacy Policy</a>
             <a class="footer-link">Cookies</a>
             <a class="footer-link">Cookie preferences</a>
           </div>
-          <p class="footer-copywrite">© 2021 api layer. All Rights Reserved.</p>
+          <p class="footer-copywrite">
+            &copy; 2021 api layer. All Rights Reserved.
+          </p>
         </div>
       </section>
     </div>
-    <script src="https://kit.fontawesome.com/db29237632.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/db29237632.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   </body>
 </html>

@@ -13,19 +13,11 @@ const formBtn = document.getElementById("form-btn");
 const jsonResults = document.getElementById("json-results");
 const prettyData = document.getElementById("pretty-data");
 const formattedResults = document.getElementById("formatted-results");
-const number = document.getElementById("number");
-const validNumber = document.getElementById("valid-number");
-const localFormat = document.getElementById("local-format");
-const inteFormat = document.getElementById("inte-format");
-const lineTypeJson = document.getElementById("line-type");
-const regLocation = document.getElementById("reg-location");
-const jsonNetwork = document.getElementById("network");
 const checkMark = document.getElementById("check-mark");
 const falseMark = document.getElementById("false-mark");
 const burgerBtn = document.getElementById("burger-btn");
 const mobileNavbar = document.getElementById("mobile-navbar");
 const backDrop = document.getElementById("backdrop");
-const onLoad = document.getElementById("input").focus();
 
 function inputData() {
   const phoneNumber = parseInt(input.value, 10);
@@ -38,17 +30,17 @@ function inputData() {
 }
 
 function jsonHandler() {
-  jsonResults.style = "display";
-  jsonBtn.style = "background-color:#00152F";
-  formattedResults.style = "display : none";
-  formBtn.style = "background-color:#002C60";
+  jsonResults.style.display = "flex";
+  jsonBtn.style.backgroundColor = "#00152F";
+  formattedResults.style.display = "none";
+  formBtn.style.backgroundColor = "#002C60";
 }
 
 function formBtnHandler() {
-  formattedResults.style = "display";
-  jsonBtn.style = "background-color:#002C60";
-  jsonResults.style = "display : none";
-  formBtn.style = "background-color:#00152F";
+  formattedResults.style.display = "flex";
+  jsonBtn.style.backgroundColor = "#002C60";
+  jsonResults.style.display = "none";
+  formBtn.style.backgroundColor = "#00152F";
 }
 
 function keyDown(event) {
@@ -85,10 +77,6 @@ function closeMobileNavbar() {
   backDrop.style.display = "none";
 }
 
-function getResponseFalseColor(response) {
-  return `"${response.fontcolor("red")}"`;
-}
-
 function appendData(data) {
   const highlightOptions = {
     keyColor: "#DFEEFF",
@@ -119,9 +107,9 @@ async function displayData() {
       if (!!data.is_number_valid) {
         appendData(data);
         dataHandler(data);
-        checkMark.style = "display";
+        checkMark.style.display = "flex";
         checkMark.style.background = "#82BE18";
-        falseMark.style = "display: none;";
+        falseMark.style.display = "none";
         validateInput.style.color = "#82BE18";
         lineType.value = data.type;
         countryCode.value = `+ ${data.number_parts.country_code}`;
@@ -131,8 +119,8 @@ async function displayData() {
         appendData(data);
         dataHandler(data);
         validateInput.style.color = "#FF5722";
-        falseMark.style = "display";
-        checkMark.style = "display: none;";
+        falseMark.style.display = "flex";
+        checkMark.style.display = "none";
         lineType.value = "unknown";
         countryCode.value = "unknown";
         netWork.value = "unknown";
@@ -156,10 +144,6 @@ async function displayData() {
       });
     });
 })();
-
-function countrySwitcherHandler(event) {
-  selector.disabled = !!!event.target.checked;
-}
 
 window.addEventListener("keydown", keyDown);
 input.addEventListener("change", inputData);
