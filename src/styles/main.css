@@ -138,11 +138,11 @@ html {
   font-family: "Rubik";
 }
 
-.main-wrapper select.validation-input {
+.main-wrapper .validation-wrapper select.validation-input {
   border-radius: 4px;
-  font-family: "Rubik";
   font-size: 18px;
   font-weight: 400;
+  font-family: "Rubik";
   line-height: 36px;
   border: 2px solid #82be18;
   width: 100%;
@@ -765,7 +765,7 @@ html {
 
   .main-wrapper .validation-wrapper .json-results {
     font-size: 13px;
-    display: flex;
+    display: none;
     flex-wrap: nowrap;
     padding: 8px 5px;
     height: 287px;

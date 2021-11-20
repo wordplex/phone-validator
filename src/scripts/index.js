@@ -93,6 +93,10 @@ function dataHandler(data) {
   validateInput.value = data.is_number_valid;
 }
 
+(function inputFocus() {
+  input.focus();
+})();
+
 async function displayData() {
   const phoneNumbers = inputData();
   const countryNumber = selector.value;
