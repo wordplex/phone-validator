@@ -432,6 +432,10 @@ html {
   color: #fff;
 }
 
+.documentation-wrapper hr.line-break {
+  border: 1px solid rgba(155, 182, 212, 0.2);
+}
+
 .documentation-wrapper .documentation h1 {
   font-weight: 500;
   font-size: 50px;
