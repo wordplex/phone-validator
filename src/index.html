@@ -4,12 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
+    <meta name="description" content="phone validation project" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Rubik:wght@400;500;600&display=swap"
       rel="stylesheet"
@@ -23,18 +18,18 @@
       <header class="header">
         <div id="backdrop" class="backdrop"></div>
         <img class="logo" src="./assets/logo.png" alt="wordplex logo" />
-        <button class="burger-btn" id="burger-btn">
+        <button class="burger-btn" id="burger-btn" aria-label="Right Align">
           <i class="fa fa-bars"></i>
         </button>
         <div class="mobile-navbar" id="mobile-navbar">
           <a class="nav-link" href="#documentation-page">Documentation</a>
-          <a class="nav-link" href="#"> Phone validation</a>
-          <a class="nav-link" href="#"> Country flags</a>
+          <a class="nav-link" href="#documentation-page"> Phone validation</a>
+          <a class="nav-link" href="#documentation-page"> Country flags</a>
         </div>
         <nav class="navbar">
           <a class="nav-link" href="#documentation-page">Documentation</a>
-          <a class="nav-link" href="#"> Phone validation</a>
-          <a class="nav-link" href="#"> Country flags</a>
+          <a class="nav-link" href="#documentation-page"> Phone validation</a>
+          <a class="nav-link" href="#documentation-page"> Country flags</a>
         </nav>
       </header>
 
@@ -74,13 +69,15 @@
               <div class="formatted-result">
                 <div class="validation-text">
                   <div class="formatted-output">Valid</div>
-                  <input
-                    class="valid-display"
-                    id="valid"
-                    disabled
-                    readonly
-                    value="---"
-                  />
+                  <label>
+                    <input
+                      class="valid-display"
+                      id="valid"
+                      disabled
+                      readonly
+                      value="---"
+                    />
+                  </label>
                   <span class="false-mark" id="check-mark">
                     <i class="fas fa-check"></i>
                   </span>
@@ -90,45 +87,53 @@
                 </div>
                 <div class="validation-text">
                   <div class="formatted-output">Line type</div>
-                  <input
-                    class="valid-display"
-                    id="line-type"
-                    disabled
-                    readonly
-                    value="---"
-                  />
+                  <label>
+                    <input
+                      class="valid-display"
+                      id="line-type"
+                      disabled
+                      readonly
+                      value="---"
+                    />
+                  </label>
                 </div>
                 <div class="validation-text">
                   <div class="formatted-output">Country code</div>
-                  <input
-                    class="valid-display"
-                    id="country-code"
-                    disabled
-                    readonly
-                    value="---"
-                  />
+                  <label>
+                    <input
+                      class="valid-display"
+                      id="country-code"
+                      disabled
+                      readonly
+                      value="---"
+                    />
+                  </label>
                 </div>
               </div>
               <div class="formatted-result">
                 <div class="validation-text">
                   <div class="formatted-output">Network</div>
-                  <input
-                    class="valid-display"
-                    id="network"
-                    disabled
-                    readonly
-                    value="---"
-                  />
+                  <label>
+                    <input
+                      class="valid-display"
+                      id="network"
+                      disabled
+                      readonly
+                      value="---"
+                    />
+                  </label>
                 </div>
                 <div class="validation-text">
                   <div class="formatted-output">Location</div>
-                  <input
-                    class="valid-display"
-                    id="location"
-                    disabled
-                    readonly
-                    value="---"
-                  />
+                  <label>
+                    <input
+                      class="valid-display"
+                      id="location"
+                      disabled
+                      readonly
+                      value="---"
+                    />
+                  </label>
                 </div>
               </div>
             </div>
@@ -146,18 +151,18 @@
 
     <div class="properties-section">
       <section class="properties">
-        <h3>Simple & efficient</h3>
+        <h1>Simple & efficient</h1>
         <div class="properties-items">
           <div class="properties-item">
             <div class="properties-icon">
               <img
-                class="properties-icon-img"
+                class="properties-validation-icon-img"
                 src="./assets/iconValidation (1).png"
                 alt="properties-icon"
               />
             </div>
             <div class="properties-text">
-              <h3>Validation & Lookup</h3>
+              <h2>Validation & Lookup</h2>
               <p>
                 Know if the format is valid, if the line is attributed and
                 through which service provider: One stop shop for your needs.
@@ -167,13 +172,13 @@
           <div class="properties-item">
             <div class="properties-icon">
               <img
-                class="properties-icon-img"
+                class="properties-bolt-icon-img"
                 src="./assets/iconInstant.png"
                 alt="properties-icon"
               />
             </div>
             <div class="properties-text">
-              <h3>Instant Response API</h3>
+              <h2>Instant Response API</h2>
               <p>
                 Rocket fast API, non cached results and always up-to-date
                 DataBase allows for using Wordplex as Single Source of Truth.
@@ -187,7 +192,7 @@
         <section class="documentation">
           <h1>Documentation Wordplex.io</h1>
           <div class="documentation-header">
-            <h5>Your API Key</h5>
+            <h2>Your API Key</h2>
             <p>
               Your API key is your unique authentication mean to be used when
               accessing Wordplex’s Phone Number Validation and Verification API.
@@ -196,15 +201,15 @@
             </p>
           </div>
           <div class="documentation-item">
-            <h4>Base URL</h4>
+            <h3>Base URL</h3>
             <div class="code-block">
               <p>https://phonevalidation.abstractapi.com/v1/</p>
             </div>
           </div>
           <div class="documentation-item">
-            <h4>
+            <h3>
               Overview of the Phone Number Validation and Verification API
-            </h4>
+            </h3>
             <p>
               Abstract's Phone Number Validation and Verification API simply
               requires your unique API key and the phone number you'd like to
@@ -367,10 +372,14 @@
         </div>
         <div class="footer-links-wrapper">
           <div class="links-wrapper">
-            <a class="footer-link">Privacy</a>
-            <a class="footer-link">Products & Services Privacy Policy</a>
-            <a class="footer-link">Cookies</a>
-            <a class="footer-link">Cookie preferences</a>
+            <a class="footer-link" href="#documentation-page">Privacy</a>
+            <a class="footer-link" href="#documentation-page"
+              >Products & Services Privacy Policy</a
+            >
+            <a class="footer-link" href="#documentation-page">Cookies</a>
+            <a class="footer-link" href="#documentation-page"
+              >Cookie preferences</a
+            >
           </div>
           <p class="footer-copywrite">
             &copy; 2021 api layer. All Rights Reserved.
