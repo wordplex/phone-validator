@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>countries</title>
+    <link rel="stylesheet" href="./styles/countries.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Rubik:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="content-wrapper">
+      <header class="header">
+        <img class="logo" src="./assets/logo.png" alt="wordplex logo" />
+        <nav class="navbar">
+          <a class="nav-link" href="\">Documentation</a>
+          <div class="dropDown">
+            <button class="dropBtn" id="dropBtn">Free Assets</button>
+            <div id="dropDown" class="dropDown-content">
+              <a class="nav-link" href="#documentation-page">
+                Phone validation</a
+              >
+              <a class="nav-link" href="./contries.html"> Country flags</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <div class="content">
+        <h1>CDNized Multi-format Country Flags</h1>
+        <p>
+          Images of every Country flag for website embedding or programmatical
+          download, along with verified information like country name for SEO
+          perfect websites.
+        </p>
+      </div>
+    </section>
+
+    <section class="validation-wrapper">
+      <div class="description">
+        <h1>Easy to use</h1>
+        <p>
+          A single and simple API to call, that will return the relevant flag
+          from any kind of base information you have. From the Country Code to
+          the Phone Prefix, if it exists, you will be able to conveniently
+          request a crystal clear vector, or lossless compressed image, ready to
+          use on your websites & applications. All the flags are already stored
+          in a world-grade top-tier CDN for ligtning fast display anywhere.
+        </p>
+      </div>
+      <div class="data-validation">
+        <h1>List of flags per COUNTRY code</h1>
+        <p>
+          Link the relevant Country Flag for the 2 or 3 letters* Country Code.
+          You can optionally specify the size that best fits your need,
+          otherwise a default X by Y resolution picture perfect flag will be
+          sent.
+        </p>
+        <p class="iso-text">* Supports ISO 2 and ISO 3 (eg. US / USA)</p>
+        <div class="input-group-with-submit">
+          <select class="validation-input" id="countrySelector">
+            <option value="FR">France</option>
+          </select>
+          <button class="submit-btn" id="isoButton">GO</button>
+          <img src="./assets/fr-75x50.png" alt="France" id="flag-img" />
+        </div>
+        <div>
+          <button class="png-btn" id="png-btn">PNG</button>
+          <button class="svg-btn" id="svg-btn">SVG</button>
+        </div>
+        <div class="resize" id="resize">
+          <div class="resize-check">
+            <input
+              type="checkbox"
+              id="resize-check"
+              value="Resize from the fly"
+            />
+            <label for="resize-check"> Resize from the fly</label>
+          </div>
+          <div class="resize-width">
+            <label for="width">width</label>
+            <input class="width-input" type="text" id="width" disabled />
+          </div>
+          <div class="resize-height">
+            <label for="height">height</label>
+            <input class="width-input" type="text" id="height" disabled />
+          </div>
+        </div>
+        <div>
+          <input
+            id="validation-output"
+            type="text"
+            class="validation-output"
+            disabled
+            placeholder="https://wordplex.cloudimg.io/v7w/flag/country/fr-400x240.png"
+          />
+        </div>
+        <div class="validation-output-hint">
+          <p>Our service</p>
+          <p>ISO 2/3 country code</p>
+          <p>Size</p>
+        </div>
+        <div id="img-output">
+          <pre id="pretty-data" class="prettyprint"></pre>
+        </div>
+      </div>
+
+      <div class="data-validation">
+        <h1>List of flags per LANGUAGE code</h1>
+        <p>
+          Link the relevant Country Flag for the 2 or 3 letters* Language Code.
+          Same as for the country code, with support for all code standards: ISO
+          639-1 , 2/T and 2/B language codes for 3 letters plus respective
+          english versions of code.
+        </p>
+        <div class="input-group-with-submit">
+          <select class="validation-input" id="lang-Selector">
+            <option value="France">France</option>
+          </select>
+          <button class="submit-btn" id="lang-btn">GO</button>
+          <img src="./assets/fr-75x50.png" alt="France" id="lang-flag-img" />
+        </div>
+        <div>
+          <button class="png-btn" id="png-lang-btn">PNG</button>
+          <button class="svg-btn" id="svg-lang-btn">SVG</button>
+        </div>
+        <div class="resize" id="lang-resize" disabled>
+          <div class="resize-check">
+            <input
+              type="checkbox"
+              id="lang-resize-check"
+              value="Resize from the fly"
+            />
+            <label for="resize-check"> Resize from the fly</label>
+          </div>
+          <div class="resize-width">
+            <label for="width">width</label>
+            <input class="width-input" type="text" id="lang-width" disabled />
+          </div>
+          <div class="resize-height">
+            <label for="height">height</label>
+            <input class="width-input" type="text" id="lang-height" disabled />
+          </div>
+        </div>
+        <div>
+          <input
+            type="text"
+            id="lang-validation-output"
+            readonly
+            class="validation-output"
+            placeholder="https://wordplex.cloudimg.io/v7w/flag/country/fr-400x240.png"
+          />
+        </div>
+        <div class="validation-output-hint">
+          <p>Our service</p>
+          <p>ISO 2/3 country code</p>
+          <p>Size</p>
+        </div>
+        <div class="img-output">
+          <pre id="lang-pretty-data" class="prettyprint"></pre>
+        </div>
+      </div>
+
+      <div class="data-validation">
+        <h1>List of flags per PHONE NUMBER PREFIX</h1>
+        <p>
+          Link the relevant Country Flag from the 1, 2 or 3 number* Telephone
+          Number Prefix.
+        </p>
+        <p class="iso-text">* No need to include “+” in the prefix code.</p>
+        <div class="input-group-with-submit">
+          <input class="validation-input" id="phone-input" />
+          <button class="submit-btn" id="phone-button">GO</button>
+          <img src="./assets/fr-75x50.png" alt="France" id="phone-img" />
+        </div>
+        <div>
+          <button class="png-btn" id="png-phone-btn">PNG</button>
+          <button class="svg-btn" id="svg-phone-btn">SVG</button>
+        </div>
+        <div class="resize" id="phone-resize">
+          <div class="resize-check">
+            <input
+              type="checkbox"
+              id="phone-resize-check"
+              value="Resize from the fly"
+            />
+            <label for="resize-check"> Resize from the fly</label>
+          </div>
+          <div class="resize-width">
+            <label for="width">width</label>
+            <input class="width-input" type="text" id="phone-width" disabled />
+          </div>
+          <div class="resize-height">
+            <label for="height">height</label>
+            <input class="width-input" type="text" id="phone-height" disabled />
+          </div>
+        </div>
+        <div>
+          <input
+            type="text"
+            id="phone-validation-output"
+            class="validation-output"
+            placeholder="https://wordplex.cloudimg.io/v7w/flag/country/fr-400x240.png"
+          />
+        </div>
+        <div class="validation-output-hint">
+          <p>Our service</p>
+          <p>ISO 2/3 country code</p>
+          <p>Size</p>
+        </div>
+        <div class="img-output">
+          <pre id="phone-pretty-data" class="prettyprint"></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="logo">
+        <img class="footer-logo" src="./assets/logo.png" alt="wordplex logo" />
+      </div>
+      <div class="footer-links-wrapper">
+        <div class="links-wrapper">
+          <a class="footer-link" href="#documentation-page">Privacy</a>
+          <a class="footer-link" href="#documentation-page"
+            >Products & Services Privacy Policy</a
+          >
+          <a class="footer-link" href="#documentation-page">Cookies</a>
+          <a class="footer-link" href="#documentation-page"
+            >Cookie preferences</a
+          >
+        </div>
+        <p class="footer-copywrite">
+          &copy; 2021 api layer. All Rights Reserved.
+        </p>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,19 +1,22 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const webpack = require('webpack')
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   entry: {
     index: [
-      path.resolve(__dirname, './src/scripts/index.js'),
-      path.resolve(__dirname, './src/styles/main.css'),
-  ],
-    
+      path.resolve(__dirname, "./src/scripts/index.js"),
+      path.resolve(__dirname, "./src/styles/main.css"),
+    ],
+    countries: [
+      path.resolve(__dirname, "./src/scripts/countries.js"),
+      path.resolve(__dirname, "./src/styles/countries.css"),
+    ],
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: '[name].[hash:20].bundle.js',
+    path: path.resolve(__dirname, "./dist"),
+    filename: "[name].[hash:20].bundle.js",
   },
   module: {
     rules: [
@@ -24,26 +27,26 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: ["babel-loader"],
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-        type: 'asset/inline',
+        type: "asset/inline",
       },
       {
         test: /\.(scss|css)$/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
-  mode: 'development',
+  mode: "development",
   devServer: {
     historyApiFallback: true,
-    static: path.resolve(__dirname, './dist'),
+    static: path.resolve(__dirname, "./dist"),
     open: true,
     compress: true,
     hot: true,
@@ -51,13 +54,20 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Wordplex',
-      template: path.resolve(__dirname, './src/index.html'), // template file
-      chunks: ['index'],
+      title: "Wordplex",
+      template: path.resolve(__dirname, "./src/index.html"), // template file
+      chunks: ["index"],
       inject: true,
-      filename: 'index.html', // output file
+      filename: "index.html", // output file
+    }),
+    new HtmlWebpackPlugin({
+      title: "Flags",
+      template: path.resolve(__dirname, "./src/countries.html"), // template file
+      chunks: ["countries"],
+      inject: true,
+      filename: "countries.html", // output file
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
-}
+};

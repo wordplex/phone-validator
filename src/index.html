@@ -24,12 +24,19 @@
         <div class="mobile-navbar" id="mobile-navbar">
           <a class="nav-link" href="#documentation-page">Documentation</a>
           <a class="nav-link" href="#documentation-page"> Phone validation</a>
-          <a class="nav-link" href="#documentation-page"> Country flags</a>
+          <a class="nav-link" href="./contries.html"> Country flags</a>
         </div>
         <nav class="navbar">
           <a class="nav-link" href="#documentation-page">Documentation</a>
-          <a class="nav-link" href="#documentation-page"> Phone validation</a>
-          <a class="nav-link" href="#documentation-page"> Country flags</a>
+          <div class="dropDown">
+            <button class="dropBtn" id="dropBtn">Free Assets</button>
+            <div id="dropDown" class="dropDown-content">
+              <a class="nav-link" href="#documentation-page">
+                Phone validation</a
+              >
+              <a class="nav-link" href="./countries.html"> Country flags</a>
+            </div>
+          </div>
         </nav>
       </header>
 
@@ -191,54 +198,38 @@
       <section class="documentation-wrapper" id="documentation-page">
         <section class="documentation">
           <h1>Documentation Wordplex.io</h1>
-          <div class="documentation-header">
-            <h2>Your API Key</h2>
-            <p>
-              Your API key is your unique authentication mean to be used when
-              accessing Wordplex’s Phone Number Validation and Verification API.
-              To authenticate your requests, you will need to append your API
-              key to the base URL as shown below.
-            </p>
-          </div>
           <div class="documentation-item">
             <h3>Base URL</h3>
             <div class="code-block">
-              <p>https://phonevalidation.abstractapi.com/v1/</p>
+              <p>
+                http://geo.wordplex.io/v4/phone?
+                <span class="colored-code">n=</span>PHONE_NUMBER&
+                <span class="colored-code">c=</span>COUNTRY_CODE
+              </p>
             </div>
           </div>
           <div class="documentation-item">
-            <h3>
-              Overview of the Phone Number Validation and Verification API
-            </h3>
             <p>
-              Abstract's Phone Number Validation and Verification API simply
-              requires your unique API key and the phone number you'd like to
-              check:
-            </p>
-            <div class="code-block">
-              https://phonevalidation.abstractapi.com/v1/<br />&nbsp; ?
-              <span class="colored-code">
-                api_key = YOUR_UNIQUE_API_KEY<br />&nbsp;
-              </span>
-              & number = 14154582468
-            </div>
-            <p>
-              This was a successful request, so the valid phone number and
-              details associated with it are returned below:
+              If this was a successful request, the valid phone number and
+              details associated with it are returned, as shown below:
             </p>
             <div class="code-block">
               {<br />
-              "number": <span class="colored-code">"14154582468",</span><br />
+              "is_number_possible": <span class="colored-code">"true",</span
+              ><br />
               "is_valid_number": <span class="colored-code">true,</span><br />
-              "local_format": <span class="colored-code">"4154582468",</span
+              "type": <span class="colored-code">"mobile"</span><br />
+              "number_parts":<span class="colored-code">&#123;</span><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;"country_code":<span class="colored-code"
+                >65</span
               ><br />
-              "international_format":
-              <span class="colored-code">"+14154582468",</span><br />
-              "line_type": <span class="colored-code">"mobile”,</span><br />
-              "registered_location": <span class="colored-code">"Belorus",</span
+              &nbsp;&nbsp;&nbsp;&nbsp;"e164":<span class="colored-code">t</span
               ><br />
-              "network": <span class="colored-code">"M1",</span><br />
-              }
+              &nbsp;&nbsp;&nbsp;&nbsp;"nat":<span class="colored-code"
+                >"8777 6530,"</span
+              ><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;"intl":"+65 8777 6530"<br />
+              },
             </div>
           </div>
         </section>
@@ -247,81 +238,140 @@
           <h4>Request Parameters</h4>
           <div class="param-row">
             <p class="param-name">
-              api_key <span class="colored-code">REQUIRED</span>
+              n <span class="param-colored-code">REQUIRED</span>
             </p>
             <p class="param-type">String</p>
-            <p class="param-desc">
-              Note that every Wordplex API has a unique API key, so you will
-              need different keys to access the Phone Number Validation and
-              Verification, or the Email Validation APIs, for example.
-            </p>
+            <p class="param-desc">The phone number to validate and verify.</p>
           </div>
           <hr class="line-break" />
           <div class="param-row">
             <p class="param-name">
-              phone <span class="colored-code">REQUIRED</span>
+              c <span class="param-colored-code">OPTIONAL</span>
             </p>
             <p class="param-type">String</p>
-            <p class="param-desc">The phone number to validate and verify.</p>
+            <p class="param-desc">
+              Country code (if provided, phone number can be used without +XXX)
+            </p>
           </div>
           <hr class="line-break" />
         </section>
         <section class="params">
           <h4 class="param-title-json">Response (json)</h4>
           <div class="param-row">
-            <p class="param-name">number</p>
-            <p class="param-type">String</p>
+            <p class="param-name">is_number_possible</p>
+            <p class="param-type">Boolean</p>
             <p class="param-desc">
-              The phone number submitted for verification and validation.
+              Will tell if the format of the phone number is correct in theory
+              for the country
             </p>
           </div>
           <hr class="line-break" />
           <div class="param-row">
             <p class="param-name">is_valid_number</p>
             <p class="param-type">Boolean</p>
-            <p class="param-desc">Result of the phone format verification.</p>
-          </div>
-          <hr class="line-break" />
-          <div class="param-row">
-            <p class="param-name">local_format</p>
-            <p class="param-type">Integer</p>
             <p class="param-desc">
-              The number verified in its local, human readable, version.
+              Result of the phone number attribution verification
             </p>
           </div>
           <hr class="line-break" />
           <div class="param-row">
-            <p class="param-name">international_format</p>
+            <p class="param-name">type</p>
             <p class="param-type">String</p>
             <p class="param-desc">
-              The number verified in its international, digital dialing ready,
-              version.
+              Describes the type of line (land, mobile, voip, etc.)
             </p>
           </div>
           <hr class="line-break" />
           <div class="param-row">
-            <p class="param-name">line_type</p>
+            <p class="param-name">
+              <span class="json-colored-text">number_parts</span>.country_code
+            </p>
             <p class="param-type">String</p>
             <p class="param-desc">
-              The type of line associated with the number, that will allow to
-              know the type of service that can be used. Note: does not check
-              redirections.
+              TCountry Code as defined by the ITU (without the leading “+”)
             </p>
           </div>
           <hr class="line-break" />
           <div class="param-row">
-            <p class="param-name">registered_location</p>
-            <p class="param-type">Boolean</p>
+            <p class="param-name">
+              <span class="json-colored-text">number_parts</span>.e164
+            </p>
+            <p class="param-type">String</p>
+            <p class="param-desc">ITU’s E164 formatted phone number</p>
+          </div>
+          <hr class="line-break" />
+          <div class="param-row">
+            <p class="param-name">
+              <span class="json-colored-text">number_parts</span>.nat
+            </p>
+            <p class="param-type">String</p>
+            <p class="param-desc">Locally formatted phone number</p>
+          </div>
+          <hr class="line-break" />
+          <div class="param-row">
+            <p class="param-name">
+              <span class="json-colored-text">number_parts</span>.intl
+            </p>
+            <p class="param-type">String</p>
             <p class="param-desc">
-              Country of origin and registration of the verified phone number
+              Internationally promatted readable phone number containing spaces
             </p>
           </div>
           <hr class="line-break" />
           <div class="param-row">
-            <p class="param-name">network</p>
+            <p class="param-name">
+              <span class="json-colored-text">carrier</span>.name
+            </p>
             <p class="param-type">String</p>
             <p class="param-desc">
               Name of the carrier or provider for the verified phone number
+            </p>
+          </div>
+          <hr class="line-break" />
+          <div class="param-row">
+            <p class="param-name">
+              <span class="json-colored-text">location</span>.iso2
+            </p>
+            <p class="param-type">String</p>
+            <p class="param-desc">Alpha-2 formatted country code (2 letters)</p>
+          </div>
+          <hr class="line-break" />
+          <div class="param-row">
+            <p class="param-name">
+              <span class="json-colored-text">location</span>.name
+            </p>
+            <p class="param-type">String</p>
+            <p class="param-desc">
+              Country name, or sub-region if known (eg. for overseas
+              territories)
+            </p>
+          </div>
+          <hr class="line-break" />
+          <div class="param-row">
+            <p class="param-name">
+              <span class="json-colored-text">info</span>.response_time
+            </p>
+            <p class="param-type">String</p>
+            <p class="param-desc">Request execution time in milliseconds</p>
+          </div>
+          <hr class="line-break" />
+          <div class="param-row">
+            <p class="param-name">
+              <span class="json-colored-text">info</span>.human
+            </p>
+            <p class="param-type">String</p>
+            <p class="param-desc">
+              General information sent by the API provider
+            </p>
+          </div>
+          <hr class="line-break" />
+          <div class="param-row">
+            <p class="param-name">
+              <span class="json-colored-text">info</span>.node
+            </p>
+            <p class="param-type">String</p>
+            <p class="param-desc">
+              Actual server node that provided verification
             </p>
           </div>
           <hr class="line-break" />
@@ -348,15 +398,6 @@
             <p class="param-desc">
               The server could not understand the request due to invalid syntax.
               Maybe you forgot a mandatory parameter?
-            </p>
-          </div>
-          <div class="param-row">
-            <p class="param-name fail">403</p>
-            <p class="param-type">Forbidden</p>
-            <p class="param-desc">
-              The client does not have access rights to the content; that is, it
-              is unauthorized, so the server is refusing to give the requested
-              resource. Can happen if you exceeded a reasonable request quota.
             </p>
           </div>
         </section>

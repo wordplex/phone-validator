@@ -18,6 +18,8 @@ const falseMark = document.getElementById("false-mark");
 const burgerBtn = document.getElementById("burger-btn");
 const mobileNavbar = document.getElementById("mobile-navbar");
 const backDrop = document.getElementById("backdrop");
+const dropBtn = document.getElementById("dropBtn");
+const dropDown = document.getElementById("dropDown");
 
 function inputData() {
   const phoneNumber = parseInt(input.value, 10);
@@ -61,6 +63,23 @@ function keyUp(event) {
     button.click();
   }
 }
+
+function dropDownFunction() {
+  dropDown.classList.toggle("show");
+}
+
+window.onclick = function (event) {
+  if (!event.target.matches(".dropBtn")) {
+    var dropdowns = document.getElementsByClassName("dropDown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains("show")) {
+        openDropdown.classList.remove("show");
+      }
+    }
+  }
+};
 
 function toggleMobileNavbar() {
   if (!mobileNavbar.offsetWidth) {
@@ -158,3 +177,4 @@ formBtn.addEventListener("click", formBtnHandler);
 burgerBtn.addEventListener("click", toggleMobileNavbar);
 backDrop.addEventListener("click", closeMobileNavbar);
 mobileNavbar.addEventListener("click", closeMobileNavbar);
+dropBtn.addEventListener("click", dropDownFunction);
