@@ -20,6 +20,7 @@ const mobileNavbar = document.getElementById("mobile-navbar");
 const backDrop = document.getElementById("backdrop");
 const dropBtn = document.getElementById("dropBtn");
 const dropDown = document.getElementById("dropDown");
+const AssetsArrow = document.getElementById("assets-arrow");
 
 function inputData() {
   const phoneNumber = parseInt(input.value, 10);
@@ -33,7 +34,7 @@ function inputData() {
 
 function jsonHandler() {
   jsonResults.style.display = "flex";
-  jsonBtn.style.backgroundColor = "#00152F";
+  jsonBtn.style.backgroundColor = "#011A37";
   formattedResults.style.display = "none";
   formBtn.style.backgroundColor = "#002C60";
 }
@@ -42,7 +43,7 @@ function formBtnHandler() {
   formattedResults.style.display = "flex";
   jsonBtn.style.backgroundColor = "#002C60";
   jsonResults.style.display = "none";
-  formBtn.style.backgroundColor = "#00152F";
+  formBtn.style.backgroundColor = "#011A37";
 }
 
 function keyDown(event) {
@@ -64,13 +65,14 @@ function keyUp(event) {
   }
 }
 
-function dropDownFunction() {
+function dropdownFunction() {
+  event.stopPropagation();
   dropDown.classList.toggle("show");
 }
 
 window.onclick = function (event) {
   if (!event.target.matches(".dropBtn")) {
-    var dropdowns = document.getElementsByClassName("dropDown-content");
+    var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
       var openDropdown = dropdowns[i];
@@ -177,4 +179,5 @@ formBtn.addEventListener("click", formBtnHandler);
 burgerBtn.addEventListener("click", toggleMobileNavbar);
 backDrop.addEventListener("click", closeMobileNavbar);
 mobileNavbar.addEventListener("click", closeMobileNavbar);
-dropBtn.addEventListener("click", dropDownFunction);
+dropBtn.addEventListener("click", dropdownFunction);
+AssetsArrow.addEventListener("click", dropdownFunction);

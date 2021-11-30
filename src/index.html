@@ -24,13 +24,20 @@
         <div class="mobile-navbar" id="mobile-navbar">
           <a class="nav-link" href="#documentation-page">Documentation</a>
           <a class="nav-link" href="#documentation-page"> Phone validation</a>
-          <a class="nav-link" href="./contries.html"> Country flags</a>
+          <a class="nav-link" href="./countries.html"> Country flags</a>
         </div>
         <nav class="navbar">
           <a class="nav-link" href="#documentation-page">Documentation</a>
           <div class="dropDown">
-            <button class="dropBtn" id="dropBtn">Free Assets</button>
-            <div id="dropDown" class="dropDown-content">
+            <button class="dropBtn" id="dropBtn">
+              Free Assets
+              <img
+                src="./assets/Vector 3.png"
+                alt="dropdownArrow"
+                id="assets-arrow"
+              />
+            </button>
+            <div id="dropDown" class="dropdown-content">
               <a class="nav-link" href="#documentation-page">
                 Phone validation</a
               >
@@ -86,10 +93,18 @@
                     />
                   </label>
                   <span class="false-mark" id="check-mark">
-                    <i class="fas fa-check"></i>
+                    <img
+                      class="true-mark"
+                      src="./assets/wrapperTick.png"
+                      alt="true-mark"
+                    />
                   </span>
                   <span class="false-mark" id="false-mark">
-                    <i class="fas fa-times"></i>
+                    <img
+                      class="true-mark"
+                      src="./assets/falseWrapperTick (1).png"
+                      alt="false-mark"
+                    />
                   </span>
                 </div>
                 <div class="validation-text">
@@ -215,20 +230,29 @@
             </p>
             <div class="code-block">
               {<br />
-              "is_number_possible": <span class="colored-code">"true",</span
+              &nbsp;&nbsp;&nbsp;&nbsp;"is_number_possible":
+              <span class="colored-code">"true",</span><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;"is_valid_number":
+              <span class="colored-code">true,</span><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;"type":
+              <span class="colored-code">"mobile"</span><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;"number_parts":<span class="colored-code"
+                >&#123;</span
               ><br />
-              "is_valid_number": <span class="colored-code">true,</span><br />
-              "type": <span class="colored-code">"mobile"</span><br />
-              "number_parts":<span class="colored-code">&#123;</span><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;"country_code":<span class="colored-code"
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"country_code":<span
+                class="colored-code"
                 >65</span
               ><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;"e164":<span class="colored-code">t</span
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"e164":<span
+                class="colored-code"
+                >t</span
               ><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;"nat":<span class="colored-code"
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"nat":<span
+                class="colored-code"
                 >"8777 6530,"</span
               ><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;"intl":"+65 8777 6530"<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"intl":"+65 8777
+              6530"<br />
               },
             </div>
           </div>
