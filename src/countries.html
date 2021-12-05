@@ -18,8 +18,15 @@
         <nav class="navbar">
           <a class="nav-link" href="\">Documentation</a>
           <div class="dropDown">
-            <button class="dropBtn" id="dropBtn">Free Assets</button>
-            <div id="dropDown" class="dropDown-content">
+            <button class="dropBtn" id="drop-btn">
+              Free Assets
+              <img
+                src="./assets/Vector 3.png"
+                alt="dropdownArrow"
+                id="assets-arrow"
+              />
+            </button>
+            <div id="dropdown" class="dropDown-content">
               <a class="nav-link" href="#documentation-page">
                 Phone validation</a
               >
@@ -60,19 +67,23 @@
           sent.
         </p>
         <p class="iso-text">* Supports ISO 2 and ISO 3 (eg. US / USA)</p>
-        <div class="input-group-with-submit">
-          <select class="validation-input" id="countrySelector">
-            <option value="FR">France</option>
-          </select>
-          <button class="submit-btn" id="isoButton">GO</button>
-          <img src="./assets/fr-75x50.png" alt="France" id="flag-img" />
-        </div>
-        <div>
-          <button class="png-btn" id="png-btn">PNG</button>
-          <button class="svg-btn" id="svg-btn">SVG</button>
+        <div class="input-group">
+          <input
+            list="country-selector"
+            id="country-selector-input"
+            value="France"
+            class="country-input"
+          />
+          <datalist id="country-selector" class="data-list">
+            <option value="France"></option>
+          </datalist>
         </div>
         <div class="resize" id="resize">
-          <div class="resize-check">
+          <div class="png-svg-btn">
+            <button class="png-btn" id="png-btn">PNG</button>
+            <button class="svg-btn" id="svg-btn">SVG</button>
+          </div>
+          <div class="resize-check" id="resize-checkbox">
             <input
               type="checkbox"
               id="resize-check"
@@ -80,28 +91,49 @@
             />
             <label for="resize-check"> Resize from the fly</label>
           </div>
-          <div class="resize-width">
+          <div class="resize-width" id="resize-checkbox-width">
             <label for="width">width</label>
-            <input class="width-input" type="text" id="width" disabled />
+            <input
+              class="width-input"
+              type="text"
+              id="width"
+              disabled
+              placeholder="auto"
+            />
           </div>
-          <div class="resize-height">
+          <div class="resize-height" id="resize-checkbox-height">
             <label for="height">height</label>
-            <input class="width-input" type="text" id="height" disabled />
+            <input
+              class="width-input"
+              type="text"
+              id="height"
+              disabled
+              placeholder="auto"
+            />
           </div>
         </div>
-        <div>
-          <input
-            id="validation-output"
-            type="text"
-            class="validation-output"
-            disabled
-            placeholder="https://wordplex.cloudimg.io/v7w/flag/country/fr-400x240.png"
-          />
+        <div class="preview-text">Preview</div>
+        <div class="validation-out-with-img">
+          <div id="validation-output" class="validation-output">
+            <p>
+              <span id="url"
+                >https://wordplex.cloudimg.io/v7w/flag/country/</span
+              ><span id="country-code" class="green-output-color">fr</span
+              >-<span id="flag-size" class="blue-output-color">400x240</span
+              >.<span id="img-type">png</span>
+            </p>
+          </div>
+          <div>
+            <img src="./assets/fr-75x50.png" alt="France" id="flag-img" />
+          </div>
         </div>
         <div class="validation-output-hint">
           <p>Our service</p>
           <p>ISO 2/3 country code</p>
           <p>Size</p>
+          <div class="service-mark"></div>
+          <div class="iso-mark"></div>
+          <div class="size-mark"></div>
         </div>
         <div id="img-output">
           <pre id="pretty-data" class="prettyprint"></pre>
@@ -116,19 +148,23 @@
           639-1 , 2/T and 2/B language codes for 3 letters plus respective
           english versions of code.
         </p>
-        <div class="input-group-with-submit">
-          <select class="validation-input" id="lang-Selector">
-            <option value="France">France</option>
-          </select>
-          <button class="submit-btn" id="lang-btn">GO</button>
-          <img src="./assets/fr-75x50.png" alt="France" id="lang-flag-img" />
-        </div>
-        <div>
-          <button class="png-btn" id="png-lang-btn">PNG</button>
-          <button class="svg-btn" id="svg-lang-btn">SVG</button>
+        <div class="input-group">
+          <input
+            list="lang-country-selector"
+            id="lang-country-selector-input"
+            value="French"
+            class="country-input"
+          />
+          <datalist id="lang-country-selector" class="data-list">
+            <option value="French"></option>
+          </datalist>
         </div>
         <div class="resize" id="lang-resize" disabled>
-          <div class="resize-check">
+          <div>
+            <button class="png-btn" id="png-lang-btn">PNG</button>
+            <button class="svg-btn" id="svg-lang-btn">SVG</button>
+          </div>
+          <div class="resize-check" id="lang-checkbox">
             <input
               type="checkbox"
               id="lang-resize-check"
@@ -136,28 +172,38 @@
             />
             <label for="resize-check"> Resize from the fly</label>
           </div>
-          <div class="resize-width">
+          <div class="resize-width" id="lang-resize-width">
             <label for="width">width</label>
             <input class="width-input" type="text" id="lang-width" disabled />
           </div>
-          <div class="resize-height">
+          <div class="resize-height" id="lang-resize-height">
             <label for="height">height</label>
             <input class="width-input" type="text" id="lang-height" disabled />
           </div>
         </div>
-        <div>
-          <input
-            type="text"
-            id="lang-validation-output"
-            readonly
-            class="validation-output"
-            placeholder="https://wordplex.cloudimg.io/v7w/flag/country/fr-400x240.png"
-          />
+        <div class="preview-text">Preview</div>
+        <div class="validation-out-with-img">
+          <div id="lang-validation-output" class="validation-output">
+            <p>
+              <span id="lang-url"
+                >https://wordplex.cloudimg.io/v7w/flag/country/</span
+              ><span id="lang-country-code" class="green-output-color">fr</span
+              >-<span id="lang-flag-size" class="blue-output-color"
+                >400x240</span
+              >.<span id="lang-img-type">png</span>
+            </p>
+          </div>
+          <div>
+            <img src="./assets/fr-75x50.png" alt="France" id="lang-flag-img" />
+          </div>
         </div>
         <div class="validation-output-hint">
           <p>Our service</p>
           <p>ISO 2/3 country code</p>
           <p>Size</p>
+          <div class="service-mark"></div>
+          <div class="iso-mark"></div>
+          <div class="size-mark"></div>
         </div>
         <div class="img-output">
           <pre id="lang-pretty-data" class="prettyprint"></pre>
@@ -171,17 +217,15 @@
           Number Prefix.
         </p>
         <p class="iso-text">* No need to include “+” in the prefix code.</p>
-        <div class="input-group-with-submit">
-          <input class="validation-input" id="phone-input" />
-          <button class="submit-btn" id="phone-button">GO</button>
-          <img src="./assets/fr-75x50.png" alt="France" id="phone-img" />
-        </div>
-        <div>
-          <button class="png-btn" id="png-phone-btn">PNG</button>
-          <button class="svg-btn" id="svg-phone-btn">SVG</button>
+        <div class="input-group">
+          <input class="validation-input" id="phone-input" value="33" />
         </div>
         <div class="resize" id="phone-resize">
-          <div class="resize-check">
+          <div>
+            <button class="png-btn" id="png-phone-btn">PNG</button>
+            <button class="svg-btn" id="svg-phone-btn">SVG</button>
+          </div>
+          <div class="resize-check" id="phone-checkbox">
             <input
               type="checkbox"
               id="phone-resize-check"
@@ -189,31 +233,51 @@
             />
             <label for="resize-check"> Resize from the fly</label>
           </div>
-          <div class="resize-width">
+          <div class="resize-width" id="phone-width-checkbox">
             <label for="width">width</label>
             <input class="width-input" type="text" id="phone-width" disabled />
           </div>
-          <div class="resize-height">
+          <div class="resize-height" id="phone-height-checkbox">
             <label for="height">height</label>
             <input class="width-input" type="text" id="phone-height" disabled />
           </div>
         </div>
-        <div>
-          <input
-            type="text"
-            id="phone-validation-output"
-            class="validation-output"
-            placeholder="https://wordplex.cloudimg.io/v7w/flag/country/fr-400x240.png"
-          />
+        <div class="preview-text">Preview</div>
+        <div class="validation-out-with-img">
+          <div id="phone-validation-output" class="validation-output">
+            <p>
+              <span id="phone-url"
+                >https://wordplex.cloudimg.io/v7w/flag/phone/</span
+              ><span id="phone-country-code" class="green-output-color">33</span
+              >-<span id="phone-flag-size" class="blue-output-color"
+                >400x240</span
+              >.<span id="phone-img-type">png</span>
+            </p>
+          </div>
+          <div>
+            <img src="./assets/fr-75x50.png" alt="France" id="phone-img" />
+          </div>
         </div>
         <div class="validation-output-hint">
           <p>Our service</p>
           <p>ISO 2/3 country code</p>
           <p>Size</p>
+          <div class="service-mark"></div>
+          <div class="iso-mark"></div>
+          <div class="size-mark"></div>
         </div>
         <div class="img-output">
           <pre id="phone-pretty-data" class="prettyprint"></pre>
         </div>
+      </div>
+      <div>
+        <div class="outer-circle-country"></div>
+        <div class="inner-circle-country"></div>
+        <div class="outer-circle-lang"></div>
+        <div class="inner-circle-lang"></div>
+        <div class="circle-lang"></div>
+        <div class="outer-circle-prefix"></div>
+        <div class="inner-circle-prefix"></div>
       </div>
     </section>
 
