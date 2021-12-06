@@ -8,7 +8,7 @@ const langCountrySelectInput = document.getElementById(
 );
 const resizeCheckBox = document.getElementById("resize-checkbox");
 const resizeCheckboxWidth = document.getElementById("resize-checkbox-width");
-const resizCheckboxHeight = document.getElementById("resize-checkbox-height");
+const resizeCheckboxHeight = document.getElementById("resize-checkbox-height");
 const langCheckbox = document.getElementById("lang-checkbox");
 const langCheckboxWidth = document.getElementById("lang-resize-width");
 const langCheckboxHeight = document.getElementById("lang-resize-height");
@@ -74,70 +74,69 @@ function getSelectedCountryByLang() {
   return countryValue;
 }
 
+function generateHtmlImgTag(isoValue, countryName, widthValue, heightValue) {
+  const defaultWidthValue = 200;
+
+  const currentWidthValue = !!widthValue ? widthValue : defaultWidthValue;
+
+  const currentHeightValue = heightValue ? `x${heightValue}` : "";
+
+  return `&lt; img 
+      src="https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}-${currentWidthValue}${currentHeightValue}.png"
+      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}-${currentWidthValue}${currentHeightValue}.png 2x"
+      width="${currentWidthValue}"   
+      height="${!!heightValue ? heightValue : "auto"}"
+      alt="${countryName} flag">`;
+}
+
+function langHtmlImgTag(widthValue, heightValue, langName, countryValue) {
+  const defaultWidthValue = 200;
+  const currentWidthValue = !!widthValue ? widthValue : defaultWidthValue;
+  const currentHeightValue = !!heightValue ? `x${heightValue}` : "";
+
+  return `&lt; img 
+      src="https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-${currentWidthValue}${currentHeightValue}.png"
+      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-${currentWidthValue}${currentHeightValue}.png 2x"
+      width="${currentWidthValue}"   
+      height="${!!heightValue ? heightValue : "auto"}"
+      alt="${langName} language">`;
+}
+
+function phoneHtmlImgTag(widthValue, heightValue, phoneNumber) {
+  const defaultWidthValue = 200;
+  const currentWidthValue = !!widthValue ? widthValue : defaultWidthValue;
+  const currentHeightValue = !!heightValue ? `x${heightValue}` : "";
+
+  return `&lt; img 
+      src="https://wordplex.cloudimg.io/v7w/flag/phone/${phoneNumber}-${currentWidthValue}${currentHeightValue}.png"
+      srcset= "https://wordplex.cloudimg.io/v7w/flag/phone/${phoneNumber}-${currentWidthValue}${currentHeightValue}.png 2x"
+      width="${currentWidthValue}"   
+      height="${!!heightValue ? heightValue : "auto"}"
+      alt="">`;
+}
+
 function changeIsoFlagHandler() {
-  const selectedCountryName = countrySelectInput.value;
   const widthValue = resizeWidth.value;
   const heightValue = resizeHeight.value;
-  const selectedCountry = fetchedCountries.find(
-    (fetchedCountry) => fetchedCountry.name === selectedCountryName
-  );
-  const countryName = selectedCountry.name;
-  const iso2Value = selectedCountry.alpha2Code;
+  const countryName = getSelectedCountry().name;
   const isoValue = getSelectedCountry().alpha2Code;
-  const imageURL = `https://wordplex.cloudimg.io/v7w/flag/country/${iso2Value}/fr-75x50.png`;
+
+  const imageURL = `https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}/fr-75x50.png`;
   const highlightOptions = {
     stringColor: "#005CCD",
   };
 
-  if (widthValue && !heightValue) {
-    const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/country/${iso2Value}-${widthValue}.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${iso2Value}-${widthValue}.png 2x"
-      width="${widthValue}"   
-      height="auto"
-      alt="${countryName} flag">`;
-    const coloredJsonData = formatHighlight(imgCode, highlightOptions);
+  const imgCode = generateHtmlImgTag(
+    isoValue,
+    countryName,
+    widthValue,
+    heightValue
+  );
+  const coloredJsonData = formatHighlight(imgCode, highlightOptions);
 
-    url.innerHTML = `https://wordplex.cloudimg.io/v7w/flag/country/`;
-    countryCode.innerHTML = `${isoValue}`;
-    flagSize.innerHTML = `${widthValue}x${heightValue}`;
-    prettyData.innerHTML = coloredJsonData;
-  } else if (heightValue && !widthValue) {
-    const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/country/${iso2Value}-${heightValue}.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${iso2Value}-${heightValue}.png 2x"
-      width="auto"   
-      height="${heightValue}"
-      alt="${countryName} flag">`;
-    const coloredJsonData = formatHighlight(imgCode, highlightOptions);
-
-    prettyData.innerHTML = coloredJsonData;
-    countryCode.innerHTML = `${isoValue}`;
-  } else if (!heightValue && !widthValue) {
-    const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/country/${iso2Value}-200.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${iso2Value}-400.png 2x"
-      width="auto"   
-      height="auto"
-      alt="${countryName} flag">`;
-    const coloredJsonData = formatHighlight(imgCode, highlightOptions);
-
-    prettyData.innerHTML = coloredJsonData;
-    countryCode.innerHTML = `${isoValue}`;
-  } else if (widthValue && heightValue) {
-    const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}-${widthValue}x${heightValue}.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}-${widthValue}x${heightValue}.png 2x"
-      width="${widthValue}"   
-      height="${heightValue}"
-      alt="${countryName} flag">`;
-    const coloredJsonData = formatHighlight(imgCode, highlightOptions);
-
-    url.innerHTML = `https://wordplex.cloudimg.io/v7w/flag/country/`;
-    countryCode.innerHTML = `${isoValue}`;
-    flagSize.innerHTML = `${widthValue}x${heightValue}`;
-    prettyData.innerHTML = coloredJsonData;
-  }
+  url.innerHTML = `https://wordplex.cloudimg.io/v7w/flag/country/`;
+  countryCode.innerHTML = `${isoValue}`;
+  prettyData.innerHTML = coloredJsonData;
   flagImg.src = imageURL;
 }
 
@@ -151,58 +150,19 @@ function changeLangFlagHandler() {
     stringColor: "#005CCD",
   };
 
-  if (widthValue && !heightValue) {
-    const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-${widthValue}.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-${widthValue}.png 2x"
-      width="${widthValue}"   
-      height="auto"
-      alt="${langName} language">`;
-    const coloredJsonData = formatHighlight(imgCode, highlightOptions);
+  const imgCode = langHtmlImgTag(
+    widthValue,
+    heightValue,
+    langName,
+    countryValue
+  );
 
-    langUrl.innerHTML = `https://wordplex.cloudimg.io/v7w/flag/country/`;
-    langCountryCode.innerHTML = `${countryValue}`;
-    langFlagSize.innerHTML = `${widthValue}x${heightValue}`;
-    langPrettyData.innerHTML = coloredJsonData;
-  } else if (heightValue && !widthValue) {
-    const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-${heightValue}.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-${heightValue}.png 2x"
-      width="auto"   
-      height="${heightValue}"
-      alt="${langName} language">`;
-    const coloredJsonData = formatHighlight(imgCode, highlightOptions);
+  const coloredJsonData = formatHighlight(imgCode, highlightOptions);
 
-    langPrettyData.innerHTML = coloredJsonData;
-    langCountryCode.innerHTML = `${countryValue}`;
-  } else if (!heightValue && !widthValue) {
-    const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-200.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-400.png 2x"
-      width="auto"   
-      height="auto"
-      alt="${langName} language">`;
-    const coloredJsonData = formatHighlight(imgCode, highlightOptions);
-
-    langPrettyData.innerHTML = coloredJsonData;
-    langCountryCode.innerHTML = `${countryValue}`;
-    langFlagSize.innerHTML = `400x240`;
-  } else if (widthValue && heightValue) {
-    const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-${widthValue}x${heightValue}.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-${widthValue}x${heightValue}.png 2x"
-      width="${widthValue}"   
-      height="${heightValue}"
-      alt="${langName} language">`;
-    const coloredJsonData = formatHighlight(imgCode, highlightOptions);
-
-    langUrl.innerHTML = `https://wordplex.cloudimg.io/v7w/flag/country/`;
-    langCountryCode.innerHTML = `${countryValue}`;
-    langFlagSize.innerHTML = `${widthValue}x${heightValue}`;
-    langPrettyData.innerHTML = coloredJsonData;
-  }
-
+  langPrettyData.innerHTML = coloredJsonData;
   langFlagImg.src = imageURL;
+  langUrl.innerHTML = `https://wordplex.cloudimg.io/v7w/flag/country/`;
+  langCountryCode.innerHTML = `${countryValue}`;
 }
 
 function changePhoneFlagHandler() {
@@ -210,60 +170,16 @@ function changePhoneFlagHandler() {
   const widthValue = phoneResizeWidth.value;
   const heightValue = phoneResizeHeight.value;
   const imgURL = `https://wordplex.cloudimg.io/v7w/flag/phone/${phoneNumber}-75x50.png`;
+
   const highlightOptions = {
     stringColor: "#005CCD",
   };
 
-  if (widthValue && !heightValue) {
-    const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/phone/${phoneNumber}-${widthValue}.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/phone/${phoneNumber}-${widthValue}.png 2x"
-      width="${widthValue}"   
-      height="auto"
-      alt="">`;
-    const coloredJsonData = formatHighlight(imgCode, highlightOptions);
+  const imgCode = phoneHtmlImgTag(widthValue, heightValue, phoneNumber);
+  const coloredJsonData = formatHighlight(imgCode, highlightOptions);
 
-    phoneUrl.innerHTML = `https://wordplex.cloudimg.io/v7w/flag/phone/`;
-    phoneCountryCode.innerHTML = `${phoneNumber}`;
-    phoneFlagSize.innerHTML = `${widthValue}x${heightValue}`;
-    phonePrettyData.innerHTML = coloredJsonData;
-  } else if (heightValue && !widthValue) {
-    const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/phone/${phoneNumber}-${heightValue}.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/phone/${phoneNumber}-${heightValue}.png 2x"
-      width="auto"   
-      height="${heightValue}"
-      alt="">`;
-    const coloredJsonData = formatHighlight(imgCode, highlightOptions);
-
-    phonePrettyData.innerHTML = coloredJsonData;
-    phoneCountryCode.innerHTML = `${phoneNumber}`;
-  } else if (!heightValue && !widthValue) {
-    const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/phone/${phoneNumber}-200.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/phone/${phoneNumber}-400.png 2x"
-      width="auto"   
-      height="auto"
-      alt="">`;
-    const coloredJsonData = formatHighlight(imgCode, highlightOptions);
-
-    phonePrettyData.innerHTML = coloredJsonData;
-    phoneCountryCode.innerHTML = `${phoneNumber}`;
-    phoneFlagSize.innerHTML = `400x240`;
-  } else if (widthValue && heightValue) {
-    const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/phone/${phoneNumber}-${widthValue}x${heightValue}.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/phone/${phoneNumber}-${widthValue}x${heightValue}.png 2x"
-      width="${widthValue}"   
-      height="${heightValue}"
-      alt="">`;
-    const coloredJsonData = formatHighlight(imgCode, highlightOptions);
-
-    phoneUrl.innerHTML = `https://wordplex.cloudimg.io/v7w/flag/phone/`;
-    phoneCountryCode.innerHTML = `${phoneNumber}`;
-    phoneFlagSize.innerHTML = `${widthValue}x${heightValue}`;
-    phonePrettyData.innerHTML = coloredJsonData;
-  }
+  phonePrettyData.innerHTML = coloredJsonData;
+  phoneCountryCode.innerHTML = `${phoneNumber}`;
   phoneImg.src = imgURL;
 }
 
@@ -301,7 +217,7 @@ function changePngHandler() {
   pngBtn.style.backgroundColor = "#DFEEFF";
   resizeCheckBox.style.display = "block";
   resizeCheckboxWidth.style.display = "block";
-  resizCheckboxHeight.style.display = "block";
+  resizeCheckboxHeight.style.display = "block";
 
   changeWidthHandler();
 }
@@ -315,9 +231,11 @@ function changeSvgHandler() {
       width="auto"   
       height="auto"
       alt="${countryName} flag">`;
+
   const highlightOptions = {
     stringColor: "#005CCD",
   };
+
   const coloredJsonData = formatHighlight(imgCode, highlightOptions);
 
   imgType.innerHTML = `svg`;
@@ -325,7 +243,7 @@ function changeSvgHandler() {
   pngBtn.style.backgroundColor = "#FFFF";
   resizeCheckBox.style.display = "none";
   resizeCheckboxWidth.style.display = "none";
-  resizCheckboxHeight.style.display = "none";
+  resizeCheckboxHeight.style.display = "none";
   countryCode.innerHTML = `${isoValue}`;
   flagSize.innerHTML = `400x240`;
   prettyData.innerHTML = coloredJsonData;
@@ -352,9 +270,11 @@ function changeLangSvgHandler() {
       width="auto"   
       height="auto"
       alt="${langName} flag">`;
+
   const highlightOptions = {
     stringColor: "#005CCD",
   };
+
   const coloredJsonData = formatHighlight(imgCode, highlightOptions);
 
   langPrettyData.innerHTML = coloredJsonData;
@@ -388,9 +308,11 @@ function changePhoneSvgHandler() {
       width="auto"   
       height="auto"
       alt="${phoneNumber} flag">`;
+
   const highlightOptions = {
     stringColor: "#005CCD",
   };
+
   const coloredJsonData = formatHighlight(imgCode, highlightOptions);
 
   phoneImgType.innerHTML = `svg`;
@@ -442,7 +364,7 @@ function dropdownFunction(event) {
 
 window.onclick = function (event) {
   if (!event.target.matches(".dropBtn")) {
-    let dropdowns = document.getElementsByClassName("dropDown-content");
+    let dropdowns = document.getElementsByClassName("drop-down-content");
     let i;
     for (i = 0; i < dropdowns.length; i++) {
       let openDropdown = dropdowns[i];
@@ -456,46 +378,43 @@ window.onclick = function (event) {
 function changeWidthHandler() {
   const widthValue = resizeWidth.value;
   const heightValue = resizeHeight.value;
+  const defaultWidthValue = 200;
+
+  const currentWidthValue = !!widthValue ? widthValue : defaultWidthValue;
+
+  const currentHeightValue = heightValue ? `x${heightValue}` : "";
 
   changeIsoFlagHandler();
 
-  if (!heightValue && widthValue) {
-    flagSize.innerHTML = `${widthValue}`;
-  } else if (!widthValue && heightValue) {
-    flagSize.innerHTML = `${heightValue}`;
-  } else if (!widthValue && !heightValue) {
-    flagSize.innerHTML = `400x200`;
-  }
+  flagSize.innerHTML = `${currentWidthValue}${currentHeightValue}`;
 }
 
 function langChangeWidthHandler() {
   const widthValue = langResizeWidth.value;
   const heightValue = langResizeHeight.value;
+  const defaultWidthValue = 200;
+
+  const currentWidthValue = !!widthValue ? widthValue : defaultWidthValue;
+
+  const currentHeightValue = heightValue ? `x${heightValue}` : "";
 
   changeLangFlagHandler();
 
-  if (!heightValue && widthValue) {
-    langFlagSize.innerHTML = `${widthValue}`;
-  } else if (!widthValue && heightValue) {
-    langFlagSize.innerHTML = `${heightValue}`;
-  } else if (!widthValue && !heightValue) {
-    flagSize.innerHTML = `400x200`;
-  }
+  langFlagSize.innerHTML = `${currentWidthValue}${currentHeightValue}`;
 }
 
 function phoneChangeWidthHandler() {
   const widthValue = phoneResizeWidth.value;
   const heightValue = phoneResizeHeight.value;
+  const defaultWidthValue = 200;
+
+  const currentWidthValue = !!widthValue ? widthValue : defaultWidthValue;
+
+  const currentHeightValue = heightValue ? `x${heightValue}` : "";
 
   changePhoneFlagHandler();
 
-  if (!heightValue && widthValue) {
-    phoneFlagSize.innerHTML = `${widthValue}`;
-  } else if (!widthValue && heightValue) {
-    phoneFlagSize.innerHTML = `${heightValue}`;
-  } else if (!widthValue && !heightValue) {
-    flagSize.innerHTML = `400x200`;
-  }
+  phoneFlagSize.innerHTML = `${currentWidthValue}${currentHeightValue}`;
 }
 
 langCountrySelectInput.addEventListener("change", changeLangFlagHandler);
