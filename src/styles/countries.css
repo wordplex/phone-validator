@@ -186,6 +186,7 @@ body {
   display: flex;
   align-items: center;
   width: 680px;
+  position: relative;
 }
 
 .validation-wrapper .data-validation .country-input {
@@ -209,6 +210,37 @@ body {
 
 .validation-wrapper .country-input::-webkit-calendar-picker-indicator {
   opacity: 0;
+}
+
+.validation-wrapper .data-validation .country-selector {
+  width: 362px;
+  height: 370px;
+  overflow-y: overlay;
+  position: absolute;
+  top: 57px;
+  background: rgb(39, 39, 39);
+  z-index: 999;
+  border-radius: 5px;
+  padding: 20px 12px;
+  display: none;
+}
+
+.validation-wrapper .data-validation .country-selector::-webkit-scrollbar {
+  display: none;
+}
+
+.validation-wrapper .data-validation .country-selector li {
+  list-style-type: none;
+  margin-top: 15px;
+  font-family: "Rubik";
+  font-size: 17px;
+  color: #ffffff;
+}
+
+.validation-wrapper .data-validation .country-selector li:hover {
+  border: 0;
+  background-color: #acacac;
+  cursor: pointer;
 }
 
 .validation-wrapper .data-validation .validation-input {

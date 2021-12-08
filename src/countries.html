@@ -69,12 +69,13 @@
         <p class="iso-text">* Supports ISO 2 and ISO 3 (eg. US / USA)</p>
         <div class="input-group">
           <input
-            list="country-selector"
             id="country-selector-input"
-            value="France"
             class="country-input"
+            autocomplete="new-password"
           />
-          <datalist id="country-selector" class="data-list"> </datalist>
+          <div class="country-selector" id="country-selector">
+            <ul id="country-ul"></ul>
+          </div>
         </div>
         <div class="resize" id="resize">
           <div class="png-svg-btn">
@@ -150,7 +151,6 @@
           <input
             list="lang-country-selector"
             id="lang-country-selector-input"
-            value="French"
             class="country-input"
           />
           <datalist id="lang-country-selector" class="data-list"> </datalist>

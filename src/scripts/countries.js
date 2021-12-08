@@ -53,6 +53,7 @@ const phoneFlagSize = document.getElementById("phone-flag-size");
 const langImgType = document.getElementById("lang-img-type");
 const phoneImgType = document.getElementById("phone-img-type");
 const langCountrySelector = document.getElementById("lang-country-selector");
+const countryUL = document.getElementById("country-ul");
 
 let fetchedCountries;
 let fetchedLanguage;
@@ -115,11 +116,12 @@ function phoneHtmlImgTag(widthValue, heightValue, phoneNumber) {
       alt="">`;
 }
 
-function changeIsoFlagHandler() {
+function changeIsoFlagHandler(event) {
   const widthValue = resizeWidth.value;
   const heightValue = resizeHeight.value;
-  const countryName = getSelectedCountry().name;
-  const isoValue = getSelectedCountry().alpha2Code;
+  const countryName = getSelectedCountry()?.name;
+  const isoValue = countrySelectInput.value;
+  console.log(countryName);
 
   const imageURL = `https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}/fr-75x50.png`;
   const highlightOptions = {
@@ -189,10 +191,10 @@ function changePhoneFlagHandler() {
     .then(({ items }) => {
       fetchedCountries = items;
       items.forEach((item) => {
-        const option = document.createElement("option");
-        option.value = item.name;
-        option.innerHTML = item.alpha2Code;
-        countrySelect.appendChild(option);
+        const li = document.createElement("li");
+        li.innerHTML = item.name;
+        li.setAttribute("value", item.alpha2Code);
+        countryUL.appendChild(li);
       });
     });
 })();
@@ -375,6 +377,13 @@ window.onclick = function (event) {
   }
 };
 
+function keyUp(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    button.click();
+  }
+}
+
 function changeWidthHandler() {
   const widthValue = resizeWidth.value;
   const heightValue = resizeHeight.value;
@@ -417,6 +426,35 @@ function phoneChangeWidthHandler() {
   phoneFlagSize.innerHTML = `${currentWidthValue}${currentHeightValue}`;
 }
 
+function filterFunction() {
+  var input, filter, div, txtValue, a, i;
+  input = countrySelectInput;
+  filter = input.value.toUpperCase();
+  div = countrySelect;
+  a = div.getElementsByTagName("li");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+
+function openSelector() {
+  countrySelect.style.display = "block";
+}
+
+function changeSelectorValue(event) {
+  event.preventDefault();
+
+  countrySelectInput.value = event.target.innerHTML;
+  if (!!event.target) {
+    countrySelect.style.display = "none";
+  }
+}
+
 langCountrySelectInput.addEventListener("change", changeLangFlagHandler);
 countrySelectInput.addEventListener("change", changeIsoFlagHandler);
 phoneInput.addEventListener("keydown", debounce(changePhoneFlagHandler, 800));
@@ -449,3 +487,6 @@ phoneResizeHeight.addEventListener(
 );
 dropBtn.addEventListener("click", dropdownFunction);
 AssetsArrow.addEventListener("click", dropdownFunction);
+countrySelectInput.addEventListener("keyup", filterFunction);
+countrySelectInput.addEventListener("click", openSelector);
+countryUL.addEventListener("click", changeSelectorValue);
