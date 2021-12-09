@@ -679,7 +679,84 @@ body {
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 880px) {
+  .validation-wrapper .description p {
+    width: 619px;
+  }
+
+  .validation-wrapper .data-validation p {
+    width: 540px;
+  }
+
+  .validation-wrapper .data-validation .input-group {
+    width: 580px;
+  }
+
+  .validation-wrapper .data-validation .country-input {
+    width: 580px;
+  }
+
+  .validation-wrapper .data-validation .resize {
+    width: 595px;
+  }
+
+  .validation-wrapper .resize .resize-check {
+    margin-left: 9px;
+  }
+
+  .validation-wrapper .data-validation .validation-output {
+    width: 482.85px;
+    padding-left: 2px;
+    overflow-x: auto;
+  }
+
+  .validation-wrapper .data-validation .validation-output p {
+    width: 0;
+    display: flex;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint {
+    width: 579px;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint p:nth-child(2) {
+    margin-left: 158px;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint p:nth-child(3) {
+    margin-left: 24px;
+  }
+
+  .validation-wrapper .validation-output-hint .iso-mark {
+    left: 413px;
+  }
+
+  .validation-wrapper .validation-output-hint .size-mark {
+    left: 461px;
+  }
+
+  .validation-wrapper .data-validation .validation-out-with-img {
+    width: 577px;
+  }
+
+  .validation-wrapper .data-validation .validation-output::-webkit-scrollbar {
+    display: none;
+  }
+
+  .validation-wrapper .data-validation .prettyprint {
+    width: 576px;
+  }
+
+  .validation-wrapper .data-validation .validation-input {
+    width: 581px;
+  }
+
+  .footer .footer-links-wrapper .links-wrapper {
+    margin-left: 43px;
+  }
+}
+
+@media (max-width: 510px) {
   .content-wrapper .header .navbar {
     margin-left: 21px;
   }
