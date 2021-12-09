@@ -53,8 +53,8 @@ const phoneFlagSize = document.getElementById("phone-flag-size");
 const langImgType = document.getElementById("lang-img-type");
 const phoneImgType = document.getElementById("phone-img-type");
 const langCountrySelector = document.getElementById("lang-country-selector");
-const countryUL = document.getElementById("country-ul");
-const languageUL = document.getElementById("lang-ul");
+const countryList = document.getElementById("country-list");
+const languageList = document.getElementById("lang-list");
 
 let fetchedCountries = [];
 let fetchedLanguage = [];
@@ -71,7 +71,7 @@ let fetchedLanguage = [];
 })();
 
 function fillLanguageList(list) {
-  languageUL.innerHTML = "";
+  languageList.innerHTML = "";
 
   list.forEach((item) => {
     const listItem = document.createElement("li");
@@ -79,7 +79,7 @@ function fillLanguageList(list) {
     listItem.setAttribute("data-value", item.iso_2);
     listItem.addEventListener("click", changeLangFlagHandler);
     listItem.tabIndex = 0;
-    languageUL.appendChild(listItem);
+    languageList.appendChild(listItem);
   });
 }
 
@@ -95,7 +95,7 @@ function fillLanguageList(list) {
 })();
 
 function fillCountryList(list) {
-  countryUL.innerHTML = "";
+  countryList.innerHTML = "";
 
   list.forEach((item) => {
     const listItem = document.createElement("li");
@@ -103,7 +103,7 @@ function fillCountryList(list) {
     listItem.setAttribute("data-value", item.alpha2Code);
     listItem.addEventListener("click", changeIsoFlagHandler);
     listItem.tabIndex = 0;
-    countryUL.appendChild(listItem);
+    countryList.appendChild(listItem);
   });
 }
 
@@ -165,7 +165,7 @@ function phoneHtmlImgTag(widthValue, heightValue, phoneNumber) {
 }
 
 function openCountryListHandler() {
-  countryUL.style.display = "block";
+  countryList.style.display = "block";
 }
 
 function changeCountryInputHandler(event) {
@@ -179,11 +179,11 @@ function changeCountryInputHandler(event) {
 }
 
 function closeLangList() {
-  languageUL.style.display = "none";
+  languageList.style.display = "none";
 }
 
 function openLangListHandler() {
-  languageUL.style.display = "block";
+  languageList.style.display = "block";
 }
 
 function changeLangInputHandler(event) {
@@ -202,7 +202,7 @@ function changeIsoFlagHandler(event) {
   const heightValue = resizeHeight.value;
   const countryName = getSelectedCountry(isoValue)?.name;
 
-  countryUL.style.display = "none";
+  countryList.style.display = "none";
 
   fillCountryList(fetchedCountries);
 
@@ -439,15 +439,15 @@ window.onclick = function (event) {
 
 function keyDown(event) {
   if (event.keyCode === 27) {
-    countryUL.style.display = "none";
-    languageUL.style.display = "none";
+    countryList.style.display = "none";
+    languageList.style.display = "none";
   }
 }
 
 function closeDropdownHandler(event) {
-  if (event.target != countryUL || event.target != languageUL) {
-    countryUL.style.display = "none";
-    languageUL.style.display = "none";
+  if (event.target != countryList || event.target != languageList) {
+    countryList.style.display = "none";
+    languageList.style.display = "none";
   }
 }
 
@@ -493,7 +493,7 @@ function phoneChangeWidthHandler() {
 
 window.addEventListener("mouseup", closeDropdownHandler);
 window.addEventListener("keydown", keyDown);
-languageUL.addEventListener("click", closeLangList);
+languageList.addEventListener("click", closeLangList);
 langSelectInput.addEventListener("keydown", changeLangInputHandler);
 langSelectInput.addEventListener("click", openLangListHandler);
 countrySelectInput.addEventListener("keydown", changeCountryInputHandler);
