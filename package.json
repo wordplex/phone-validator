@@ -36,6 +36,8 @@
     "webpack-dev-server": "^4.4.0"
   },
   "dependencies": {
+    "autocompleter": "^6.1.2",
+    "jquery": "^3.6.0",
     "json-format-highlight": "^1.0.4"
   }
 }

@@ -1,10 +1,8 @@
 import formatHighlight from "json-format-highlight";
 import { debounce } from "./utils";
+import autocomplete from "autocompleter";
 
 const countrySelectInput = document.getElementById("country-selector-input");
-const langCountrySelectInput = document.getElementById(
-  "lang-country-selector-input"
-);
 const langSelectInput = document.getElementById("lang-selector-input");
 const resizeCheckBox = document.getElementById("resize-checkbox");
 const resizeCheckboxWidth = document.getElementById("resize-checkbox-width");
@@ -47,105 +45,135 @@ const imgType = document.getElementById("img-type");
 const langUrl = document.getElementById("lang-url");
 const langCountryCode = document.getElementById("lang-country-code");
 const langFlagSize = document.getElementById("lang-flag-size");
-const phoneUrl = document.getElementById("phone-url");
 const phoneCountryCode = document.getElementById("phone-country-code");
 const phoneFlagSize = document.getElementById("phone-flag-size");
 const langImgType = document.getElementById("lang-img-type");
 const phoneImgType = document.getElementById("phone-img-type");
-const langCountrySelector = document.getElementById("lang-country-selector");
-const countryList = document.getElementById("country-list");
-const languageList = document.getElementById("lang-list");
+const inputCloseMark = document.getElementById("input-close-mark");
+const langInputCloseMark = document.getElementById("lang-input-close-mark");
+const phoneInputCloseMark = document.getElementById("phone-input-close-mark");
 
-let fetchedCountries = [];
-let fetchedLanguage = [];
+let selectedLanguage = {};
+let selectedCountry = {};
 
 (function fetchingLanguages() {
   fetch(`http://geo.wordplex.io/v4/langs`)
     .then((res) => res.json())
     .then(({ items }) => {
-      fetchedLanguage = items;
-    })
-    .finally(() => {
-      fillLanguageList(fetchedLanguage);
+      autocomplete({
+        input: langSelectInput,
+        fetch: function (text, update) {
+          langSelectInput.value
+            ? (langInputCloseMark.style.display = "block")
+            : (langInputCloseMark.style.display = "none");
+
+          text = text.toLowerCase();
+          const suggestions = items
+            .filter((n) => n.name.toLowerCase().startsWith(text))
+            .map((item) => ({ label: item.name, value: item.iso_2 }));
+          update(suggestions);
+        },
+        showOnFocus: true,
+        minLength: 0,
+        onSelect: function (item) {
+          langInputCloseMark.style.display = "block";
+
+          langSelectInput.value = item.label;
+
+          changeLangFlagHandler(item.label, item.value);
+
+          selectedLanguage = item;
+        },
+      });
     });
 })();
-
-function fillLanguageList(list) {
-  languageList.innerHTML = "";
-
-  list.forEach((item) => {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = item.name;
-    listItem.setAttribute("data-value", item.iso_2);
-    listItem.addEventListener("click", changeLangFlagHandler);
-    listItem.tabIndex = 0;
-    languageList.appendChild(listItem);
-  });
-}
 
 (function fetchingCountries() {
   fetch(`http://geo.wordplex.io/v4/countries`)
     .then((res) => res.json())
     .then(({ items }) => {
-      fetchedCountries = items;
-    })
-    .finally(() => {
-      fillCountryList(fetchedCountries);
+      autocomplete({
+        input: countrySelectInput,
+        fetch: function (text, update) {
+          countrySelectInput.value
+            ? (inputCloseMark.style.display = "block")
+            : (inputCloseMark.style.display = "none");
+          text = text.toLowerCase();
+          var suggestions = items
+            .filter((n) => n.name.toLowerCase().startsWith(text))
+            .map((item) => ({ label: item.name, value: item.alpha2Code }));
+
+          update(suggestions);
+        },
+        showOnFocus: true,
+        minLength: 0,
+        onSelect: function (item) {
+          inputCloseMark.style.display = "block";
+
+          countrySelectInput.value = item.label;
+
+          changeIsoFlagHandler(item.value, item.label);
+
+          selectedCountry = item;
+        },
+      });
     });
 })();
 
-function fillCountryList(list) {
-  countryList.innerHTML = "";
-
-  list.forEach((item) => {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = item.name;
-    listItem.setAttribute("data-value", item.alpha2Code);
-    listItem.addEventListener("click", changeIsoFlagHandler);
-    listItem.tabIndex = 0;
-    countryList.appendChild(listItem);
-  });
-}
-
-function getSelectedCountry(selectedCountryCode) {
-  const selectedCountry = fetchedCountries.find(
-    (fetchedCountry) => fetchedCountry.alpha2Code === selectedCountryCode
-  );
-
-  return selectedCountry;
-}
-
-function getSelectedCountryByLang(selectedCountryCode) {
-  const selectedCountry = fetchedLanguage.find(
-    (fetchedCountry) => fetchedCountry.name === selectedCountryCode
-  );
-  console.log(selectedCountry);
-  return countryValue;
-}
-
-function generateHtmlImgTag(isoValue, countryName, widthValue, heightValue) {
+function generatePngHtmlImgTag(
+  isoValue,
+  countryName,
+  widthValue,
+  heightValue,
+  imgType = "png"
+) {
   const defaultWidthValue = 200;
 
-  const currentWidthValue = !!widthValue ? widthValue : defaultWidthValue;
+  let currentWidthValue = !!widthValue ? widthValue : defaultWidthValue;
 
   const currentHeightValue = heightValue ? `x${heightValue}` : "";
 
+  let src = `https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}-${currentWidthValue}${currentHeightValue}.${imgType}`;
+  let srcSet = `https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}-${currentWidthValue}${currentHeightValue}.${imgType} 2x`;
+
+  if (imgType === "svg") {
+    currentWidthValue = "auto";
+    src = `https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}.${imgType}`;
+    srcSet = `https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}.${imgType} 2x`;
+  }
+
   return `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}-${currentWidthValue}${currentHeightValue}.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}-${currentWidthValue}${currentHeightValue}.png 2x"
+      src="${src}"
+      srcset= "${srcSet}"
       width="${currentWidthValue}"   
       height="${!!heightValue ? heightValue : "auto"}"
       alt="${countryName} flag">`;
 }
 
-function langHtmlImgTag(widthValue, heightValue, langName, countryValue) {
+function langHtmlImgTag(
+  widthValue,
+  heightValue,
+  langName,
+  countryValue,
+  imgType = "png"
+) {
   const defaultWidthValue = 200;
-  const currentWidthValue = !!widthValue ? widthValue : defaultWidthValue;
+  let currentWidthValue = !!widthValue ? widthValue : defaultWidthValue;
   const currentHeightValue = !!heightValue ? `x${heightValue}` : "";
 
+  let src = `https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-${currentWidthValue}${currentHeightValue}.${imgType}`;
+
+  let srcSet = `https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-${currentWidthValue}${currentHeightValue}.${imgType} 2x`;
+
+  if (imgType === "svg") {
+    currentWidthValue = "auto";
+    src = `https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}.${imgType}`;
+    srcSet = `https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}.${imgType} 2x`;
+  }
+
   return `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-${currentWidthValue}${currentHeightValue}.png"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${countryValue}-${currentWidthValue}${currentHeightValue}.png 2x"
+      src= "${src}"
+      srcset= "${srcSet}"
       width="${currentWidthValue}"   
       height="${!!heightValue ? heightValue : "auto"}"
       alt="${langName} language">`;
@@ -164,61 +192,13 @@ function phoneHtmlImgTag(widthValue, heightValue, phoneNumber) {
       alt="">`;
 }
 
-function openCountryListHandler() {
-  countryList.style.display = "block";
-}
-
-function changeCountryInputHandler(event) {
-  openCountryListHandler();
-
-  const filteredCountries = fetchedCountries.filter((country) =>
-    country.name.toLowerCase().includes(event.target.value.toLowerCase())
-  );
-
-  fillCountryList(filteredCountries);
-}
-
-function closeLangList() {
-  languageList.style.display = "none";
-}
-
-function openLangListHandler() {
-  languageList.style.display = "block";
-}
-
-function changeLangInputHandler(event) {
-  openLangListHandler();
-
-  const filteredlanguages = fetchedLanguage.filter((language) =>
-    language.name.toLowerCase().includes(event.target.value.toLowerCase())
-  );
-
-  fillLanguageList(filteredlanguages);
-}
-
-function changeIsoFlagHandler(event) {
-  const isoValue = event.target.dataset.value;
-  const widthValue = resizeWidth.value;
-  const heightValue = resizeHeight.value;
-  const countryName = getSelectedCountry(isoValue)?.name;
-
-  countryList.style.display = "none";
-
-  fillCountryList(fetchedCountries);
-
-  countrySelectInput.value = countryName;
-
+function changeIsoFlagHandler(isoValue, countryName) {
   const imageURL = `https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}/fr-75x50.png`;
   const highlightOptions = {
     stringColor: "#005CCD",
   };
 
-  const imgCode = generateHtmlImgTag(
-    isoValue,
-    countryName,
-    widthValue,
-    heightValue
-  );
+  const imgCode = generatePngHtmlImgTag(isoValue, countryName);
 
   const coloredJsonData = formatHighlight(imgCode, highlightOptions);
 
@@ -228,11 +208,10 @@ function changeIsoFlagHandler(event) {
   flagImg.src = imageURL;
 }
 
-function changeLangFlagHandler(event) {
-  const langName = event.target.innerHTML;
+function changeLangFlagHandler(langName, countryValue) {
   const widthValue = langResizeWidth.value;
   const heightValue = langResizeHeight.value;
-  const countryValue = event.target.dataset.value;
+
   const imageURL = `https://wordplex.cloudimg.io/v7w/flag/lang/${countryValue}-75x50.png`;
   const highlightOptions = {
     stringColor: "#005CCD",
@@ -244,8 +223,6 @@ function changeLangFlagHandler(event) {
     langName,
     countryValue
   );
-
-  langSelectInput.value = langName;
 
   const coloredJsonData = formatHighlight(imgCode, highlightOptions);
 
@@ -285,14 +262,16 @@ function changePngHandler() {
 }
 
 function changeSvgHandler() {
-  const isoValue = getSelectedCountry().alpha2Code;
-  const countryName = getSelectedCountry().name;
-  const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}-200.svg"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/country/${isoValue}-400.svg 2x"
-      width="auto"   
-      height="auto"
-      alt="${countryName} flag">`;
+  const countryValue = selectedCountry.value;
+  const countryName = selectedCountry.label;
+
+  const imgCode = generatePngHtmlImgTag(
+    countryValue,
+    countryName,
+    null,
+    null,
+    "svg"
+  );
 
   const highlightOptions = {
     stringColor: "#005CCD",
@@ -306,10 +285,10 @@ function changeSvgHandler() {
   resizeCheckBox.style.display = "none";
   resizeCheckboxWidth.style.display = "none";
   resizeCheckboxHeight.style.display = "none";
-  countryCode.innerHTML = `${isoValue}`;
-  flagSize.innerHTML = `400x240`;
+  countryCode.innerHTML = `${countryValue}`;
+  flagSize.innerHTML = `200`;
   prettyData.innerHTML = coloredJsonData;
-  countryCode.innerHTML = `${isoValue}`;
+  countryCode.innerHTML = `${countryValue}`;
 }
 
 function changeLangPngHandler() {
@@ -324,14 +303,10 @@ function changeLangPngHandler() {
 }
 
 function changeLangSvgHandler() {
-  const langName = langCountrySelectInput.value;
-  const countryValue = getSelectedCountryByLang().iso_2;
-  const imgCode = `&lt; img 
-      src="https://wordplex.cloudimg.io/v7w/flag/lang/${countryValue}-200.svg"
-      srcset= "https://wordplex.cloudimg.io/v7w/flag/lang/${countryValue}-400.svg 2x"
-      width="auto"   
-      height="auto"
-      alt="${langName} flag">`;
+  const langName = selectedLanguage.label;
+  const langValue = selectedLanguage.value;
+
+  const imgCode = langHtmlImgTag(null, null, langName, langValue, "svg");
 
   const highlightOptions = {
     stringColor: "#005CCD",
@@ -340,14 +315,14 @@ function changeLangSvgHandler() {
   const coloredJsonData = formatHighlight(imgCode, highlightOptions);
 
   langPrettyData.innerHTML = coloredJsonData;
-  langCountryCode.innerHTML = `${countryValue}`;
+  langCountryCode.innerHTML = `${langValue}`;
   langImgType.innerHTML = `svg`;
   svgLangBtn.style.backgroundColor = "#DFEEFF";
   pngLangBtn.style.backgroundColor = "#FFFF";
   langCheckbox.style.display = "none";
   langCheckboxWidth.style.display = "none";
   langCheckboxHeight.style.display = "none";
-  langCountryCode.innerHTML = `${countryValue}`;
+  langCountryCode.innerHTML = `${langValue}`;
   langFlagSize.innerHTML = `400x240`;
 }
 
@@ -437,28 +412,28 @@ window.onclick = function (event) {
   }
 };
 
-function keyDown(event) {
-  if (event.keyCode === 27) {
-    countryList.style.display = "none";
-    languageList.style.display = "none";
-  }
-}
-
-function closeDropdownHandler(event) {
-  if (event.target != countryList || event.target != languageList) {
-    countryList.style.display = "none";
-    languageList.style.display = "none";
-  }
-}
-
 function changeWidthHandler() {
   const widthValue = resizeWidth.value;
   const heightValue = resizeHeight.value;
   const defaultWidthValue = 200;
 
   const currentWidthValue = !!widthValue ? widthValue : defaultWidthValue;
-
   const currentHeightValue = heightValue ? `x${heightValue}` : "";
+  const highlightOptions = { stringColor: "#005CCD" };
+
+  const countryValue = selectedCountry.value;
+  const countryName = selectedCountry.label;
+
+  const imgCode = generatePngHtmlImgTag(
+    countryValue,
+    countryName,
+    widthValue,
+    heightValue
+  );
+
+  const coloredJsonData = formatHighlight(imgCode, highlightOptions);
+
+  prettyData.innerHTML = coloredJsonData;
 
   flagSize.innerHTML = `${currentWidthValue}${currentHeightValue}`;
 }
@@ -469,10 +444,17 @@ function langChangeWidthHandler() {
   const defaultWidthValue = 200;
 
   const currentWidthValue = !!widthValue ? widthValue : defaultWidthValue;
+  const currentHeightValue = !!heightValue ? `x${heightValue}` : "";
 
-  const currentHeightValue = heightValue ? `x${heightValue}` : "";
+  const langName = selectedLanguage.label;
+  const langValue = selectedLanguage.value;
 
-  changeLangFlagHandler();
+  const highlightOptions = { stringColor: "#005CCD" };
+
+  const imgCode = langHtmlImgTag(widthValue, heightValue, langName, langValue);
+  const coloredJsonData = formatHighlight(imgCode, highlightOptions);
+
+  langPrettyData.innerHTML = coloredJsonData;
 
   langFlagSize.innerHTML = `${currentWidthValue}${currentHeightValue}`;
 }
@@ -491,13 +473,25 @@ function phoneChangeWidthHandler() {
   phoneFlagSize.innerHTML = `${currentWidthValue}${currentHeightValue}`;
 }
 
-window.addEventListener("mouseup", closeDropdownHandler);
-window.addEventListener("keydown", keyDown);
-languageList.addEventListener("click", closeLangList);
-langSelectInput.addEventListener("keydown", changeLangInputHandler);
-langSelectInput.addEventListener("click", openLangListHandler);
-countrySelectInput.addEventListener("keydown", changeCountryInputHandler);
-countrySelectInput.addEventListener("click", openCountryListHandler);
+function clearInput() {
+  countrySelectInput.value = "";
+  inputCloseMark.style.display = "none";
+}
+
+function clearLangInput() {
+  langSelectInput.value = "";
+  langInputCloseMark.style.display = "none";
+}
+
+function clearPhoneInput() {
+  phoneInput.value = "";
+  phoneInputCloseMark.style.display = "none";
+}
+
+function openPhoneXMarkHandler() {
+  phoneInputCloseMark.style.display = "block";
+}
+
 phoneInput.addEventListener("keydown", debounce(changePhoneFlagHandler, 800));
 pngBtn.addEventListener("click", changePngHandler);
 svgBtn.addEventListener("click", debounce(changeSvgHandler, 350));
@@ -512,11 +506,12 @@ langResizeCheck.addEventListener("click", langResizeChecked);
 phoneResizeCheck.addEventListener("click", phoneResizeChecked);
 langResizeWidth.addEventListener(
   "keydown",
-  debounce(langChangeWidthHandler, 350)
+  debounce((event) => langChangeWidthHandler(event, "width")),
+  100
 );
 langResizeHeight.addEventListener(
   "keydown",
-  debounce(langChangeWidthHandler, 350)
+  debounce((event) => langChangeWidthHandler(event, "height"), 100)
 );
 phoneResizeWidth.addEventListener(
   "keydown",
@@ -528,3 +523,7 @@ phoneResizeHeight.addEventListener(
 );
 dropBtn.addEventListener("click", dropdownFunction);
 AssetsArrow.addEventListener("click", dropdownFunction);
+inputCloseMark.addEventListener("click", clearInput);
+langInputCloseMark.addEventListener("click", clearLangInput);
+phoneInputCloseMark.addEventListener("click", clearPhoneInput);
+phoneInput.addEventListener("click", openPhoneXMarkHandler);
