@@ -227,31 +227,6 @@ body {
   opacity: 0;
 }
 
-.autocomplete {
-  z-index: 999;
-  background-color: hsl(211deg 100% 97%);
-  max-height: 300px !important;
-  overflow-y: auto;
-  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
-    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
-  border-radius: 4px;
-}
-
-.autocomplete div:hover {
-  border: 0 solid rgb(141, 140, 140);
-  background-color: rgb(150, 150, 150);
-  border-radius: 2px;
-}
-
-.autocomplete div {
-  padding: 10px 0 10px 10px;
-}
-
-.selected {
-  border: 0 solid rgb(141, 140, 140);
-  background-color: rgb(150, 150, 150);
-}
-
 .validation-wrapper .data-validation .country-selector {
   width: 362px;
   height: 370px;
@@ -677,6 +652,35 @@ body {
 
 .footer .footer-links-wrapper .footer-copywrite {
   text-align: right;
+}
+
+.autocomplete {
+  z-index: 999;
+  background-color: hsl(211deg 100% 97%);
+  max-height: 300px !important;
+  overflow-y: auto;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 36px;
+  font-family: "Rubik";
+  color: rgba(3, 50, 96, 1);
+}
+
+.autocomplete div {
+  padding: 10px 0 10px 10px;
+}
+
+.autocomplete div:hover {
+  border: 0 solid rgb(141, 140, 140);
+  background-color: rgb(150, 150, 150);
+  border-radius: 2px;
+}
+
+.selected {
+  border: 0 solid rgb(141, 140, 140);
+  background-color: rgb(150, 150, 150);
 }
 
 @media (max-width: 1550px) {
