@@ -135,6 +135,10 @@ body {
   z-index: 99;
 }
 
+.validation-wrapper .description {
+  z-index: 99;
+}
+
 .validation-wrapper .description h1 {
   font-size: 50px;
   line-height: 60px;
@@ -191,15 +195,17 @@ body {
 
 .validation-wrapper .data-validation .input-group img {
   position: absolute;
-  bottom: 14px;
-  right: 23px;
+  bottom: 18px;
+  right: 29px;
   font-size: 10px;
   display: none;
+  width: 14px;
+  height: 14px;
 }
 
 .validation-wrapper .data-validation .input-group img:hover {
   border-radius: 1px;
-  background-color: rgb(175, 174, 174);
+  background-color: rgb(233, 230, 230);
   border-radius: 21px;
   cursor: pointer;
 }
@@ -736,6 +742,12 @@ body {
     width: 580px;
   }
 
+  .validation-wrapper .data-validation .input-group img {
+    position: absolute;
+    bottom: 18px;
+    right: 97px;
+  }
+
   .validation-wrapper .data-validation .country-input {
     width: 580px;
   }
@@ -800,6 +812,348 @@ body {
   }
 }
 
+@media (max-width: 656px) {
+  .validation-wrapper .description {
+    width: 540px;
+  }
+
+  .validation-wrapper .description p {
+    width: 530px;
+  }
+
+  .validation-wrapper .data-validation p {
+    width: 540px;
+  }
+
+  .validation-wrapper .data-validation .input-group {
+    width: 515px;
+  }
+
+  .validation-wrapper .data-validation .input-group img {
+    position: absolute;
+    bottom: 18px;
+    right: 39px;
+  }
+
+  .validation-wrapper .data-validation .country-input {
+    width: 515px;
+  }
+
+  .validation-wrapper .data-validation .resize {
+    width: 354px;
+    max-height: 25px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .validation-wrapper .data-validation .resize-height {
+    margin-left: 23px;
+  }
+
+  .validation-wrapper .data-validation .validation-output {
+    width: 256.85px;
+    padding-left: 2px;
+    overflow-x: auto;
+  }
+
+  .validation-wrapper .data-validation .validation-output p {
+    width: 0;
+    display: flex;
+  }
+
+  .validation-wrapper .data-validation .validation-output::-webkit-scrollbar {
+    display: none;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint {
+    width: 344px;
+  }
+
+  .validation-wrapper .validation-output-hint .iso-mark {
+    position: absolute;
+    border-left: 1px solid hsl(212deg 88% 19%);
+    width: 1px;
+    height: 9px;
+    bottom: 29px;
+    left: 238px;
+  }
+
+  .validation-wrapper .validation-output-hint .size-mark {
+    position: absolute;
+    border-left: 1px solid hsl(212deg 88% 19%);
+    width: 1px;
+    height: 9px;
+    bottom: 29px;
+    left: 320px;
+  }
+
+  .validation-wrapper .data-validation .preview-text {
+    margin-top: 189px;
+  }
+
+  .validation-wrapper .data-validation .png-svg-btn button {
+    margin-right: 10px;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint p:nth-child(2) {
+    margin-left: 18px;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint p:nth-child(3) {
+    margin-left: 21px;
+  }
+
+  .validation-wrapper .data-validation .validation-output {
+    width: 419.85px;
+    padding-left: 2px;
+    overflow-x: auto;
+  }
+
+  .validation-wrapper .data-validation .validation-output p {
+    width: 0;
+    display: flex;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint {
+    width: 485px;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint p:nth-child(2) {
+    margin-left: 158px;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint p:nth-child(3) {
+    margin-left: 24px;
+  }
+
+  .validation-wrapper .validation-output-hint .iso-mark {
+    left: 413px;
+  }
+
+  .validation-wrapper .validation-output-hint .size-mark {
+    left: 461px;
+  }
+
+  .validation-wrapper .data-validation .validation-out-with-img {
+    width: 511px;
+  }
+
+  .validation-wrapper .data-validation .validation-output::-webkit-scrollbar {
+    display: none;
+  }
+
+  .validation-wrapper .data-validation .prettyprint {
+    width: 513px;
+    overflow: auto;
+    height: 266px;
+  }
+
+  .validation-wrapper .data-validation .prettyprint::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  .validation-wrapper .data-validation .prettyprint::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 110px;
+  }
+
+  .validation-wrapper .data-validation .prettyprint::-webkit-scrollbar-thumb {
+    background-color: #dfeeff;
+  }
+
+  .validation-wrapper
+    .data-validation
+    .prettyprint::-webkit-scrollbar-thumb:hover {
+    background-color: #7db7fa;
+  }
+
+  .prettyprint span {
+    word-wrap: unset !important;
+    white-space: unset !important;
+  }
+
+  .validation-wrapper .data-validation .validation-input {
+    width: 513px;
+  }
+
+  .footer .footer-links-wrapper .links-wrapper {
+    margin-left: 43px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content-wrapper .content {
+    width: 377px;
+  }
+
+  .validation-wrapper .description {
+    width: 447px;
+  }
+
+  .validation-wrapper .description p {
+    width: 452px;
+  }
+
+  .validation-wrapper .data-validation p {
+    width: 427px;
+  }
+
+  .validation-wrapper .data-validation .input-group {
+    width: 480px;
+  }
+
+  .validation-wrapper .data-validation .input-group img {
+    position: absolute;
+    bottom: 18px;
+    right: 39px;
+  }
+
+  .validation-wrapper .data-validation .country-input {
+    width: 480px;
+  }
+
+  .validation-wrapper .data-validation .resize {
+    width: 354px;
+    max-height: 25px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .validation-wrapper .data-validation .resize-height {
+    margin-left: 23px;
+  }
+
+  .validation-wrapper .data-validation .validation-output {
+    width: 256.85px;
+    padding-left: 2px;
+    overflow-x: auto;
+  }
+
+  .validation-wrapper .data-validation .validation-output p {
+    width: 0;
+    display: flex;
+  }
+
+  .validation-wrapper .data-validation .validation-output::-webkit-scrollbar {
+    display: none;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint {
+    width: 344px;
+  }
+
+  .validation-wrapper .validation-output-hint .iso-mark {
+    position: absolute;
+    border-left: 1px solid hsl(212deg 88% 19%);
+    width: 1px;
+    height: 9px;
+    bottom: 29px;
+    left: 238px;
+  }
+
+  .validation-wrapper .validation-output-hint .size-mark {
+    position: absolute;
+    border-left: 1px solid hsl(212deg 88% 19%);
+    width: 1px;
+    height: 9px;
+    bottom: 29px;
+    left: 320px;
+  }
+
+  .validation-wrapper .data-validation .preview-text {
+    margin-top: 189px;
+  }
+
+  .validation-wrapper .data-validation .png-svg-btn button {
+    margin-right: 10px;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint p:nth-child(2) {
+    margin-left: 18px;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint p:nth-child(3) {
+    margin-left: 21px;
+  }
+
+  .validation-wrapper .data-validation .validation-output {
+    width: 419.85px;
+    padding-left: 2px;
+    overflow-x: auto;
+  }
+
+  .validation-wrapper .data-validation .validation-output p {
+    width: 0;
+    display: flex;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint {
+    width: 485px;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint p:nth-child(2) {
+    margin-left: 158px;
+  }
+
+  .validation-wrapper .data-validation .validation-output-hint p:nth-child(3) {
+    margin-left: 24px;
+  }
+
+  .validation-wrapper .validation-output-hint .iso-mark {
+    left: 413px;
+  }
+
+  .validation-wrapper .validation-output-hint .size-mark {
+    left: 461px;
+  }
+
+  .validation-wrapper .data-validation .validation-out-with-img {
+    width: 478px;
+  }
+
+  .validation-wrapper .data-validation .validation-output::-webkit-scrollbar {
+    display: none;
+  }
+
+  .validation-wrapper .data-validation .prettyprint {
+    width: 513px;
+    overflow: auto;
+    height: 266px;
+  }
+
+  .validation-wrapper .data-validation .prettyprint::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  .validation-wrapper .data-validation .prettyprint::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 110px;
+  }
+
+  .validation-wrapper .data-validation .prettyprint::-webkit-scrollbar-thumb {
+    background-color: #dfeeff;
+  }
+
+  .validation-wrapper
+    .data-validation
+    .prettyprint::-webkit-scrollbar-thumb:hover {
+    background-color: #7db7fa;
+  }
+
+  .prettyprint span {
+    word-wrap: unset !important;
+    white-space: unset !important;
+  }
+
+  .validation-wrapper .data-validation .validation-input {
+    width: 513px;
+  }
+
+  .footer .footer-links-wrapper .links-wrapper {
+    margin-left: 43px;
+  }
+}
+
 @media (max-width: 510px) {
   .content-wrapper .header .navbar {
     margin-left: 21px;
@@ -830,6 +1184,7 @@ body {
 
   .validation-wrapper .description {
     z-index: 99;
+    width: 392px;
   }
 
   .validation-wrapper .description h1 {
