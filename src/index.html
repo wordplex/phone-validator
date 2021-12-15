@@ -58,17 +58,28 @@
         </section>
 
         <section class="validation-wrapper">
-          <select id="select" class="validation-input">
-            <option value="Any country">Any country</option>
-          </select>
+          <div class="country-input">
+            <input
+              id="country-input"
+              class="validation-input"
+              type="text"
+              autocomplete="new-password"
+            />
+            <img id="input-close-mark" src="./assets/xmark.png" alt="xmark" />
+          </div>
           <div class="input-group-with-submit">
             <input
               class="validation-input"
               id="input"
               type="tel"
               placeholder="phone number"
+              title="must contain valide number"
+              required
             />
-            <button class="submit-btn" id="button">validate</button>
+            <div class="warning-message" id="warning-message">
+              <p>Please, enter valid number</p>
+            </div>
+            <button class="submit-btn" id="button" disabled>validate</button>
           </div>
           <div class="results">
             <div class="head-validation-box">
@@ -231,28 +242,28 @@
             <div class="code-block">
               {<br />
               &nbsp;&nbsp;&nbsp;&nbsp;"is_number_possible":
-              <span class="colored-code">"true",</span><br />
+              <span class="colored-code">true,</span><br />
               &nbsp;&nbsp;&nbsp;&nbsp;"is_valid_number":
               <span class="colored-code">true,</span><br />
               &nbsp;&nbsp;&nbsp;&nbsp;"type":
               <span class="colored-code">"mobile"</span><br />
               &nbsp;&nbsp;&nbsp;&nbsp;"number_parts":<span class="colored-code"
-                >&#123;</span
+                >&nbsp;&#123;</span
               ><br />
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"country_code":<span
                 class="colored-code"
-                >65</span
+                >&nbsp;65</span
               ><br />
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"e164":<span
                 class="colored-code"
-                >t</span
+                >&nbsp;t</span
               ><br />
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"nat":<span
                 class="colored-code"
-                >"8777 6530,"</span
+                >&nbsp;"8777 6530,"</span
               ><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"intl":"+65 8777
-              6530"<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"intl":&nbsp;"+65
+              8777 6530"<br />
               },
             </div>
           </div>

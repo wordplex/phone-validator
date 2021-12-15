@@ -8,6 +8,10 @@ body {
   font-family: "Rubik";
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .content-wrapper {
   background: url(../assets/worldbackground.jpg);
   background-repeat: no-repeat;
@@ -321,6 +325,8 @@ body {
 
 .validation-wrapper .resize .resize-check {
   font-family: "Roboto";
+  display: flex;
+  justify-content: space-between;
   width: 115px;
   font-size: 12px;
   line-height: 14px;
@@ -846,8 +852,13 @@ body {
     flex-direction: column;
   }
 
+  .validation-wrapper .data-validation .resize-width,
   .validation-wrapper .data-validation .resize-height {
-    margin-left: 23px;
+    margin-left: 39px;
+  }
+
+  .validation-wrapper .data-validation .resize-height {
+    margin-left: 41px;
   }
 
   .validation-wrapper .data-validation .validation-output {
@@ -1019,8 +1030,13 @@ body {
     flex-direction: column;
   }
 
+  .validation-wrapper .data-validation .resize-width,
   .validation-wrapper .data-validation .resize-height {
-    margin-left: 23px;
+    margin-left: 39px;
+  }
+
+  .validation-wrapper .data-validation .resize-height {
+    margin-left: 41px;
   }
 
   .validation-wrapper .data-validation .validation-output {
@@ -1221,10 +1237,6 @@ body {
     width: 344px;
   }
 
-  .validation-wrapper .resize .resize-check {
-    width: 153px;
-  }
-
   .validation-wrapper .data-validation .resize {
     width: 354px;
     max-height: 25px;
@@ -1233,7 +1245,7 @@ body {
   }
 
   .validation-wrapper .data-validation .resize-height {
-    margin-left: 23px;
+    margin-left: 44px;
   }
 
   .validation-wrapper .data-validation .validation-output {

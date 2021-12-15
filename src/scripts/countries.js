@@ -79,6 +79,7 @@ let isSelectedLanguage = false;
         },
         showOnFocus: true,
         minLength: 0,
+        emptyMsg: "No options",
         onSelect: function (item) {
           langInputCloseMark.style.display = "block";
           isSelectedLanguage = true;
@@ -115,6 +116,7 @@ let isSelectedLanguage = false;
         },
         showOnFocus: true,
         minLength: 0,
+        emptyMsg: "No options",
         onSelect: function (item) {
           inputCloseMark.style.display = "block";
           isSelectedCountry = true;

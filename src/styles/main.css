@@ -17,6 +17,7 @@ html {
   background-size: cover;
   padding-bottom: 60px;
   height: 750px;
+  max-width: 1921px;
 }
 
 .main-wrapper .header {
@@ -180,9 +181,40 @@ html {
   z-index: 99;
 }
 
+.main-wrapper .validation-wrapper .country-input {
+  position: relative;
+}
+
+.main-wrapper .validation-wrapper .country-input .validation-input {
+  background-image: url(../assets/ic-arrow-tick.png);
+  background-position: calc(100% - 11px) calc(0.9em + 5px), 100% 0;
+  background-size: 10px;
+  background-repeat: no-repeat;
+  border: 1px solid #82be18;
+  box-shadow: 4px 4px 15px 0px rgba(2, 79, 255, 0.3);
+}
+
+.main-wrapper .validation-wrapper .country-input img {
+  position: absolute;
+  bottom: 18px;
+  right: 35px;
+  font-size: 10px;
+  display: none;
+  width: 14px;
+  height: 14px;
+}
+
+.main-wrapper .validation-wrapper .country-input img:hover {
+  border-radius: 1px;
+  background-color: rgb(233, 230, 230);
+  border-radius: 21px;
+  cursor: pointer;
+}
+
 .main-wrapper .validation-wrapper .validation-input {
   display: flex;
   font-size: 18px;
+  width: 100%;
   line-height: 36px;
   flex-direction: row;
   align-items: center;
@@ -191,7 +223,7 @@ html {
   background: #ffffff;
   box-shadow: 0px 4px 15px rgba(2, 79, 255, 0.3);
   color: #033260;
-  border-radius: 4px 0 0px 4px;
+  border-radius: 4px;
   margin: 12px 0px;
   border: 0;
 }
@@ -200,6 +232,7 @@ html {
   display: flex;
   align-items: center;
   width: 100%;
+  position: relative;
 }
 
 .main-wrapper .input-group-with-submit .validation-input {
@@ -207,20 +240,32 @@ html {
   font-family: "Rubik";
 }
 
-.main-wrapper .validation-wrapper select.validation-input {
+.main-wrapper .input-group-with-submit .warning-message {
+  color: white;
+  position: absolute;
+  top: 65px;
+  width: 198px;
+  height: 25px;
+  z-index: 99;
+  background: #ff5722;
+  box-shadow: 0px 4px 15px rgb(2 79 255 / 30%);
   border-radius: 4px;
-  font-size: 18px;
-  font-weight: 400;
-  font-family: "Rubik";
-  line-height: 36px;
-  border: 2px solid #82be18;
-  width: 100%;
-  background-image: url(../assets/ic-arrow-tick.png);
-  background-position: calc(100% - 20px) calc(0.9em + 5px), 100% 0;
-  background-size: 10px;
-  background-repeat: no-repeat;
-  -webkit-appearance: none;
-  text-indent: 1px;
+  font-size: 14px;
+  line-height: 11px;
+  padding: 8px;
+  display: none;
+}
+
+.main-wrapper .input-group-with-submit .warning-message::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #ff5722;
+  position: absolute;
+  top: -10px;
+  right: 159px;
 }
 
 .main-wrapper .validation-wrapper .submit-btn {
@@ -230,17 +275,13 @@ html {
   font-size: 18px;
   font-family: "Rubik";
   line-height: 36px;
-  background: #82be18;
-  cursor: pointer;
+  background-color: rgba(127, 154, 190, 1);
+  cursor: unset;
   border-radius: 0px 4px 4px 0px;
   border: 0;
   color: #fff;
   transition-duration: 0.2s;
   transition-delay: 0.2s;
-}
-
-.main-wrapper .validation-wrapper .submit-btn:hover {
-  background: #73a914;
 }
 
 .main-wrapper .results .head-validation-box {
@@ -333,6 +374,7 @@ html {
   background-color: unset;
   border: 0;
   border-bottom: 1px solid #002c60;
+  transition: all 400ms ease-in-out;
 }
 
 .main-wrapper .formatted-results span.check-mark {
@@ -452,6 +494,7 @@ html {
 
 .properties-section .properties {
   padding: 82px 185px;
+  max-width: 1520px;
 }
 
 .properties-section .properties h1 {
@@ -523,6 +566,7 @@ html {
   padding: 63px 181px;
   background: linear-gradient(180deg, #002046 0%, #003677 100%);
   color: #fff;
+  max-width: 1903px;
 }
 
 .documentation-wrapper hr.line-break {
@@ -569,7 +613,7 @@ html {
   width: 50px;
   height: 40px;
   left: -28px;
-  top: 0;
+  top: -4px;
   position: absolute;
   border-left: 7px solid #0359c0;
   padding-right: 10px;
@@ -609,7 +653,7 @@ html {
   width: 50px;
   height: 40px;
   left: -28px;
-  top: 0;
+  top: -4px;
   position: absolute;
   border-left: 7px solid hsl(213deg 97% 38%);
   padding-right: 10px;
@@ -674,7 +718,7 @@ html {
   width: 50px;
   height: 40px;
   left: -28px;
-  top: 0;
+  top: -3px;
   position: absolute;
   border-left: 7px solid hsl(213deg 97% 38%);
   padding-right: 10px;
@@ -726,8 +770,43 @@ html {
   line-height: 21px;
 }
 
+.autocomplete {
+  z-index: 999;
+  background-color: hsl(211deg 100% 97%);
+  max-height: 300px !important;
+  overflow-y: auto;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 36px;
+  font-family: "Rubik";
+  color: rgba(3, 50, 96, 1);
+}
+
+.autocomplete div {
+  padding: 10px 0 10px 10px;
+}
+
+.autocomplete div:hover {
+  border: 0 solid rgb(141, 140, 140);
+  background-color: rgb(150, 150, 150);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.selected {
+  border: 0 solid rgb(141, 140, 140);
+  background-color: rgb(150, 150, 150);
+}
+
+.empty:hover {
+  background-color: unset !important;
+}
+
 .footer {
   display: flex;
+  max-width: 1903px;
   justify-content: space-between;
   background-color: #002046;
   color: #fff;
@@ -766,12 +845,37 @@ html {
     padding: 0px 50px;
   }
 
+  .main-wrapper .main .content::before {
+    content: "";
+    width: 50px;
+    height: 131px;
+    left: -27px;
+    top: 0;
+    position: absolute;
+    border-left: 7px solid hsl(213deg 97% 38%);
+    padding-right: 4px;
+  }
+
   .main-wrapper .validation-wrapper .formatted-output {
     width: 45%;
   }
 
   .documentation-wrapper .documentation-item .code-block {
     width: 39%;
+  }
+
+  .documentation-wrapper .params .param-desc {
+    width: 45%;
+    line-height: 21px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .documentation-wrapper .status-params .param-type {
+    width: 15%;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 36px;
   }
 }
 
