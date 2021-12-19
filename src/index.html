@@ -59,19 +59,21 @@
 
         <section class="validation-wrapper">
           <div class="country-input">
+            <i class="fas fa-sort-down arrow-icon" id="arrow-icon"></i>
             <input
               id="country-input"
               class="validation-input"
               type="text"
+              placeholder="Any country"
               autocomplete="new-password"
             />
-            <img id="input-close-mark" src="./assets/xmark.png" alt="xmark" />
+            <i id="input-close-mark" class="fas fa-times close-icon"></i>
           </div>
           <div class="input-group-with-submit">
             <input
               class="validation-input"
               id="input"
-              type="tel"
+              type="number"
               placeholder="phone number"
               title="must contain valide number"
               required

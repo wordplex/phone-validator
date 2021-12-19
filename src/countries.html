@@ -14,7 +14,15 @@
   <body>
     <section class="content-wrapper">
       <header class="header">
+        <div id="backdrop" class="backdrop"></div>
         <img class="logo" src="./assets/logo.png" alt="wordplex logo" />
+        <button class="burger-btn" id="burger-btn" aria-label="Right Align">
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="mobile-navbar" id="mobile-navbar">
+          <a class="nav-link" href="./index.html"> Phone validation</a>
+          <a class="nav-link" href="./countries.html"> Country flags</a>
+        </div>
         <nav class="navbar">
           <a class="nav-link" href="\">Documentation</a>
           <div class="drop-down">
@@ -66,13 +74,15 @@
         </p>
         <p class="iso-text">* Supports ISO 2 and ISO 3 (eg. US / USA)</p>
         <div class="input-group">
+          <i class="fas fa-sort-down arrow-icon" id="iso-arrow-icon"></i>
           <input
             id="country-selector-input"
             class="country-input"
             type="text"
             autocomplete="new-password"
+            value="France"
           />
-          <img id="input-close-mark" src="./assets/xmark.png" alt="xmark" />
+          <i id="input-close-mark" class="fas fa-times close-icon"></i>
         </div>
         <div class="resize" id="resize">
           <div class="png-svg-btn">
@@ -91,20 +101,22 @@
             <label for="width">width</label>
             <input
               class="width-input"
-              type="text"
+              type="number"
               id="width"
               disabled
               placeholder="auto"
+              autocomplete="off"
             />
           </div>
           <div class="resize-height" id="resize-checkbox-height">
             <label for="height">height</label>
             <input
               class="width-input"
-              type="text"
+              type="number"
               id="height"
               disabled
               placeholder="auto"
+              autocomplete="off"
             />
           </div>
         </div>
@@ -132,7 +144,12 @@
           <div class="size-mark"></div>
         </div>
         <div id="img-output">
-          <pre id="pretty-data" class="prettyprint"></pre>
+          <pre id="pretty-data" class="prettyprint">
+            <div class="img-out-link">
+                          <p><span class="pretty-blue-color">&lt;img</span> <br> <span class="pretty-blue-color">src=</span><span class="pretty-cyan-color">"https://wordplex.cloudimg.io/v7w/flag/country/FR-200.png"</span><br> <span class="pretty-blue-color">srcset=</span><span class="pretty-cyan-color">"https://wordplex.cloudimg.io/v7w/flag/country/FR-200.png 2x"</span><br> <span class="pretty-blue-color">width=</span><span class="pretty-cyan-color">"200"</span><br> <span class="pretty-blue-color">height=</span><span class="pretty-cyan-color">"auto"</span><br> <span class="pretty-blue-color">alt=</span><span class="pretty-cyan-color">"France flag"></span></p>
+
+            </div>
+          </pre>
         </div>
       </div>
 
@@ -145,17 +162,15 @@
           english versions of code.
         </p>
         <div class="input-group">
+          <i class="fas fa-sort-down arrow-icon" id="lang-arrow-icon"></i>
           <input
             id="lang-selector-input"
             class="country-input"
             type="text"
+            value="French"
             autocomplete="new-password"
           />
-          <img
-            id="lang-input-close-mark"
-            src="./assets/xmark.png"
-            alt="xmark"
-          />
+          <i id="lang-input-close-mark" class="fas fa-times close-icon"></i>
         </div>
         <div class="resize" id="lang-resize" disabled>
           <div>
@@ -172,11 +187,25 @@
           </div>
           <div class="resize-width" id="lang-resize-width">
             <label for="width">width</label>
-            <input class="width-input" type="text" id="lang-width" disabled />
+            <input
+              class="width-input"
+              type="number"
+              id="lang-width"
+              disabled
+              placeholder="auto"
+              autocomplete="off"
+            />
           </div>
           <div class="resize-height" id="lang-resize-height">
             <label for="height">height</label>
-            <input class="width-input" type="text" id="lang-height" disabled />
+            <input
+              class="width-input"
+              type="number"
+              id="lang-height"
+              disabled
+              placeholder="auto"
+              autocomplete="off"
+            />
           </div>
         </div>
         <div class="preview-text">Preview</div>
@@ -204,7 +233,12 @@
           <div class="size-mark"></div>
         </div>
         <div class="img-output">
-          <pre id="lang-pretty-data" class="prettyprint"></pre>
+          <pre id="lang-pretty-data" class="prettyprint">
+            <div class="img-out-link">
+                          <p><span class="pretty-blue-color">&lt;img</span> <br> <span class="pretty-blue-color">src=</span><span class="pretty-cyan-color">"https://wordplex.cloudimg.io/v7w/flag/lang/fr-200.png"</span><br> <span class="pretty-blue-color">srcset=</span><span class="pretty-cyan-color">"https://wordplex.cloudimg.io/v7w/flag/lang/fr-200.png 2x"</span><br> <span class="pretty-blue-color">width=</span><span class="pretty-cyan-color">"200"</span><br> <span class="pretty-blue-color">height=</span><span class="pretty-cyan-color">"auto"</span><br> <span class="pretty-blue-color">alt=</span><span class="pretty-cyan-color">"French language"></span></p>
+
+            </div>
+          </pre>
         </div>
       </div>
 
@@ -216,12 +250,9 @@
         </p>
         <p class="iso-text">* No need to include “+” in the prefix code.</p>
         <div class="input-group">
+          <i class="fas fa-sort-down arrow-icon"></i>
           <input class="validation-input" id="phone-input" value="33" />
-          <img
-            id="phone-input-close-mark"
-            src="./assets/xmark.png"
-            alt="xmark"
-          />
+          <i id="phone-input-close-mark" class="fas fa-times close-icon"></i>
         </div>
         <div class="resize" id="phone-resize">
           <div>
@@ -238,11 +269,25 @@
           </div>
           <div class="resize-width" id="phone-width-checkbox">
             <label for="width">width</label>
-            <input class="width-input" type="text" id="phone-width" disabled />
+            <input
+              class="width-input"
+              type="number"
+              id="phone-width"
+              disabled
+              placeholder="auto"
+              autocomplete="off"
+            />
           </div>
           <div class="resize-height" id="phone-height-checkbox">
             <label for="height">height</label>
-            <input class="width-input" type="text" id="phone-height" disabled />
+            <input
+              class="width-input"
+              type="number"
+              id="phone-height"
+              disabled
+              placeholder="auto"
+              autocomplete="off"
+            />
           </div>
         </div>
         <div class="preview-text">Preview</div>
@@ -270,7 +315,12 @@
           <div class="size-mark"></div>
         </div>
         <div class="img-output">
-          <pre id="phone-pretty-data" class="prettyprint"></pre>
+          <pre id="phone-pretty-data" class="prettyprint">
+            <div class="img-out-link">
+                          <p><span class="pretty-blue-color">&lt;img</span> <br> <span class="pretty-blue-color">src=</span><span class="pretty-cyan-color">"https://wordplex.cloudimg.io/v7w/flag/phone/33-200.png"</span><br> <span class="pretty-blue-color">srcset=</span><span class="pretty-cyan-color">"https://wordplex.cloudimg.io/v7w/flag/phone/33-200.png 2x"</span><br> <span class="pretty-blue-color">width=</span><span class="pretty-cyan-color">"200"</span><br> <span class="pretty-blue-color">height=</span><span class="pretty-cyan-color">"auto"</span><br> <span class="pretty-blue-color">alt=</span><span class="pretty-cyan-color">"France country"></span></p>
+
+            </div>
+          </pre>
         </div>
       </div>
       <div>
@@ -304,5 +354,9 @@
         </p>
       </div>
     </section>
+    <script
+      src="https://kit.fontawesome.com/db29237632.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

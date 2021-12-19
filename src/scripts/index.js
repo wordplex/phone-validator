@@ -2,14 +2,15 @@ import formatHighlight from "json-format-highlight";
 import autocomplete from "autocompleter";
 
 const input = document.getElementById("input");
+const validateInput = document.getElementById("valid");
 const countryInput = document.getElementById("country-input");
+const inputCloseMark = document.getElementById("input-close-mark");
 const button = document.getElementById("button");
 const dropBtn = document.getElementById("dropBtn");
 const dropDown = document.getElementById("dropDown");
 const jsonBtn = document.getElementById("json");
 const formBtn = document.getElementById("form-btn");
 const burgerBtn = document.getElementById("burger-btn");
-const validateInput = document.getElementById("valid");
 const lineType = document.getElementById("line-type");
 const countryCode = document.getElementById("country-code");
 const network = document.getElementById("network");
@@ -19,14 +20,15 @@ const prettyData = document.getElementById("pretty-data");
 const formattedResults = document.getElementById("formatted-results");
 const checkMark = document.getElementById("check-mark");
 const falseMark = document.getElementById("false-mark");
-const inputCloseMark = document.getElementById("input-close-mark");
 const mobileNavbar = document.getElementById("mobile-navbar");
 const AssetsArrow = document.getElementById("assets-arrow");
 const backDrop = document.getElementById("backdrop");
 const warningMessage = document.getElementById("warning-message");
+const arrowIcon = document.getElementById("arrow-icon");
 
 let isSelectedCountry = false;
 let selectedCountry = {};
+let isListOpen = false;
 
 (function fetchingCountries() {
   fetch(`http://geo.wordplex.io/v4/countries`)
@@ -66,11 +68,7 @@ let selectedCountry = {};
 function fetchPhoneNumber() {
   const phoneNumber = parseInt(input.value, 10);
 
-  if (typeof phoneNumber === "number") {
-    return phoneNumber;
-  } else {
-    console.log("please enter valid number");
-  }
+  return phoneNumber;
 }
 
 async function displayData() {
@@ -80,11 +78,6 @@ async function displayData() {
 
   if (!countryValue && input.value) {
     Url = `http://geo.wordplex.io/v4/phone?phone=${phoneNumbers}`;
-  }
-
-  if (!countryValue && !input.value) {
-    warningMessage.style.display = "block";
-    return;
   }
 
   fetch(Url)
@@ -133,12 +126,10 @@ function keyUp(event) {
     button.click();
   }
 
-  if (!isNaN(input.value)) {
+  if (input.value) {
     button.disabled = false;
     button.style.backgroundColor = "#82BE18";
     button.style.cursor = "pointer";
-  } else if (isNaN(input.value)) {
-    warningMessage.style.display = "block";
   }
 
   if (input.value === "") {
@@ -214,12 +205,28 @@ function dataHandler(data) {
   validateInput.value = data.is_number_valid;
 }
 
+function openCountryListHandler() {
+  if (isListOpen) {
+    arrowIcon.style.transform = "rotate(0deg)";
+    isListOpen = false;
+  } else {
+    arrowIcon.style.transform = "rotate(180deg)";
+    countryInput.select();
+    isListOpen = true;
+  }
+}
+
 function changeInputHandler(event) {
   isSelectedCountry = false;
 }
 
 function focusInputHandler(event) {
   countryInput.select();
+  openCountryListHandler();
+}
+
+function blurCountryInputHandler() {
+  openCountryListHandler();
 }
 
 function closeMobileNavbarHandler() {
@@ -248,6 +255,7 @@ function formBtnHandler() {
 //attach events
 window.addEventListener("keydown", keyDown);
 countryInput.addEventListener("focus", focusInputHandler);
+countryInput.addEventListener("blur", blurCountryInputHandler);
 countryInput.addEventListener("keydown", changeInputHandler);
 inputCloseMark.addEventListener("click", clearInputHandler);
 input.addEventListener("change", fetchPhoneNumber);
@@ -262,3 +270,4 @@ dropBtn.addEventListener("click", dropdownFunction);
 backDrop.addEventListener("click", closeMobileNavbarHandler);
 mobileNavbar.addEventListener("click", closeMobileNavbarHandler);
 AssetsArrow.addEventListener("click", dropdownFunction);
+arrowIcon.addEventListener("click", openCountryListHandler);

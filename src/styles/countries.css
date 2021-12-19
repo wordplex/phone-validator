@@ -31,9 +31,46 @@ html {
   padding: 34px 52px;
 }
 
+.content-wrapper .header .backdrop {
+  position: absolute;
+  display: none;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
 .content-wrapper .header img.logo {
   width: 240px;
   height: 32px;
+}
+
+.content-wrapper .header .burger-btn {
+  display: none;
+  position: relative;
+  color: #fff;
+  background: none;
+  border: 0;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.content-wrapper .header .fa-bars:before {
+  content: "\f0c9";
+  font-size: 21px;
+  width: 16px;
+}
+
+.content-wrapper .header .mobile-navbar {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  right: 20px;
+  top: 70px;
+  z-index: 999;
+  background-color: #00152f;
+  border-radius: 7px;
 }
 
 .content-wrapper .header .navbar {
@@ -197,23 +234,6 @@ html {
   position: relative;
 }
 
-.validation-wrapper .data-validation .input-group img {
-  position: absolute;
-  bottom: 18px;
-  right: 29px;
-  font-size: 10px;
-  display: none;
-  width: 14px;
-  height: 14px;
-}
-
-.validation-wrapper .data-validation .input-group img:hover {
-  border-radius: 1px;
-  background-color: rgb(233, 230, 230);
-  border-radius: 21px;
-  cursor: pointer;
-}
-
 .validation-wrapper .data-validation .country-input {
   width: 772px;
   height: 50px;
@@ -227,45 +247,52 @@ html {
   box-shadow: 0px 0px 4px rgb(2 79 255 / 30%);
   border-radius: 4px;
   border: none;
-  background-image: url(../assets/ic-arrow-tick.png);
-  background-position: calc(100% - 8px) calc(0.9em + 5px), 100% 0;
-  background-size: 10px;
-  background-repeat: no-repeat;
+}
+
+.validation-wrapper .input-group .arrow-icon {
+  color: gray;
+  position: absolute;
+  top: calc(50% - 21px / 2);
+  right: 20px;
+  transition: 0.1s;
+  height: 25px;
+  width: 25px;
+  padding-left: 6px;
+}
+
+.validation-wrapper .input-group .arrow-icon:hover {
+  background-color: rgb(233, 230, 230);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.validation-wrapper .input-group .close-icon {
+  position: absolute;
+  right: 56px;
+  height: 25px;
+  width: 25px;
+  font-size: 14px;
+  padding-top: 6px;
+  padding-left: 7px;
+  display: none;
+  top: calc(50% - (31px / 4));
+  color: gray;
+}
+
+.validation-wrapper .input-group .close-icon:hover {
+  background-color: rgb(233, 230, 230);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .validation-wrapper .country-input::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
 
-.validation-wrapper .data-validation .country-selector {
-  width: 362px;
-  height: 370px;
-  overflow-y: overlay;
-  position: absolute;
-  top: 57px;
-  background: rgb(39, 39, 39);
-  z-index: 999;
-  border-radius: 5px;
-  padding: 20px 12px;
-  display: none;
-}
-
 .validation-wrapper .data-validation .country-selector::-webkit-scrollbar {
   display: none;
-}
-
-.validation-wrapper .data-validation .country-selector li {
-  list-style-type: none;
-  margin-top: 15px;
-  font-family: "Rubik";
-  font-size: 17px;
-  color: #ffffff;
-}
-
-.validation-wrapper .data-validation .country-selector li:hover {
-  border: 0;
-  background-color: #acacac;
-  cursor: pointer;
 }
 
 .validation-wrapper .data-validation .validation-input {
@@ -278,19 +305,6 @@ html {
   box-shadow: 0px 0px 4px rgba(2, 79, 255, 0.3);
   border-radius: 4px;
   border: none;
-}
-
-.validation-wrapper .data-validation select.validation-input {
-  padding-left: 20px;
-  padding-top: 5px;
-  font-size: 18px;
-  font-family: "Rubik";
-  line-height: 36px;
-  background-image: url(../assets/ic-arrow-tick.png);
-  background-position: calc(100% - 8px) calc(0.9em + 5px), 100% 0;
-  background-size: 10px;
-  background-repeat: no-repeat;
-  -webkit-appearance: none;
 }
 
 .validation-wrapper .data-validation .submit-btn-with-flag-img {
@@ -362,6 +376,12 @@ html {
   border-radius: 2px;
   border: none;
   padding-left: 5px;
+}
+
+.width-input::-webkit-outer-spin-button,
+.width-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .validation-wrapper .data-validation .preview-text {
@@ -500,22 +520,45 @@ html {
   font-size: 18px;
   line-height: 36px;
   margin-bottom: 71px;
-  height: 254px;
+  height: 298px;
+}
+
+.validation-wrapper .data-validation .prettyprint .img-out-link {
+  display: flex;
+  margin: -39px;
+  padding-left: 44px;
+}
+
+.validation-wrapper .data-validation .prettyprint p {
+  line-height: 36px !important;
+}
+
+.validation-wrapper .data-validation .prettyprint .pretty-cyan-color {
+  color: hsl(213deg 100% 40%) !important;
+}
+
+.validation-wrapper .data-validation .prettyprint .pretty-blue-color {
+  color: #062e5d !important;
 }
 
 .validation-wrapper .data-validation pre.prettyprint {
   line-height: 36px;
   font-family: "Rubik";
   font-size: 18px;
+  font-weight: 500;
 }
 
-.prettyprint span {
+.validation-wrapper .data-validation .prettyprint span {
   font-weight: 500;
+  font-size: 18px;
+  line-height: 36px;
 }
 
 .validation-wrapper .data-validation .img-output span {
   color: #005ccd;
   font-weight: 500;
+  font-size: 18px;
+  line-height: 36px;
 }
 
 .validation-wrapper .data-validation:nth-child(3) {
@@ -678,6 +721,7 @@ html {
   line-height: 36px;
   font-family: "Rubik";
   color: rgba(3, 50, 96, 1);
+  cursor: pointer;
 }
 
 .autocomplete div {
@@ -685,14 +729,14 @@ html {
 }
 
 .autocomplete div:hover {
-  border: 0 solid rgb(141, 140, 140);
-  background-color: rgb(150, 150, 150);
+  border: 0;
+  background-color: #dce2e9;
   border-radius: 2px;
 }
 
 .selected {
-  border: 0 solid rgb(141, 140, 140);
-  background-color: rgb(150, 150, 150);
+  border: 0;
+  background-color: #dce2e9;
 }
 
 @media (max-width: 1550px) {
@@ -1171,12 +1215,37 @@ html {
 }
 
 @media (max-width: 510px) {
+  .content-wrapper .header .burger-btn {
+    display: block;
+    width: 51px;
+  }
+
   .content-wrapper .header .navbar {
-    margin-left: 21px;
+    display: none;
+  }
+
+  .content-wrapper .header a {
+    margin: 0;
+    padding: 20px;
+    transition: all 0.1s ease-in-out;
   }
 
   .content-wrapper .header .nav-link {
-    margin-right: 13px;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 13px;
+  }
+
+  .content-wrapper .header .nav-link:first-child {
+    border-radius: 7px 7px 0 0;
+  }
+
+  .content-wrapper .header .nav-link:last-child {
+    border-radius: 0 0 7px 7px;
+  }
+
+  .content-wrapper .header .nav-link:hover {
+    background-color: #002c5f;
   }
 
   .content-wrapper .content {
