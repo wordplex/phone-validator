@@ -9,10 +9,6 @@ module.exports = {
       path.resolve(__dirname, "./src/scripts/index.js"),
       path.resolve(__dirname, "./src/styles/main.css"),
     ],
-    countries: [
-      path.resolve(__dirname, "./src/scripts/countries.js"),
-      path.resolve(__dirname, "./src/styles/countries.css"),
-    ],
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -59,13 +55,6 @@ module.exports = {
       chunks: ["index"],
       inject: true,
       filename: "index.html", // output file
-    }),
-    new HtmlWebpackPlugin({
-      title: "Flags",
-      template: path.resolve(__dirname, "./src/countries.html"), // template file
-      chunks: ["countries"],
-      inject: true,
-      filename: "countries.html", // output file
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
