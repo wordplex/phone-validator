@@ -13,7 +13,6 @@ html {
 }
 
 .main-wrapper {
-  position: relative;
   background-color: #002046;
   background: url(../assets/img.jfif) no-repeat center center fixed;
   background-size: cover;
@@ -43,6 +42,7 @@ html {
 .main-wrapper .header img.logo {
   width: 240px;
   height: 32px;
+  cursor: pointer;
 }
 
 .main-wrapper .header .burger-btn {
@@ -77,6 +77,10 @@ html {
   display: inline-block;
 }
 
+.main-wrapper .navbar .dropDown:hover .dropdown-content {
+  display: block;
+}
+
 .main-wrapper .navbar .dropDown a:hover {
   background-color: #ddd;
 }
@@ -93,6 +97,10 @@ html {
   outline: none;
 }
 
+.main-wrapper .navbar .dropBtn:hover .dropdown-content {
+  display: block;
+}
+
 .main-wrapper .navbar .dropBtn img {
   padding-bottom: 2px;
 }
@@ -100,16 +108,13 @@ html {
 .main-wrapper .navbar .dropdown-content {
   display: none;
   position: absolute;
+  top: 8px;
   width: 123px;
   overflow: auto;
   background: #f8fafb;
   border-radius: 4px;
   z-index: 99;
   transform: translate3d(-49px, 8px, 0px) !important;
-}
-
-.main-wrapper .navbar .show {
-  display: block;
 }
 
 .main-wrapper .navbar .dropdown-content a {
@@ -135,6 +140,7 @@ html {
 }
 
 .main-wrapper .main {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -319,7 +325,7 @@ html {
   font-family: "Rubik";
   line-height: 36px;
   background-color: rgba(127, 154, 190, 1);
-  cursor: unset;
+  cursor: not-allowed;
   border-radius: 0px 4px 4px 0px;
   border: 0;
   color: #fff;
@@ -498,7 +504,7 @@ html {
   width: 302.39px;
   height: 545px;
   right: 46.6px;
-  top: 106px;
+  bottom: -33px;
   background: linear-gradient(
     194.87deg,
     rgba(0, 103, 255, 0.38) 0%,
@@ -905,6 +911,64 @@ html {
 
 .footer .footer-links-wrapper .footer-copywrite {
   text-align: right;
+}
+
+@media (min-width: 1960px) {
+  .main-wrapper {
+    max-width: 100%;
+  }
+
+  .main-wrapper .header {
+    margin: auto;
+    width: 1550px;
+  }
+
+  .main-wrapper .main {
+    margin: auto;
+    width: 1550px;
+  }
+
+  .main-wrapper .phone-shape {
+    right: 46.6px;
+    bottom: 0;
+    top: -29px;
+  }
+
+  .properties-section .properties {
+    margin: auto;
+    max-width: 1550px;
+  }
+
+  .documentation-wrapper {
+    max-width: 100%;
+  }
+
+  .documentation-wrapper .documentation {
+    margin: auto;
+    max-width: 1550px;
+    padding: 0 194px;
+  }
+
+  .documentation-wrapper .params {
+    margin: auto;
+    max-width: 1550px;
+    padding: 0 194px;
+  }
+
+  .documentation-wrapper .status-params {
+    margin: auto;
+    max-width: 1550px;
+    padding: 0 194px;
+  }
+
+  .footer {
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .footer .logo {
+    margin-right: 507px;
+  }
 }
 
 @media (max-width: 1488px) {

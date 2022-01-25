@@ -140,24 +140,6 @@ function keyUp(event) {
   }
 }
 
-function dropdownFunction() {
-  event.stopPropagation();
-  dropDown.classList.toggle("show");
-}
-
-window.onclick = function (event) {
-  if (!event.target.matches(".dropBtn")) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("show")) {
-        openDropdown.classList.remove("show");
-      }
-    }
-  }
-};
-
 function toggleMobileNavbar() {
   if (!mobileNavbar.offsetWidth) {
     mobileNavbar.style.display = "flex";
@@ -266,8 +248,6 @@ button.addEventListener("click", warningValidateMessage);
 jsonBtn.addEventListener("click", jsonHandler);
 formBtn.addEventListener("click", formBtnHandler);
 burgerBtn.addEventListener("click", toggleMobileNavbar);
-dropBtn.addEventListener("click", dropdownFunction);
 backDrop.addEventListener("click", closeMobileNavbarHandler);
 mobileNavbar.addEventListener("click", closeMobileNavbarHandler);
-AssetsArrow.addEventListener("click", dropdownFunction);
 arrowIcon.addEventListener("click", openCountryListHandler);
