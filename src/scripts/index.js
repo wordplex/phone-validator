@@ -31,7 +31,7 @@ let selectedCountry = {};
 let isListOpen = false;
 
 (function fetchingCountries() {
-  fetch(`http://geo.wordplex.io/v4/countries`)
+  fetch(`https://geo.wordplex.io/v4/countries`)
     .then((res) => res.json())
     .then(({ items }) => {
       autocomplete({
@@ -74,10 +74,10 @@ function fetchPhoneNumber() {
 async function displayData() {
   const phoneNumbers = fetchPhoneNumber();
   const countryValue = selectedCountry.value;
-  let Url = `http://geo.wordplex.io/v4/phone?phone=${phoneNumbers}&country=${countryValue}`;
+  let Url = `https://geo.wordplex.io/v4/phone?phone=${phoneNumbers}&country=${countryValue}`;
 
   if (!countryValue && input.value) {
-    Url = `http://geo.wordplex.io/v4/phone?phone=${phoneNumbers}`;
+    Url = `https://geo.wordplex.io/v4/phone?phone=${phoneNumbers}`;
   }
 
   fetch(Url)
